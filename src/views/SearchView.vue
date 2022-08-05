@@ -1,4 +1,10 @@
+<script setup>
+import FullScreenDiv from "@/components/FullScreenDiv.vue"
+</script>
+
 <template>
-  <div></div>
+  <FullScreenDiv >
+    Vamo a buscal algo    
+  </FullScreenDiv>
 </template>
 

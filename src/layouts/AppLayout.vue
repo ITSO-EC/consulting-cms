@@ -1,6 +1,7 @@
 <script setup>
 import TheFooter from "@/components/TheFooter";
 import TheNavBar from "@/components/TheNavBar";
+
 </script>
 
 <template>
@@ -11,12 +12,18 @@ import TheNavBar from "@/components/TheNavBar";
       </template>
     </TheNavBar>
   </header>
-  <body class="static min-h-screen -mb-6 -mt-20">
+  <main v-bind="$attrs" class="static min-h-screen -mb-6 -mt-20">
     <slot name="body" />
-  </body>
+  </main>
+
   <TheFooter class="static bottom-0"></TheFooter>
 </template>
 
+<script>
+export default {
+  inheritAttrs: false,
+}
+</script>
 
 <style>
 </style>
