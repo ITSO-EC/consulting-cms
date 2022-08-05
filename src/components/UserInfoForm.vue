@@ -1,7 +1,7 @@
 <script setup>
 import { defineProps } from "vue";
 
-const props = defineProps({
+defineProps({
   disabled: {
     type: Boolean,
     default: false,
@@ -89,8 +89,11 @@ const props = defineProps({
       </div>
     </div>
 
-    <BaseButton class="w-fit mt-8 border border-gray-400 bg-gray-200 px-4 py-1">
-      Editar Perfil
+    <div class="flex h-6 my-2" v-if="!disabled">
+      <span><BaseInput :class="'w-4 mr-4'" :type="'checkbox'"></BaseInput>Acepto los términos y condiciones</span>
+    </div>
+    <BaseButton class="w-fit self-end mt-8 border border-gray-400 bg-gray-200 px-4 py-1">
+      {{disabled ? 'Editar Perfil' : 'Registrarse'}}
     </BaseButton>
   </div>
 </template>
