@@ -16,39 +16,22 @@
 </script>
 
 <template>
-  <div
-    class="
-      group
-      relative
-      border border-black
-      rounded-md
-      overflow-hidden
-      bg-gray-200
-      focus-within:bg-white
-      focus-within:border-none
-      focus-within:ring-1
-      focus-within:ring-blue-900
-      focus-within:ring-opacity-80
-    "
-  >
+  
     <input
       class="
-        bg-gray-50
-        appearance-none
+        rounded
+        bg-blue-200
         w-full
-        py-2
-        px-2
+        p-2
         text-black text-sm
         leading-tight
         focus:outline-none focus:bg-white
       "
-
+      v-bind="$attrs"
       :placeholder="placeholder"
-      :req="req"
       :value="modelValue"
       @input="$emit('update:modelValue', $event.target.value)"
       ref="input"
     />
-  </div>
 </template>
 
