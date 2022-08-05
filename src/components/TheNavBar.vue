@@ -2,7 +2,7 @@
 </script>
 
 <template>
-    <nav class=" w-full h-20 ">
+    <nav class="w-full h-20">
         <slot name="links"/>
     </nav>
 </template>

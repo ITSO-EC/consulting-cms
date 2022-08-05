@@ -6,8 +6,13 @@ import AppLayout from '@/layouts/AppLayout';
     
     <template #links>
       
-      <router-link to="/">Home</router-link>
-      <router-link to="/about">About</router-link>
+      <router-link to="/">Home</router-link> | 
+      <router-link to="/login">Login</router-link> |
+      <router-link to="/register">Registro</router-link> |
+      <router-link to="/search">Busqueda</router-link> |
+      <router-link to="/page">Pagina Generica</router-link> |
+      <router-link to="/profile">Profile</router-link> |
+      <router-link to="/orders">Ordenes</router-link> |
     </template>
     <template #body>
       

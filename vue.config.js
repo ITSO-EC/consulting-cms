@@ -7,6 +7,7 @@ function resolve (dir) {
 
 module.exports = defineConfig({
   transpileDependencies: true,
+
   chainWebpack: config => {
     config.module
       .rule('vue')
@@ -17,5 +18,7 @@ module.exports = defineConfig({
         }),
         config.resolve.alias
         .set('@',resolve('src'))
-      }
+      },
+
+  lintOnSave: false
 })
