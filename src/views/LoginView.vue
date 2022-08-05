@@ -1,4 +1,17 @@
+<script setup>
+
+  import FullScreenDiv from "@/components/FullScreenDiv.vue";
+  import LoginCard from '@/components/LoginCard.vue'
+</script>
+
 <template>
-  <div></div>
+  <FullScreenDiv first class="grid grid-cols-12 pt-20">
+    <div class="col-start-6 col-span-2">
+      
+      <LoginCard class="col-span-2"></LoginCard>
+    </div>
+
+   
+  </FullScreenDiv>
 </template>
 
