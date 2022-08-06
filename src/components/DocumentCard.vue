@@ -1,3 +1,20 @@
+<script setup>
+import {ref, computed} from 'vue';
+
+const showingMore = ref(false);
+
+function toggleDetail() {
+    showingMore.value = !showingMore.value;
+}
+
+
+// a computed ref
+const showMore = computed(() => {
+  return showingMore.value ? '' : 'hidden'
+})
+
+</script>
+
 <template>
     <div class="mt-12 w-5/6 mx-auto grid grid-cols-3 border">
         <div class="h-40 overflow-hidden row-span-3 flex justify-center items-center">
@@ -42,29 +59,29 @@
         </div>
 
         <!-- Extra Info -->
-        <div class="flex items-center gap-4 border p-2 ">
+        <div class="flex items-center gap-4 border p-2 " :class="showMore">
             <h2 class="text-gray-600 text-xl font-bold">
                 Órgano Emisor Ejemplo
             </h2>
         </div>
-        <div class="flex items-center gap-4 border p-2 ">
+        <div class="flex items-center gap-4 border p-2 " :class="showMore">
             <h2 class="text-gray-600 text-xl font-bold">
                 512-22A-3F (Numero)
             </h2>
         </div>
-        <div class="flex items-center gap-4 border p-2 ">
+        <div class="flex items-center gap-4 border p-2 " :class="showMore">
             <h2 class="text-gray-600 text-xl font-bold">
                 Tipo reforma Ejemplo
             </h2>
         </div>
         
-        <div class="flex items-center text-justify gap-4 border p-2 col-span-3">
+        <div class="flex items-center text-justify gap-4 border p-2 col-span-3" :class="showMore">
             <p class="text-gray-600 text-md font-bold">
                 Este ya es un largo ejemplo de la descripcion Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore sed, autem commodi laboriosam ex quo id necessitatibus non minus, dolor ratione unde eligendi aspernatur, odio modi ipsa at enim ut.
             </p>
         </div>
         
-        <div class="flex items-center text-justify gap-4 border p-2 col-span-3">
+        <div class="flex items-center text-justify gap-4 border p-2 col-span-3" :class="showMore">
             <span class="text-gray-600 text-md font-bold">
                 Referencia: 
             </span>
@@ -72,8 +89,8 @@
         </div>
         
         <div class="flex items-center justify-end text-right gap-4 border p-2 col-span-3">
-            <button class="text-gray-600 text-md font-bold">
-            Ver Menos
+            <button class="text-gray-600 text-md font-bold" @click="toggleDetail">
+            Ver {{showingMore?'Menos':'Mas'}}
             </button>
         </div>
     </div>
