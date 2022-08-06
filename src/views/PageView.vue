@@ -14,31 +14,31 @@ import CardList from "@/components/CardList.vue";
       </CardList>
     </FullScreenDiv>
     <FullScreenDiv class="min-h-[50vh] h-auto py-24">
-      <ul class="grid grid-cols-3">
-        <li>
-          <a href="" class="text-blue-600 hover:underline">Categoria N</a>
+      <ul class="grid grid-cols-3 border mx-auto w-5/6">
+        <li class="border">
+          <a href="page/category" class="text-blue-600 hover:underline">Categoria N</a>
         </li>
         
-        <li>
-          <a href="" class="text-blue-600 hover:underline">Categoria N</a>
+        <li class="border">
+          <a href="page/category" class="text-blue-600 hover:underline">Categoria N</a>
         </li>
-        <li>
-          <a href="" class="text-blue-600 hover:underline">Categoria N</a>
+        <li class="border">
+          <a href="page/category" class="text-blue-600 hover:underline">Categoria N</a>
         </li>
-        <li>
-          <a href="" class="text-blue-600 hover:underline">Categoria N</a>
+        <li class="border">
+          <a href="page/category" class="text-blue-600 hover:underline">Categoria N</a>
         </li>
-        <li>
-          <a href="" class="text-blue-600 hover:underline">Categoria N</a>
+        <li class="border">
+          <a href="page/category" class="text-blue-600 hover:underline">Categoria N</a>
         </li>
-        <li>
-          <a href="" class="text-blue-600 hover:underline">Categoria N</a>
+        <li class="border">
+          <a href="page/category" class="text-blue-600 hover:underline">Categoria N</a>
         </li>
-        <li>
-          <a href="" class="text-blue-600 hover:underline">Categoria N</a>
+        <li class="border">
+          <a href="page/category" class="text-blue-600 hover:underline">Categoria N</a>
         </li>
-        <li>
-          <a href="" class="text-blue-600 hover:underline">Categoria N</a>
+        <li class="border">
+          <a href="page/category" class="text-blue-600 hover:underline">Categoria N</a>
         </li>
       </ul>
     </FullScreenDiv>

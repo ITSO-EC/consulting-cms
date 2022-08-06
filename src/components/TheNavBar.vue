@@ -5,7 +5,7 @@ defineProps({});
 </script>
 
 <template>
-  <div class="w-full h-20 flex">
+  <div class="w-full h-20 flex z-40">
     <div class="h-full w-1/5">
         <img src="https://acorpconsulting.com/images/headers/logo_consulting.png" class="h-20" alt="">
     </div>

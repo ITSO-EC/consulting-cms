@@ -5,7 +5,7 @@ import TheNavBar from "@/components/TheNavBar";
 </script>
 
 <template>
-  <header class="sticky top-0 bg-gray-200">
+  <header class="sticky top-0 bg-gray-200 z-50">
     <TheNavBar>
       <template #links>
         <slot name="links" />

@@ -26,7 +26,7 @@
               overflow-hidden
             "
           >
-            <router-link class="" to="/about">
+            <router-link class="" to="/page">
               <img
                 src="https://source.unsplash.com/400x400/?businesses"
                 class="object-cover"
@@ -43,7 +43,7 @@
               overflow-hidden
             "
           >
-            <router-link class="" to="/about">
+            <router-link class="" to="/page">
               <img
                 src="https://source.unsplash.com/400x400/?businesses"
                 class="object-cover"
@@ -60,7 +60,7 @@
               overflow-hidden
             "
           >
-            <router-link class="" to="/about">
+            <router-link class="" to="/page">
               <img
                 src="https://source.unsplash.com/400x400/?businesses"
                 class="object-cover"
