@@ -1,23 +1,25 @@
 <template>
   <div>
-    <FullScreenDiv first class="home pb-18 grid grid-rows-2">
+    <FullScreenDiv first class="home bg-red-400 grid ">
       <img
         alt="Vue logo"
-        class="w-full h-full object-cover"
+        class="w-full h-[100vh] object-cover"
         src="https://source.unsplash.com/1600x900/?landscapes"
       />
-      <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
+   
+    </FullScreenDiv>
+    
+    <FullScreenDiv class="mt-6 h-auto my-auto pt-0 flex flex-col justify-center">
       <CardList>
         <template #list-title>Los ultimos posts</template>
-      </CardList>
+      </CardList>  
     </FullScreenDiv>
-
-    <FullScreenDiv class="mt-6 bg-blue-50">
+    <FullScreenDiv class="bg-blue-50 h-auto pt-0 flex flex-col justify-center">
       <CardList>
         <template #list-title>Los ultimos organos emisores</template>
       </CardList>  
     </FullScreenDiv>
-    <FullScreenDiv class=" ">
+    <FullScreenDiv class="h-auto pt-0 flex flex-col justify-center">
       <CardList>
         <template #list-title>Las ultimas noticias</template>
       </CardList>  

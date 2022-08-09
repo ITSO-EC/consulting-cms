@@ -1,8 +1,7 @@
 <script setup>
-import FullScreenDiv from "@/components/FullScreenDiv.vue";
 </script>
 <template>
-  <FullScreenDiv class="h-[60vh] flex flex-col">
+  <div class="h-[60vh] flex flex-col">
     
     <div class="relative w-full overflow-hidden ">
       <img
@@ -33,5 +32,5 @@ import FullScreenDiv from "@/components/FullScreenDiv.vue";
       </div>
       
     </div>
-  </FullScreenDiv>
+  </div>
 </template>

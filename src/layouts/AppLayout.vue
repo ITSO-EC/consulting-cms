@@ -12,11 +12,11 @@ import TheNavBar from "@/components/TheNavBar";
       </template>
     </TheNavBar>
   </header>
-  <main v-bind="$attrs" class="static min-h-screen -mb-6 -mt-20">
+  <main v-bind="$attrs" class="relative min-h-screen -mb-6 -mt-20 z-10">
     <slot name="body" />
   </main>
 
-  <TheFooter class="static bottom-0"></TheFooter>
+  <TheFooter class="relative bottom-0 z-50"></TheFooter>
 </template>
 
 <script>
