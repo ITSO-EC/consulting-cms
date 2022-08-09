@@ -5,11 +5,11 @@ import UserInfoForm from "@/components/UserInfoForm.vue";
 </script>
 <template>
   <FullScreenDiv first class="grid grid-cols-12 pt-40">
-    <div class="col-start-3 col-span-2">
+    <div class="my-8 col-start-2 col-span-10 lg:col-start-3 lg:col-span-2">
       <UserInfoCard disabled></UserInfoCard>
     </div>
 
-    <div class="col-start-5 col-span-6">
+    <div class="my-8 col-start-2 col-span-10 lg:col-start-5 lg:col-span-6">
       <UserInfoForm disabled></UserInfoForm>
     </div>
   </FullScreenDiv>

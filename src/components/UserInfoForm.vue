@@ -22,7 +22,7 @@ defineProps({
 });
 </script>
 <template>
-  <div class="flex flex-col mx-12 bg-cyan-50 p-8 border border-blue-300">
+  <div class="flex flex-col  md:mx-12 bg-cyan-50 p-8 border border-blue-300">
     <label for="user" class="text-left">Usuario:</label>
     <BaseInput
       id="user"

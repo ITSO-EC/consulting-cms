@@ -59,10 +59,12 @@ function deleteFile() {
       p-8
       flex flex-col
       gap-4
-      w-full
+      md:mx-12
+      lg:w-full 
       justify-center
       items-center
       bg-cyan-50
+      border
       border-blue-300
     "
   >
