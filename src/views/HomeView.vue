@@ -3,7 +3,7 @@
     <FullScreenDiv first class="home bg-blue-500 grid relative"> 
       <img
         alt="Vue logo"
-        :class="`bg-blue-400 backdrop-contrast-50`"
+        :class="`brightness-75 bg-blue-400 backdrop-contrast-50`"
         class="w-full h-[100vh] object-cover"
         src="../assets/images/BusinessPicFinal.png"
       />
@@ -16,15 +16,15 @@
       </div>
     </FullScreenDiv>
     
-    <div class="mt-6 h-auto lg:h-[60vh] my-auto pt-0 flex flex-col justify-center">
-      <CardList>
+    <div class="mt-6 h-auto  mx-auto pt-0 flex flex-col justify-center">
+      <CardList class="py-12">
         <template #list-title>Últimas Publicaciones</template>
       </CardList>  
     </div>
-    <div class="bg-white overflow-hidden h-[60vh] pt-0 flex flex-col justify-center">
+    <div class="bg-white overflow-hidden min-h-[50vh] h-auto pt-0 flex flex-col justify-center">
          <img
         alt="Banner de Consulting"
-        class="w-[100vw] object-cover"
+        class="w-[100vw] min-h-[50vh] object-cover"
         src="../assets/images/speedDiv.png"
       />
     </div>
