@@ -8,7 +8,7 @@ const props = defineProps({
 }
 )
 const style = reactive({
-  first: '-mt-[60px] pt-0 -pb-6 -mb-6',
+  first: '-mt-[60px] pt-0 -pb-10 -mb-6',
   others: '' 
 })
 

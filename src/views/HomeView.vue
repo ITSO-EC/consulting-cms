@@ -21,17 +21,38 @@
         <template #list-title>Últimas Publicaciones</template>
       </CardList>  
     </div>
-    <div class="bg-white overflow-hidden min-h-[50vh] h-auto pt-0 flex flex-col justify-center">
-         <img
+    <div class="relative bg-white overflow-hidden min-h-[50vh] h-auto pt-0 flex flex-col justify-center">
+      <img
         alt="Banner de Consulting"
-        class="w-[100vw] min-h-[50vh] object-cover"
+        class="absolute w-[100vw] min-h-[50vh] object-cover"
         src="../assets/images/speedDiv.png"
       />
+      <div class="hidden absolute inset-y-0 left-0 w-1/2 md:flex flex-col justify-center">
+        <img src="../assets/images/support.png" class="mx-auto w-fit h-1/2" alt="Icono de soporte">
+      </div>
+      <div class="absolute inset-y-0 w-full md:right-0 md:w-1/2  flex flex-col gap-4 justify-center text-center md:text-left">
+        <h1 class="text-2xl sm:text-4xl font-bold">
+          Atención Inmediata
+        </h1>
+        <ul>
+          <li>Notificaciones en tiempo real por Whatsapp</li>
+          <li>La información más relevante de la industria</li>  
+          <li>El mejor proveedor de información del mercado</li>
+        </ul>
+        <PrimaryButton class="w-fit px-8 mx-auto md:mx-0">Suscribirse</PrimaryButton>
+      </div>
     </div>
     <FullScreenDiv class="h-auto pt-0 flex flex-col justify-center">
-      <CardList>
-        <template #list-title>Las ultimas noticias</template>
-      </CardList>  
+      <PageCardList>
+        <template #list-title>
+            <div>
+              <h1>
+                Últimas Vistas
+              </h1>
+              <h2 class="text-gray-500 text-sm">Estas son las últimas vistas actualizadas por nuestro equipo</h2>
+            </div>
+        </template>
+      </PageCardList>  
     </FullScreenDiv>
   </div>
 </template>
@@ -41,7 +62,9 @@
 //import HelloWorld from '@/components/HelloWorld.vue'
 import FullScreenDiv from "@/components/FullScreenDiv.vue";
 import CardList from '@/components/CardList.vue';
+import PageCardList from '@/components/PageCardList.vue';
 import SecondaryButton from "@/components/SecondaryButton.vue"
+import PrimaryButton from "@/components/ActionButton.vue"
 
 export default {
   name: "HomeView",
@@ -49,7 +72,9 @@ export default {
     //HelloWorld,
     FullScreenDiv,
     CardList,
-    SecondaryButton
+    PageCardList,
+    SecondaryButton,
+    PrimaryButton
   },
 };
 </script>

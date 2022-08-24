@@ -1,5 +1,5 @@
 <script setup>
-  import DocumentHomeCard from "@/components/DocumentHomeCard.vue"
+  import ViewCard from "@/components/ViewCard.vue"
 </script>
 <template>
       <div class="flex flex-col items-center py-8">
@@ -16,18 +16,23 @@
             lg:w-2/3
             h-auto
             mx-auto
-            grid grid-rows-2 lg:grid-rows-1 lg:grid-cols-2
+            grid grid-rows-4 lg:grid-rows-1 lg:grid-cols-2
             place-content-center
             gap-8
             pb-8
           "
         >
 
-          <DocumentHomeCard class="justify-self-end"></DocumentHomeCard>
+          <ViewCard class="justify-self-end"></ViewCard>
           
 <!--         
-          <DocumentHomeCard class="justify-self-center"></DocumentHomeCard> -->
-          <DocumentHomeCard class="justify-self-start"></DocumentHomeCard>
+          <ViewCard class="justify-self-center"></ViewCard> -->
+          <ViewCard class="justify-self-start"></ViewCard>
+          <ViewCard class="justify-self-end"></ViewCard>
+          
+<!--         
+          <ViewCard class="justify-self-center"></ViewCard> -->
+          <ViewCard class="justify-self-start"></ViewCard>
         </div>
       </div>
 </template>
