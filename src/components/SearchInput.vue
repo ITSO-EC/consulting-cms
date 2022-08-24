@@ -1,9 +1,22 @@
+<script setup>
+import { getCurrentInstance } from "vue";
+
+const app = getCurrentInstance();
+const secondaryColor = app.appContext.config.globalProperties.secondaryColor;
+const blankColor = app.appContext.config.globalProperties.blankColor;
+</script>
 <template>
-    <div class="relative flex items-center  mx-auto">
-        <span class="absolute right-9 text-gray-500 text-3xl -mt-1">|</span>
-        <BaseIcon class="absolute right-0 -mt-1 mr-2" name="search"/>
         
-        <BaseInput :placeholder="'Ingrese aqui lo que quiera buscar'" />
-    
-    </div>
+        <!-- <BaseInput class="bg-gray-200 focus:bg-gray-50" :placeholder="'Ingrese aqui lo que quiera buscar'" /> -->
+        <div class="w-full">
+            <label class="sr-only">Search </label>
+            <div class="relative z-50">
+              <button type="submit" id="searchsubmit" class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                
+                <BaseIcon :size="'h-[20px] w-[20px]'" :class="`text-blue-500`" name="search"/>
+        
+              </button>
+              <BaseInput :class="`bg-gray-50 focus:bg-${blankColor} pl-10`" :placeholder="'Buscar'" /></div>
+          </div>
+  
 </template>

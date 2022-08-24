@@ -5,14 +5,14 @@ import TheNavBar from "@/components/TheNavBar";
 </script>
 
 <template>
-  <header class="sticky top-0 bg-gray-200 z-50">
+  <header class="sticky top-0 z-50">
     <TheNavBar>
       <template #links>
         <slot name="links" />
       </template>
     </TheNavBar>
   </header>
-  <main v-bind="$attrs" class="relative min-h-screen -mb-6 -mt-20 z-10">
+  <main v-bind="$attrs" class="relative min-h-screen -mb-6  z-10">
     <slot name="body" />
   </main>
 

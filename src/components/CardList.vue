@@ -1,8 +1,8 @@
 <template>
     
-      <div class="flex flex-col justify-center items-center py-8">
+      <div class="flex flex-col items-center py-8">
         
-        <h1 class="uppercase md:mt-8 font-extrabold my-4 text-2xl">
+        <h1 class="w-full md:w-5/6 text-left md:mt-8 font-bold my-4 text-2xl">
             <slot name="list-title"></slot>
         </h1>
         <div
@@ -11,7 +11,7 @@
             md:w-5/6
             h-auto
             mx-auto
-            grid grid-rows-3 md:grid-rows-1 md:grid-cols-3
+            grid grid-rows-3 lg:grid-rows-1 lg:grid-cols-3
             place-content-center
             gap-8
             pb-8
@@ -20,7 +20,7 @@
 
           <div
             class="
-              justify-self-end
+              justify-self-start
               flex
               justify-center
               items-center
@@ -56,7 +56,7 @@
           </div>
           <div
             class="
-              justify-self-start
+              justify-self-end
               flex
               justify-center
               items-center

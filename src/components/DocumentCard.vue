@@ -16,7 +16,7 @@ const showMore = computed(() => {
 </script>
 
 <template>
-    <div class="mt-12 w-5/6 mx-auto grid grid-cols-3 border">
+    <div class="mt-20 w-5/6 mx-auto grid grid-cols-3 border">
         <div class="h-40 overflow-hidden row-span-3 flex justify-center items-center">
             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/SRI.svg/1280px-SRI.svg.png" class="h-full" alt="">
         

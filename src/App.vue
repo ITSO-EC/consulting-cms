@@ -1,18 +1,24 @@
 <script setup>
 import AppLayout from '@/layouts/AppLayout';
+import { getCurrentInstance } from "vue";
+
+const app = getCurrentInstance();
+//const primaryColor = app.appContext.config.globalProperties.primaryColor;
+const blankColor = app.appContext.config.globalProperties.blankColor;
+
 </script>
 <template>
   <AppLayout>
     
     <template #links>
       
-      <router-link to="/">Home</router-link> | 
-      <router-link to="/login">Login</router-link> |
+      <router-link to="/" :class="`block text-[${blankColor}] active:border-b focused:border-b h-12 flex items-center mx-2`">Inicio </router-link> 
+      <!-- <router-link to="/login">Login</router-link> |
       <router-link to="/register">Registro</router-link> |
-      <router-link to="/search">Busqueda</router-link> |
-      <router-link to="/page">Pagina Generica</router-link> |
-      <router-link to="/profile">Profile</router-link> |
-      <router-link to="/orders">Ordenes</router-link> |
+      <router-link to="/search">Busqueda</router-link> | -->
+      <router-link to="/page" :class="`block text-[${blankColor}] active:border-b focused:border-b h-12 flex items-center mx-2`"> Contenido </router-link>
+      <!-- <router-link to="/profile">Profile</router-link> |
+      <router-link to="/orders">Ordenes</router-link> | -->
     </template>
     <template #body>
       
@@ -44,6 +50,6 @@ nav a {
 }
 
 nav a.router-link-exact-active {
-  color: #42b983;
+  border-bottom: solid #48C4FA 3px
 }
 </style>

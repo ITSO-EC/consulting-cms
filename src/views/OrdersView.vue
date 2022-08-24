@@ -15,9 +15,9 @@ function toggleToast() {
 
 <template>
   <div>
-    <FullScreenDiv class="h-auto py-12 bg-white">
+    <FullScreenDiv class="h-auto py-20 bg-white">
       
-      <BaseToast class="fixed top-20 z-50" :show="openToast" @close="toggleToast">
+      <BaseToast class="fixed top-12 z-50" :show="openToast" @close="toggleToast">
         Set Yourself Free Or Not
       </BaseToast>
       <div class="flex py-12 border-b justify-between mx-auto w-5/6 ">
