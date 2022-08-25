@@ -2,14 +2,14 @@
 <template>
   <div class="h-[50vh] relative flex justify-center -mt-16">
     <div :class="`bg-[${secondaryColor}] bg-opacity-20`" 
-    class="absolute bottom-0 mx-auto backdrop-blur-2xl rounded-t-lg w-fit flex flex-col sm:gap-4 px-2 sm:px-8 py-4 text-left z-10">
+    class="absolute bottom-0 mx-auto backdrop-blur-2xl rounded-t-lg w-fit flex flex-col md:gap-4 px-2 md:px-8 py-4 text-left z-10">
       <div>
-        <h1 :class="`text-[${blankColor}]`" class="text-center brightness-150 text-2xl sm:text-4xl sm:mb-1">
+        <h1 :class="`text-[${blankColor}]`" class="text-center brightness-150 text-2xl md:text-4xl md:mb-1">
           Marco Legal Teorico
         </h1>
         <h2
         :class="`text-blue-500 font-semibold`" 
-        class=" text-center text-md sm:text-xl sm:mb-2">
+        class=" text-center text-md md:text-xl md:mb-2">
           ¡Actualizado a diario!
         </h2>
       </div>
