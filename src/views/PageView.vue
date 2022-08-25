@@ -1,44 +1,9 @@
-<script setup>
-import FullScreenDiv from "@/components/FullScreenDiv.vue";
-import CardList from "@/components/CardList.vue";
-</script>
+
 <template>
-  <div class="h-auto">
-    <FullScreenDiv
-      class="h-[50vh] mx-auto bg-gray-100 flex justify-center pb-4"
-    >
-      <CardList class="">
-        <template #list-title>Las últimas publicaciones de la vista</template>
-      </CardList>
-    </FullScreenDiv>
-    <FullScreenDiv class="min-h-[50vh] h-auto py-24">
-      <ul class="grid grid-cols-3 border mx-auto w-5/6">
-        <li class="border">
-          <a href="page/category" class="text-blue-600 hover:underline">Categoria N</a>
-        </li>
-        
-        <li class="border">
-          <a href="page/category" class="text-blue-600 hover:underline">Categoria N</a>
-        </li>
-        <li class="border">
-          <a href="page/category" class="text-blue-600 hover:underline">Categoria N</a>
-        </li>
-        <li class="border">
-          <a href="page/category" class="text-blue-600 hover:underline">Categoria N</a>
-        </li>
-        <li class="border">
-          <a href="page/category" class="text-blue-600 hover:underline">Categoria N</a>
-        </li>
-        <li class="border">
-          <a href="page/category" class="text-blue-600 hover:underline">Categoria N</a>
-        </li>
-        <li class="border">
-          <a href="page/category" class="text-blue-600 hover:underline">Categoria N</a>
-        </li>
-        <li class="border">
-          <a href="page/category" class="text-blue-600 hover:underline">Categoria N</a>
-        </li>
-      </ul>
-    </FullScreenDiv>
+  <div class="flex pt-12 justify-center items-center inset-0">
+      <div class="w-52 gap-4 flex flex-col">
+        <img class="w-44" src="../assets/images/empty.png" alt="Avion de papel">
+        <span class="text-xl font-bold">Haga click sobre una categoría para empezar a navegar</span>
+      </div>
   </div>
 </template>
