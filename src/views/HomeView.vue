@@ -21,7 +21,7 @@
         <template #list-title>Últimas Publicaciones</template>
       </CardList>  
     </div>
-    <div class="relative bg-white overflow-hidden min-h-[50vh] h-auto pt-0 flex flex-col justify-center">
+    <div class="relative bg-white overflow-hidden min-h-[50vh] h-auto pt-0 py-8 flex flex-col justify-center">
       <img
         alt="Banner de Consulting"
         class="absolute w-[100vw] min-h-[50vh] object-cover"
