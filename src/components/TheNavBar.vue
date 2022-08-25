@@ -36,7 +36,7 @@ const blankColor = app.appContext.config.globalProperties.blankColor;
                     </button>
                 </div>
                 <div class="hidden items-center w-full lg:flex lg:w-auto lg:order-1  col-span-2" id="mobile-menu-2">
-                  <SearchInput></SearchInput>
+                  <SearchInput  :class="`bg-[${blankColor}] bg-opacity-100 focus:bg-white rounded`"></SearchInput>
                 </div>
             </div>
   </nav>

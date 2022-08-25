@@ -15,6 +15,11 @@ module.exports = {
     'hover:bg-[#2FC0AF]',
     'hover:bg-[#FBF6F6]',
     
+    'focus:bg-[#0085FF]',
+    'focus:bg-[#48C4FA]',
+    'focus:bg-[#2FC0AF]',
+    'focus:bg-[#FBF6F6]',
+    
     'text-[#0085FF]',
     'text-[#48C4FA]',
     'text-[#2FC0AF]',
@@ -29,6 +34,11 @@ module.exports = {
     'border-[#48C4FA]',
     'border-[#2FC0AF]',
     'border-[#FBF6F6]',
+        
+    'border-b-[#0085FF]',
+    'border-b-[#48C4FA]',
+    'border-b-[#2FC0AF]',
+    'border-b-[#FBF6F6]',
         
     'ring-[#0085FF]',
     'ring-[#48C4FA]',

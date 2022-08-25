@@ -3,8 +3,20 @@
 
     export default defineComponent({
     inheritAttrs: false,
-    props: ["modelValue", "placeholder"],
-
+    props: {
+      modelValue:{
+        type:String,
+        default:''
+      },
+      placeholder: {
+        type:String,
+        default: 'Buscar'
+      },
+      top: {
+        type: Boolean,
+        default: true
+      }
+    },
     emits: ["update:modelValue"],
     
     methods: {
@@ -16,16 +28,14 @@
 </script>
 
 <template>
-  
     <input
+      :class="`${top ? 'rounded-t':'rounded'} border-b border-b-[${primaryColor}] bg-[${secondaryColor}] focus:bg-[${blankColor}] bg-opacity-10`"
       class="
-        rounded
-        bg-blue-200
         w-full
         p-2
         text-black text-sm
         leading-tight
-        focus:outline-none focus:bg-white
+        focus:outline-none 
       "
       v-bind="$attrs"
       :placeholder="placeholder"

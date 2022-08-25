@@ -1,5 +1,11 @@
+<script setup>
+import SearchInput from "@/components/SearchInput.vue";
+</script>
 <template>
-  <div class="grid grid-cols-3 w-5/6 mx-auto gap-x-8 gap-y-2 pt-12 pb-12 border-b border-b-gray-300">
+  <div :class="`border-b border-b-[${primaryColor}]`" class="grid grid-cols-1 sm:grid-cols-3 w-full sm:w-5/6 mx-auto gap-x-8 gap-y-2 pt-12 pb-12">
+    
+    <SearchInput class="col-span-1 sm:col-span-3 my-2" :class="`border-b border-b-[${primaryColor}]`"/>
+    
     <div class="flex items-center gap-4">
       <label for="type" class="text-left w-1/3">Tipo:</label>
       <BaseInput
