@@ -1,5 +1,7 @@
 <script setup>
 import SearchInput from "@/components/SearchInput.vue";
+import PrimaryButton from "@/components/ActionButton.vue"
+import SecondaryButton from "@/components/SecondaryButton.vue"
 import { getCurrentInstance } from "vue";
 
 const app = getCurrentInstance();
@@ -9,15 +11,24 @@ const blankColor = app.appContext.config.globalProperties.blankColor;
 </script>
 
 <template>
-  <nav :class="scrolled ? `bg-[${this.primaryColor}] shadow-lg` : `bg-none  border-gray-200 `" class="transition duration-300 px-4 lg:px-6 py-2.5">
+  <nav :class="scrolled ? `bg-[${primaryColor}] shadow-lg` : `bg-none  border-gray-200 `" class="transition duration-300 px-4 lg:px-6 py-2.5">
             <div class="grid grid-cols-2 lg:grid-cols-4 items-center mx-auto max-w-screen-xl">
                 <a href="/" class="flex items-center justify-self-start">
                     <!-- <img src="../assets/logo.png" class="mr-3 h-6 sm:h-9" alt="Flowbite Logo" /> -->
-                    <span class="self-center text-xl font-semibold whitespace-nowrap text-white">CONSULTING</span>
+                    <span :class="`text-[${blankColor}]`" class="self-center text-xl font-semibold whitespace-nowrap">CONSULTING</span>
                 </a>
                 <div class="flex items-center lg:order-2  justify-self-end">
-                    <a href="/login" class="hidden sm:block text-white hover:bg-gray-50 hover:bg-opacity-20 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 focus:outline-none">Login</a>
-                    <a href="/register" class="hidden sm:block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Suscribirse</a>
+                    <a href="/login" :class="`text-[${blankColor}] hover:bg-opacity-20 hover:bg-[${secondaryColor}]`" 
+                    class="hidden sm:block text-sm text-white focus:ring-4 focus:ring-gray-300 font-medium rounded-lg px-4 lg:px-5 py-2 lg:py-2.5 mr-2 focus:outline-none">Login</a>
+                    <a href="/register">
+                      <PrimaryButton
+                      v-if="!scrolled" class="hidden sm:block text-sm focus:ring-2 focus:ring-blue-300 font-medium px-4 mr-2 focus:outline-none"
+                      >Suscribirse</PrimaryButton>
+                      <SecondaryButton
+                      v-else  class="hidden sm:block text-sm focus:ring-2 focus:ring-blue-300 font-medium px-4 mr-2 focus:outline-none"
+                      >Suscribirse</SecondaryButton>
+                      
+                    </a>
                     <button data-collapse-toggle="mobile-menu-2" type="button" class="inline-flex items-center p-2 ml-1 text-sm text-white rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200" aria-controls="mobile-menu-2" aria-expanded="false">
                         <span class="sr-only">Abrir menú de navegación</span>
                         <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>
@@ -62,7 +73,7 @@ export default {
     window.removeEventListener('scroll', this.handleScroll);
   },
   methods: {
-    handleScroll (event) {
+    handleScroll () {
       if (window.scrollY > 0){
         this.scrolled=true;
       }

@@ -1,11 +1,9 @@
 <script setup>
 import FullScreenDiv from "@/components/FullScreenDiv.vue";
-import GenericPageHeader from "@/components/GenericPageHeader.vue";
 import CardList from "@/components/CardList.vue";
 </script>
 <template>
   <div class="h-auto">
-    <GenericPageHeader class="shadow"></GenericPageHeader>
     <FullScreenDiv
       class="h-[50vh] mx-auto bg-gray-100 flex justify-center pb-4"
     >

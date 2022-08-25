@@ -1,34 +1,20 @@
 <script setup>
 import AppLayout from '@/layouts/AppLayout';
-import { getCurrentInstance } from "vue";
-
-const app = getCurrentInstance();
-//const primaryColor = app.appContext.config.globalProperties.primaryColor;
-const blankColor = app.appContext.config.globalProperties.blankColor;
-
+import ConsultingLayout from '@/layouts/ConsultingLayout';
 </script>
 <template>
-  <AppLayout>
-    
-    <template #links>
-      
-      <router-link to="/" :class="`block text-[${blankColor}] active:border-b focused:border-b h-12 flex items-center mx-2`">Inicio </router-link> 
-      <!-- <router-link to="/login">Login</router-link> |
-      <router-link to="/register">Registro</router-link> |
-      <router-link to="/search">Busqueda</router-link> | -->
-      <router-link to="/page" :class="`block text-[${blankColor}] active:border-b focused:border-b h-12 flex items-center mx-2`"> Contenido </router-link>
-      <!-- <router-link to="/profile">Profile</router-link> |
-      <router-link to="/orders">Ordenes</router-link> | -->
-    </template>
+  <ConsultingLayout v-if="/^page.*/.test($route.name)">
     <template #body>
-      
       <router-view/>
-      
     </template>
+  </ConsultingLayout>
 
-    
+  <AppLayout v-else>
+    <template #body>
+      <router-view/>
+    </template>
   </AppLayout>
-
+ 
 </template>
 
 <style>

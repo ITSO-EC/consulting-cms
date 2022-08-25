@@ -5,18 +5,17 @@ import TheNavBar from "@/components/TheNavBar";
 </script>
 
 <template>
+<div>
   <header class="sticky top-0 z-50">
-    <TheNavBar>
-      <template #links>
-        <slot name="links" />
-      </template>
-    </TheNavBar>
+    <TheNavBar/>
   </header>
   <main v-bind="$attrs" class="relative min-h-screen -mb-6  z-10">
     <slot name="body" />
   </main>
 
   <TheFooter class="relative bottom-0 z-50"></TheFooter>
+</div>
+  
 </template>
 
 <script>
