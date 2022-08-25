@@ -60,8 +60,7 @@ import ConsultingBreadcrumbs from "@/components/ConsultingBreadcrumbs.vue";
       </aside>
       <div class="w-full md:w-4/5">
          
-        <ConsultingBreadcrumbs></ConsultingBreadcrumbs>
-      
+        <ConsultingBreadcrumbs class="mx-auto w-full sm:w-5/6"/>      
 
         <slot name="body" />
       </div>

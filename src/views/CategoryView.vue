@@ -1,12 +1,9 @@
 <script setup>
-import DocumentCard from "@/components/DocumentCard.vue"
+import PostsTable from "@/components/PostsTable.vue"
 </script>
 <template>
   <div class="h-auto pb-16">
-    <DocumentCard></DocumentCard>
-    <DocumentCard></DocumentCard>
-    <DocumentCard></DocumentCard>
-    <DocumentCard></DocumentCard>
+    <PostsTable summarized/>
     
   </div>
 </template>

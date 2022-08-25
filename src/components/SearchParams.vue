@@ -2,12 +2,12 @@
 import SearchInput from "@/components/SearchInput.vue";
 </script>
 <template>
-  <div :class="`border-b border-b-[${primaryColor}]`" class="grid grid-cols-1 sm:grid-cols-3 w-full sm:w-5/6 mx-auto gap-x-8 gap-y-2 pt-12 pb-12">
+  <div :class="`border-b border-b-[${primaryColor}]`" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 w-full sm:w-5/6 mx-auto px-4 sm:px-0 gap-x-8 gap-y-2 pt-6 pb-12">
     
-    <SearchInput class="col-span-1 sm:col-span-3 my-2" :class="`border-b border-b-[${primaryColor}]`"/>
+    <SearchInput class="col-span-1 sm:col-span-2 lg:col-span-3 my-2" :class="`border-b border-b-[${primaryColor}]`"/>
     
     <div class="flex items-center gap-4">
-      <label for="type" class="text-left w-1/3">Tipo:</label>
+      <label for="type" class="text-left  w-1/3">Tipo de Norma:</label>
       <BaseInput
         id="type"
         name="type"
@@ -15,7 +15,7 @@ import SearchInput from "@/components/SearchInput.vue";
     </div>
     
     <div class="flex items-center gap-4">
-      <label for="norm" class="text-left w-1/3">Norma:</label>
+      <label for="norm" class="text-left  w-1/3">Nombre de Norma:</label>
       <BaseInput
         id="norm"
         name="norm"
@@ -23,7 +23,7 @@ import SearchInput from "@/components/SearchInput.vue";
     </div>
 
     <div class="flex items-center gap-4">
-      <label for="ronumber" class="text-left w-1/3">R.O.#:</label>
+      <label for="ronumber" class="text-left  w-1/3">No. R.O.:</label>
       <BaseInput
         id="ronumber"
         name="ronumber"
@@ -31,7 +31,7 @@ import SearchInput from "@/components/SearchInput.vue";
     </div>
     
     <div class="flex items-center gap-4">
-      <label for="emisor" class="text-left w-1/3">Órgano Emisor:</label>
+      <label for="emisor" class="text-left  w-1/3">Órgano Emisor:</label>
       <BaseInput
         id="emisor"
         name="emisor"
@@ -39,7 +39,7 @@ import SearchInput from "@/components/SearchInput.vue";
     </div>
     
     <div class="flex items-center gap-4">
-      <label for="number" class="text-left w-1/3">Número:</label>
+      <label for="number" class="text-left  w-1/3">No. Norma:</label>
       <BaseInput
         id="number"
         name="number"
@@ -47,7 +47,7 @@ import SearchInput from "@/components/SearchInput.vue";
     </div>
     
     <div class="flex items-center gap-4">
-      <label for="reformtype" class="text-left w-1/3">Tipo de Reforma:</label>
+      <label for="reformtype" class="text-left  w-1/3">Tipo de R.O.:</label>
       <BaseInput
         id="reformtype"
         name="reformtype"
@@ -55,21 +55,19 @@ import SearchInput from "@/components/SearchInput.vue";
     </div>
     
     <div class="flex items-center gap-4">
-      <p  class="text-left">Fecha de publicación</p>
-      </div>
-    
-    <div class="flex items-center gap-4">
-      <label for="fromdate" class="text-left w-1/3">Desde:</label>
+      <label for="fromdate" class="text-left  w-1/3">Fecha Desde:</label>
       <BaseInput
         id="fromdate"
         name="fromdate"
+        type="date"
       ></BaseInput>
     </div>
     <div class="flex items-center gap-4">
-      <label for="todate" class="text-left w-1/3">Hasta:</label>
+      <label for="todate" class="text-left  w-1/3">Fecha Hasta:</label>
       <BaseInput
         id="todate"
         name="todate"
+        type="date"
       ></BaseInput>
     </div>
 

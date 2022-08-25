@@ -1,5 +1,5 @@
 <template>
-     <div class="px-6 py-6">
+     <div class="px-2 sm:px-0 py-6">
           <div class="text-left">
           <!-- Start -->
             <ul class="inline-flex flex-wrap text-sm font-medium">
