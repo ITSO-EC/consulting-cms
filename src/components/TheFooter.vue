@@ -8,14 +8,14 @@ const blankColor = app.appContext.config.globalProperties.blankColor;
 </script>
 <template>
   <footer
-    class="w-full h-10 flex items-center justify-between px-4 lg:px-6 2xl:px-16"
+    class="w-full h-10 flex items-center justify-between px-2 sm:px-4 lg:px-6 2xl:px-16"
     :class="`bg-[${primaryColor}]`"
   >
-    <span :class="`text-[${blankColor}]`"
-      >® 2022 Consulting Express Derechos Reservados</span
+    <span :class="`text-[${blankColor}] text-xs sm:text-md md:text-lg`"
+      >® 2022 Consulting Express</span
     >
      <!-- Términos y Condiciones -->
-    <div class="flex space-x-6 justify-center mt-0">
+    <div class="flex space-x-4 sm:space-x-6 justify-center mt-0">
       <a
         href="https://www.facebook.com/excecon"
         :class="`hover:text-[${secondaryColor}] text-[${blankColor}]`"

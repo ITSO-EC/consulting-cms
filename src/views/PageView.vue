@@ -5,11 +5,11 @@ import CardList from "@/components/CardList.vue";
 </script>
 <template>
   <div class="h-auto">
-    <GenericPageHeader class="shadow-2xl"></GenericPageHeader>
+    <GenericPageHeader class="shadow"></GenericPageHeader>
     <FullScreenDiv
       class="h-[50vh] mx-auto bg-gray-100 flex justify-center pb-4"
     >
-      <CardList class="-mt-20">
+      <CardList class="">
         <template #list-title>Las últimas publicaciones de la vista</template>
       </CardList>
     </FullScreenDiv>
