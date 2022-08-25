@@ -21,10 +21,10 @@
         <template #list-title>Últimas Publicaciones</template>
       </CardList>  
     </div>
-    <div class="relative bg-white overflow-hidden min-h-[60vh] sm:min-h-[50vh] h-auto pt-0 -py-8 flex flex-col justify-center">
+    <div class="relative bg-white overflow-hidden min-h-[60vh] md:min-h-[50vh] h-auto pt-0 -py-8 flex flex-col justify-center">
       <img
         alt="Banner de Consulting"
-        class="absolute w-[100vw] min-h-[60vh] sm:min-h-[50vh] object-cover"
+        class="absolute w-[100vw] min-h-[60vh] md:min-h-[50vh] object-cover"
         src="../assets/images/speedDiv.png"
       />
       <div class="hidden absolute inset-y-0 left-0 w-1/2 md:flex flex-col justify-center">
