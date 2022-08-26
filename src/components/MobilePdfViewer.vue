@@ -49,7 +49,7 @@ export default {
         
     </div>
     <div :class="`shadow-md bg-gray-800`" class="h-16 w-full flex items-center justify-between px-8"  v-else>
-        <span class="inline-flex gap-4">
+        <span class="hidden sm:inline-flex gap-4">
             <BaseButton class="invisible pointer-events-none">
                 <BaseIcon :name="'printer'" :class="`text-[${blankColor}]`" />
             </BaseButton>
@@ -60,7 +60,7 @@ export default {
                 
                 <span :class="page<=1? `bg-[${blankColor}] border border-slate-200 text-slate-300`:
                     `bg-[${blankColor}] border border-slate-200 text-[${primaryColor}]`" 
-                class="inline-flex items-center justify-center rounded leading-5 px-2.5 py-2 border border-slate-200 text-slate-300">
+                class="inline-flex items-center justify-center rounded leading-5 px-1 py-1 sm:px-2.5 sm:py-2 border border-slate-200 text-slate-300">
                 <span class="sr-only">Previo</span><wbr />
                 <svg class="h-4 w-4 fill-current" viewBox="0 0 16 16">
                     <path d="M9.4 13.4l1.4-1.4-4-4 4-4-1.4-1.4L4 8z" />
@@ -73,7 +73,7 @@ export default {
             <button class="ml-2" :disabled="page >= pageCount" @click="page++">
                 <span 
                 :class="page>=pageCount? `bg-[${blankColor}] border border-slate-200 text-slate-300`:`bg-[${blankColor}] border border-slate-200 text-[${primaryColor}]`"
-                class="inline-flex items-center justify-center rounded leading-5 px-2.5 py-2">
+                class="inline-flex items-center justify-center rounded leading-5 px-1 py-1 sm:px-2.5 sm:py-2">
                     <span class="sr-only">Siguiente</span><wbr />
                     <svg class="h-4 w-4 fill-current" viewBox="0 0 16 16">
                     <path d="M6.6 13.4L5.2 12l4-4-4-4 1.4-1.4L12 8z" />
