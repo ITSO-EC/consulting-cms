@@ -37,6 +37,17 @@
                   >Categoria 1</router-link
                 >
               </li>
+              <li
+                class="
+                  after:content-['/']
+                  last:after:hidden
+                  after:text-slate-400 after:px-2
+                "
+              >
+                <router-link class="inline-block text-slate-500 hover:text-indigo-500" to="/page/category/post"
+                  >Post 624</router-link
+                >
+              </li>
             </ul>
           <!-- End -->
           </div>
