@@ -11,7 +11,7 @@ const blankColor = app.appContext.config.globalProperties.blankColor;
     class="w-full h-10 flex items-center justify-between px-2 sm:px-4 lg:px-6 2xl:px-16"
     :class="`bg-[${primaryColor}]`"
   >
-    <span :class="`text-[${blankColor}] text-xs sm:text-md md:text-lg`"
+    <span :class="`text-[${blankColor}] text-xs sm:text-md`"
       >® 2022 Consulting Express</span
     >
      <!-- Términos y Condiciones -->

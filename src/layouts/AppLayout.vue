@@ -9,7 +9,7 @@ import TheNavBar from "@/components/TheNavBar";
   <header class="sticky top-0 z-50">
     <TheNavBar/>
   </header>
-  <main v-bind="$attrs" class="relative min-h-screen -mb-6  z-10">
+  <main v-bind="$attrs" class="relative min-h-screen -mb-10  z-10">
     <slot name="body" />
   </main>
 

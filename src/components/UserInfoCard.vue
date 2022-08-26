@@ -1,6 +1,14 @@
 <script setup>
 import { ref, computed, defineProps } from "vue";
 import SecondaryButton from "@/components/SecondaryButton.vue"
+
+import { getCurrentInstance } from "vue";
+
+
+const app = getCurrentInstance();
+const primaryColor = app.appContext.config.globalProperties.primaryColor;
+const secondaryColor = app.appContext.config.globalProperties.secondaryColor;
+const blankColor = app.appContext.config.globalProperties.blankColor;
 const props = defineProps({
   disabled: {
     type: Boolean,
@@ -58,7 +66,8 @@ function deleteFile() {
     class="
       grid grid-cols-6
       lg:w-full 
-      my-4
+      py-4
+      md:mx-12
       place-content-center
     "
   >
@@ -66,7 +75,7 @@ function deleteFile() {
       <h1 :class="getStyle">{{user.name}}</h1>
       <h3 :class="getStyle" class=" text-gray-400">{{user.username}}</h3>
       <div class="relative">
-        <BaseButton @click="deleteFile" v-if="selectedFile != null" class="absolute right-0 px-0 border-none">
+        <BaseButton @click="deleteFile" v-if="selectedFile != null && !disabled" class="absolute right-0 px-0 border-none">
           <BaseIcon
             
             name="trash"
@@ -78,7 +87,7 @@ function deleteFile() {
         
         <div
           :class="selectedFile ? '' : `bg-[${secondaryColor}] bg-opacity-10 p-2`"
-          class="rounded-full overflow-hidden w-[100px] h-[100px]"
+          class="rounded-full overflow-hidden w-[80px] h-[80px] sm:w-[100px] sm:h-[100px]"
         >
           <BaseIcon
             v-if="!selectedFile"
@@ -102,8 +111,8 @@ function deleteFile() {
       </SecondaryButton>
     </div>
 
-    <div class="col-span-4 pl-4">
-      <div :class="`border border-[${primaryColor}] bg-[${secondaryColor}] bg-opacity-10 text-[${primaryColor}] px-3 py-2 rounded flex items-center`">
+    <div class="col-span-4 px-4 flex flex-col justify-center items-center">
+      <div v-if="!disabled" :class="`border border-[${primaryColor}] bg-[${secondaryColor}] bg-opacity-10 text-[${primaryColor}] px-3 py-2 rounded flex items-center`">
         
           <BaseIcon class="inline-block px-4"   :name="'info'"/>
             <span class="text-sm text-left">
@@ -112,8 +121,8 @@ function deleteFile() {
        
       </div>
 
-      <BaseLabel class="mt-4 w-full text-left">Membresía disponible hasta:</BaseLabel>
-      <BaseLabel class="w-full text-left">dd/mm/aa</BaseLabel>
+      <BaseLabel class="mt-4 w-full text-left text-md sm:text-sm">Membresía disponible hasta:</BaseLabel>
+      <BaseLabel class="w-full text-left text-md sm:text-sm">dd/mm/aa</BaseLabel>
 
     </div>
   </div>

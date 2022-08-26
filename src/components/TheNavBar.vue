@@ -13,7 +13,7 @@ const blankColor = app.appContext.config.globalProperties.blankColor;
 </script>
 
 <template>
-  <nav :class="scrolled ? `bg-[${primaryColor}] shadow-lg` : `bg-none  border-gray-200 `" class="transition duration-300 px-4 lg:px-6 py-2.5">
+  <nav :class="(scrolled || /^profile*/.test($route.name))? `bg-[${primaryColor}] shadow-lg` : `bg-none  border-gray-200 `" class="transition duration-300 px-4 lg:px-6 py-2.5">
             <div class="grid grid-cols-2 lg:grid-cols-4 items-center mx-auto max-w-screen-xl">
                 <AppLogo/>
                 <div class="flex items-center lg:order-2  justify-self-end">
