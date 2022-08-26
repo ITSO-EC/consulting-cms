@@ -17,9 +17,9 @@ const blankColor = app.appContext.config.globalProperties.blankColor;
             <div class="grid grid-cols-2 lg:grid-cols-4 items-center mx-auto max-w-screen-xl">
                 <AppLogo/>
                 <div class="flex items-center lg:order-2  justify-self-end">
-                    <a href="/login" :class="`text-[${blankColor}] hover:bg-opacity-20 hover:bg-[${secondaryColor}]`" 
-                    class="hidden sm:block text-sm text-white focus:ring-4 focus:ring-gray-300 font-medium rounded-lg px-4 lg:px-5 py-2 lg:py-2.5 mr-2 focus:outline-none">Login</a>
-                    <a href="/register">
+                    <router-link to="/login" :class="`text-[${blankColor}] hover:bg-opacity-20 hover:bg-[${secondaryColor}]`" 
+                    class="hidden sm:block text-sm text-white focus:ring-4 focus:ring-gray-300 font-medium rounded-lg px-4 lg:px-5 py-2 lg:py-2.5 mr-2 focus:outline-none">Login</router-link>
+                    <router-link to="/register">
                       <PrimaryButton
                       v-if="!scrolled" class="hidden sm:block text-sm focus:ring-2 focus:ring-blue-300 font-medium px-4 mr-2 focus:outline-none"
                       >Suscribirse</PrimaryButton>
@@ -27,7 +27,7 @@ const blankColor = app.appContext.config.globalProperties.blankColor;
                       v-else  class="hidden sm:block text-sm focus:ring-2 focus:ring-blue-300 font-medium px-4 mr-2 focus:outline-none"
                       >Suscribirse</SecondaryButton>
                       
-                    </a>
+                    </router-link>
                     <button data-collapse-toggle="mobile-menu-2" type="button" class="inline-flex items-center p-2 ml-1 text-sm text-white rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200" aria-controls="mobile-menu-2" aria-expanded="false">
                         <span class="sr-only">Abrir menú de navegación</span>
                         <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>
