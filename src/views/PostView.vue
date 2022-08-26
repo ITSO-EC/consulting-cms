@@ -14,6 +14,6 @@
     <VuePdfEmbed 
     class="sm:hidden border my-8 border-gray-200 shadow-xl w-[95vw] sm:w-5/6 min-h-[100vh] h-fit mx-2 sm:mx-auto" 
     :page="1" 
-    :source="'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf'" />
+    :source="'https://cryptic-dawn-02543.herokuapp.com/https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf'" />
   </div>
 </template>
