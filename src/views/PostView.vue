@@ -10,7 +10,7 @@
     <h1>File:</h1>
     <iframe 
     class="border border-gray-200 shadow-xl max-w-screen w-[96.5vw] sm:w-5/6 min-h-[100vh] h-fit mx-2 sm:mx-auto"  
-    :src="'../../assets/files/Proyecto.pdf'" />
+    :src="'http://www.africau.edu/images/default/sample.pdf'" />
     <!-- <VuePdfEmbed 
     class="border border-gray-200 shadow-xl max-w-screen sm:w-5/6 mx-2 sm:mx-auto" 
     :page="1" 
