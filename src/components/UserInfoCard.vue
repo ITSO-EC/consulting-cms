@@ -1,6 +1,6 @@
 <script setup>
 import { ref, computed, defineProps } from "vue";
-
+import SecondaryButton from "@/components/SecondaryButton.vue"
 const props = defineProps({
   disabled: {
     type: Boolean,
@@ -56,57 +56,65 @@ function deleteFile() {
 <template>
   <div
     class="
-      p-8
-      flex flex-col
-      gap-4
-      md:mx-12
+      grid grid-cols-6
       lg:w-full 
-      justify-center
-      items-center
-      bg-cyan-50
-      border
-      border-blue-300
+      my-4
+      place-content-center
     "
   >
-    <h1 :class="getStyle">{{user.name}}</h1>
-    <h3 :class="getStyle" class="-mt-4 text-gray-400">{{user.username}}</h3>
-    <div class="relative">
-      <BaseIcon
-        v-if="selectedFile != null"
-        name="trash"
-        rounded
-        class="absolute bg-white right-0 cursor-pointer"
-        @click="deleteFile"
-      ></BaseIcon>
-      <div
-        :class="selectedFile ? '' : 'bg-gray-100 p-2'"
-        class="rounded-full overflow-hidden w-[100px] h-[100px]"
-      >
-        <BaseIcon
-          v-if="!selectedFile"
-          name="user"
-          size="h-full w-full"
-          rounded
-        ></BaseIcon>
-        <img v-else :src="selectedFile" alt="Foto" class="object-cover" />
+    <div class="col-span-2 flex flex-col items-center justify-center">
+      <h1 :class="getStyle">{{user.name}}</h1>
+      <h3 :class="getStyle" class=" text-gray-400">{{user.username}}</h3>
+      <div class="relative">
+        <BaseButton @click="deleteFile" v-if="selectedFile != null" class="absolute right-0 px-0 border-none">
+          <BaseIcon
+            
+            name="trash"
+            rounded
+            :class="`bg-[${blankColor}] p-1`"
+            
+          ></BaseIcon>
+        </BaseButton>
+        
+        <div
+          :class="selectedFile ? '' : `bg-[${secondaryColor}] bg-opacity-10 p-2`"
+          class="rounded-full overflow-hidden w-[100px] h-[100px]"
+        >
+          <BaseIcon
+            v-if="!selectedFile"
+            name="user"
+            :class="`text-[${$primaryColor}]`"
+            size="h-full w-full"
+            rounded
+          ></BaseIcon>
+          <img v-else :src="selectedFile" alt="Foto" class="object-cover" />
+        </div>
       </div>
+
+      <form class="hidden" ref="form" action="">
+        <input ref="fileInput" type="file" @input="onSelectedFile" />
+      </form>
+      <SecondaryButton
+        @click="pickFile"
+        :class="selectedFile !=null ? 'hidden' : 'my-4'"
+      >
+        {{ disabled ? "Cambiar Foto" : "Subir Foto" }}
+      </SecondaryButton>
     </div>
 
-    <form class="hidden" ref="form" action="">
-      <input ref="fileInput" type="file" @input="onSelectedFile" />
-    </form>
-    <BaseButton
-      @click="pickFile"
-      class="border border-gray-400 bg-gray-200 px-4 py-1"
-      :class="selectedFile !=null ? 'hidden' : ''"
-    >
-      {{ disabled ? "Cambiar Foto" : "Subir Foto" }}
-    </BaseButton>
-    <div class="border border-blue-300 bg-blue-100 p-4">
-      <span>Límite máximo de tamaño es</span
-      ><span class="font-bold"> 1 MB</span>
+    <div class="col-span-4 pl-4">
+      <div :class="`border border-[${primaryColor}] bg-[${secondaryColor}] bg-opacity-10 text-[${primaryColor}] px-3 py-2 rounded flex items-center`">
+        
+          <BaseIcon class="inline-block px-4"   :name="'info'"/>
+            <span class="text-sm text-left">
+              Límite máximo de tamaño:<span class="font-bold"> 1 MB</span>
+            </span>
+       
+      </div>
+
+      <BaseLabel class="mt-4 w-full text-left">Membresía disponible hasta:</BaseLabel>
+      <BaseLabel class="w-full text-left">dd/mm/aa</BaseLabel>
+
     </div>
-    <p>Membresía disponible hasta:</p>
-    <p class="-mt-4">dd/mm/aa</p>
   </div>
 </template>

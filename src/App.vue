@@ -8,7 +8,10 @@ import ConsultingLayout from '@/layouts/ConsultingLayout';
       <router-view/>
     </template>
   </ConsultingLayout>
-
+    <div v-else-if="/^auth.*/.test($route.name)">
+      <router-view/>
+    </div>
+      
   <AppLayout v-else>
     <template #body>
       <router-view/>
@@ -18,8 +21,9 @@ import ConsultingLayout from '@/layouts/ConsultingLayout';
 </template>
 
 <style>
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed');
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Roboto', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
@@ -35,7 +39,7 @@ nav a {
   color: #2c3e50;
 }
 
-nav a.router-link-exact-active {
+/* nav a.router-link-exact-active {
   border-bottom: solid #48C4FA 3px
-}
+} */
 </style>

@@ -1,8 +1,6 @@
 <script setup>
 import AppLogo from "@/components/AppLogo.vue"
 import ActionButton from "@/components/ActionButton.vue"
-
-import UserInfoCard from "@/components/UserInfoCard.vue";
 </script>
 <template>
   <main class="bg-white">
@@ -21,76 +19,27 @@ import UserInfoCard from "@/components/UserInfoCard.vue";
           </div>          
 
           <div class="max-w-md mx-auto px-4 py-8">
-            <h1 class="text-3xl w-full text-left text-slate-800 font-bold mb-6">¡Manténgase al tanto de las novedades! 📞</h1>
+            <h1 class="text-3xl w-full text-left text-slate-800 font-bold mb-6">Recupere su contraseña </h1>
             <!-- Form -->
-            
-      <UserInfoCard ></UserInfoCard>
             <form>
               <div class="space-y-4">
                 
                 <div>
-                  <BaseLabel class="text-left w-full" for="username">Usuario <span class="text-rose-500">*</span></BaseLabel>
-                  <BaseInput id="username"  type="email" />
-                </div>
-                <div>
                   <BaseLabel class="text-left w-full" for="email">Correo <span class="text-rose-500">*</span></BaseLabel>
                   <BaseInput id="email"  type="email" />
                 </div>
-                <div>
-                  <BaseLabel class="text-left w-full" for="name">Nombre</BaseLabel>
-                  <BaseInput id="name"  type="text" />
-                </div>
-                <div>
-                  <BaseLabel class="text-left w-full" for="cellphone">No. Celular <span class="text-rose-500">*</span></BaseLabel>
-                  <BaseInput id="cellphone"  type="text" />
-                </div>
-                <div>
-                  <BaseLabel class="text-left w-full" for="name">Cédula</BaseLabel>
-                  <BaseInput id="name"  type="text" />
-                </div>
-                <!-- <div>
-                  <BaseLabel class="text-left w-full" for="role">Your Role <span class="text-rose-500">*</span></BaseLabel>
-                  <select id="role" class="w-full">
-                    <option>Designer</option>
-                    <option>Developer</option>
-                    <option>Accountant</option>
-                  </select>
-                </div> -->
-                <div>
-                  <BaseLabel class="text-left w-full" for="password">Clave<span class="text-rose-500">*</span></BaseLabel>
-                  <BaseInput id="password"  type="password" autoComplete="on" />
-                </div>
-                <div>
-                  <BaseLabel class="text-left w-full" for="conf-password">Confirmar Clave<span class="text-rose-500">*</span></BaseLabel>
-                  <BaseInput id="conf-password"  type="password" autoComplete="on" />
-                </div>
+               
               </div>
-              <label class="flex items-center justify-start mt-6">
-                <BaseInput type="checkbox" class="w-4 p-0 mr-4" />
-                <span class="text-sm w-full text-left">Acepto los términos y condiciones.</span>
-              </label>
-              
-              <div class="flex items-center justify-between mt-6">
-                <div class="mr-1">
-                  <label class="flex items-center justify-start">
-                    <BaseInput type="checkbox" class="w-4 p-0 mr-4" />
-                    <span class="text-sm w-full text-left">Manténgame al día por Whatsapp.</span>
-                  </label>
-                </div>
+              <div class="flex w-full items-center justify-end mt-6">
+               
                 <router-link class="ml-3 whitespace-nowrap" to="/">
                 <ActionButton>
-                  Suscribirse
+                  Enviar Link
                 </ActionButton>
                 
                 </router-link>
               </div>
             </form>
-            <!-- Footer -->
-            <div class="pt-5 mt-6 border-t border-slate-200">
-              <div class="text-sm w-full text-left">
-                ¿Ya tiene una cuenta? <router-link class="font-medium text-indigo-500 hover:text-indigo-600" to="/login">¡Acceda Ya!</router-link>
-              </div>
-            </div>
           </div>
 
         </div>

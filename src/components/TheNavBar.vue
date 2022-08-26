@@ -4,6 +4,8 @@ import PrimaryButton from "@/components/ActionButton.vue"
 import SecondaryButton from "@/components/SecondaryButton.vue"
 import { getCurrentInstance } from "vue";
 
+import AppLogo from "@/components/AppLogo.vue";
+
 const app = getCurrentInstance();
 const primaryColor = app.appContext.config.globalProperties.primaryColor;
 const secondaryColor = app.appContext.config.globalProperties.secondaryColor;
@@ -13,10 +15,7 @@ const blankColor = app.appContext.config.globalProperties.blankColor;
 <template>
   <nav :class="scrolled ? `bg-[${primaryColor}] shadow-lg` : `bg-none  border-gray-200 `" class="transition duration-300 px-4 lg:px-6 py-2.5">
             <div class="grid grid-cols-2 lg:grid-cols-4 items-center mx-auto max-w-screen-xl">
-                <a href="/" class="flex items-center justify-self-start">
-                    <!-- <img src="../assets/logo.png" class="mr-3 h-6 sm:h-9" alt="Flowbite Logo" /> -->
-                    <span :class="`text-[${blankColor}]`" class="self-center text-xl font-semibold whitespace-nowrap">CONSULTING</span>
-                </a>
+                <AppLogo/>
                 <div class="flex items-center lg:order-2  justify-self-end">
                     <a href="/login" :class="`text-[${blankColor}] hover:bg-opacity-20 hover:bg-[${secondaryColor}]`" 
                     class="hidden sm:block text-sm text-white focus:ring-4 focus:ring-gray-300 font-medium rounded-lg px-4 lg:px-5 py-2 lg:py-2.5 mr-2 focus:outline-none">Login</a>
