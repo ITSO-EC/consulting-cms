@@ -67,13 +67,10 @@ function deleteFile() {
       grid grid-cols-6
       lg:w-full 
       py-4
-      md:mx-12
       place-content-center
     "
   >
-    <div class="col-span-2 flex flex-col items-center justify-center">
-      <h1 :class="getStyle">{{user.name}}</h1>
-      <h3 :class="getStyle" class=" text-gray-400">{{user.username}}</h3>
+    <div class="col-span-6 2xl:col-span-2 pl-8 sm:pl-0 md:pl-12 lg:pl-0  flex flex-col items-start  justify-center">
       <div class="relative">
         <BaseButton @click="deleteFile" v-if="selectedFile != null && !disabled" class="absolute right-0 px-0 border-none">
           <BaseIcon
@@ -111,8 +108,8 @@ function deleteFile() {
       </SecondaryButton>
     </div>
 
-    <div class="col-span-4 px-4 flex flex-col justify-center items-center">
-      <div v-if="!disabled" :class="`border border-[${primaryColor}] bg-[${secondaryColor}] bg-opacity-10 text-[${primaryColor}] px-3 py-2 rounded flex items-center`">
+    <div class="col-span-6 2xl:col-span-4 px-8 sm:px-0 md:px-12 lg:px-0 flex flex-col justify-center items-center">
+      <div v-if="!disabled" :class="`border border-[${primaryColor}] bg-[${secondaryColor}] bg-opacity-10 text-[${primaryColor}] px-3 py-2 mt-2 rounded self-start 2xl:self-end flex items-center`">
         
           <BaseIcon class="inline-block px-4"   :name="'info'"/>
             <span class="text-sm text-left">
@@ -121,8 +118,8 @@ function deleteFile() {
        
       </div>
 
-      <BaseLabel class="mt-4 w-full text-left text-md sm:text-sm">Membresía disponible hasta:</BaseLabel>
-      <BaseLabel class="w-full text-left text-md sm:text-sm">dd/mm/aa</BaseLabel>
+      <BaseLabel class="mt-4 w-full text-left 2xl:text-right text-md sm:text-sm">Membresía disponible hasta:</BaseLabel>
+      <BaseLabel class="w-full text-left 2xl:text-right text-md sm:text-sm">dd/mm/aa</BaseLabel>
 
     </div>
   </div>

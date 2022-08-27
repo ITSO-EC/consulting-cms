@@ -24,7 +24,7 @@ import UserInfoCard from "@/components/UserInfoCard.vue";
             <h1 class="text-3xl w-full text-left text-slate-800 font-bold mb-6">¡Manténgase al tanto de las novedades! 📞</h1>
             <!-- Form -->
             
-      <UserInfoCard ></UserInfoCard>
+      <UserInfoCard class="-mx-8 sm:-mx-0 md:-mx-12 lg:-mx-0" ></UserInfoCard>
             <form>
               <div class="space-y-4">
                 
