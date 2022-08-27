@@ -15,6 +15,10 @@
       top: {
         type: Boolean,
         default: true
+      },
+      disabled: {
+        type: Boolean,
+        default: false
       }
     },
     emits: ["update:modelValue"],
@@ -29,7 +33,7 @@
 
 <template>
     <input
-      :class="`${top ? 'rounded-t':'rounded'} border-b border-b-[${primaryColor}] bg-[${secondaryColor}] focus:bg-[${blankColor}] bg-opacity-10`"
+      :class="`${top ? 'rounded-t':'rounded'} border-b border-b-[${primaryColor}] ${disabled? 'bg-white':`bg-[${secondaryColor}] focus:bg-[${blankColor}] bg-opacity-10`}  `"
       class="
         w-full
         p-2
@@ -42,6 +46,7 @@
       :value="modelValue"
       @input="$emit('update:modelValue', $event.target.value)"
       ref="input"
+      :disabled="disabled"
     />
 </template>
 
