@@ -40,6 +40,7 @@
         text-black text-sm
         leading-tight
         focus:outline-none 
+        shadow
       "
       v-bind="$attrs"
       :placeholder="placeholder"

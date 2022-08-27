@@ -9,7 +9,9 @@
   },
   "dependencies": {
     "core-js": "^3.8.3",
+    "flatpickr": "^4.6.13",
     "vue": "^3.2.13",
+    "vue-flatpickr-component": "^9.0.6",
     "vue-pdf-embed": "^1.1.4",
     "vue-router": "^4.0.3"
   },

@@ -8,10 +8,15 @@ import SearchInput from "@/components/SearchInput.vue";
     
     <div class="flex items-center gap-4">
       <label for="type" class="text-left  w-1/3">Tipo de Norma:</label>
-      <BaseInput
+      <BaseSelect
         id="type"
         name="type"
-      ></BaseInput>
+        class="w-full"
+      >
+        <option>Suplemento</option>
+        <option>Ley</option>
+        <option>Reforma</option>
+      </BaseSelect>
     </div>
     
     <div class="flex items-center gap-4">
@@ -32,10 +37,15 @@ import SearchInput from "@/components/SearchInput.vue";
     
     <div class="flex items-center gap-4">
       <label for="emisor" class="text-left  w-1/3">Órgano Emisor:</label>
-      <BaseInput
+      <BaseSelect
         id="emisor"
         name="emisor"
-      ></BaseInput>
+        class="w-full"
+      >
+        <option>SRI</option>
+        <option>Supercias</option>
+        <option>Superbancos</option>
+      </BaseSelect>
     </div>
     
     <div class="flex items-center gap-4">
@@ -48,10 +58,15 @@ import SearchInput from "@/components/SearchInput.vue";
     
     <div class="flex items-center gap-4">
       <label for="reformtype" class="text-left  w-1/3">Tipo de R.O.:</label>
-      <BaseInput
+      <BaseSelect
         id="reformtype"
         name="reformtype"
-      ></BaseInput>
+        class="w-full"
+      >
+        <option>Primer</option>
+        <option>Segundo</option>
+        <option>Tercer</option>
+      </BaseSelect>
     </div>
     
     <div class="flex items-center gap-4">

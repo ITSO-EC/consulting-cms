@@ -31,7 +31,10 @@ export default defineComponent({
        
                 
         <tr :class="`grid ${summarized? 'grid-cols-3 sm:grid-cols-8' : 'grid-cols-8 lg:grid-cols-12'} h-12 py-2 px-4`">
-          <td class="col-span-1 lg:col-span-2 text-left font-semibold">123</td>
+          
+          <td class="col-span-1 lg:col-span-2 text-left font-semibold">
+            <router-link to="/page/category/post" class="inline-block w-full">123</router-link>
+          </td>
 
           <td class="hidden sm:table-cell col-span-2 lg:col-span-1 text-left font-semibold">20/12/22</td>
 
