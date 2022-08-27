@@ -5,16 +5,16 @@ import ConsultingLayout from '@/layouts/ConsultingLayout';
 <template>
   <ConsultingLayout v-if="/^page.*/.test($route.name)">
     <template #body>
-      <router-view/>
+      <router-view :key="$route.fullPath"/>
     </template>
   </ConsultingLayout>
     <div v-else-if="/^auth.*/.test($route.name)">
-      <router-view/>
+      <router-view :key="$route.fullPath"/>
     </div>
       
   <AppLayout v-else>
     <template #body>
-      <router-view/>
+      <router-view :key="$route.fullPath"/>
     </template>
   </AppLayout>
  

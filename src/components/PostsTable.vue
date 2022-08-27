@@ -12,7 +12,6 @@ export default defineComponent({
 </script>
 
 <template>
-  <!-- Mover esta tabla a un componente -->
   <div class="w-full sm:w-5/6 px-2 sm:px-0 sm:mx-auto">
     <p :class="summarized? 'hidden': ''" class="text-left my-4 mx-2 sm:mx-0">¡Excelente búsqueda! Se han encontrado <span class="font-bold">10</span> resultados.</p>
       

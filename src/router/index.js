@@ -47,8 +47,9 @@ const routes = [
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/SearchView.vue')
   },
+
   {
-    path: '/page',
+    path: '/page/:pageId?',
     name: 'page',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
@@ -57,7 +58,7 @@ const routes = [
   },
   
   {
-    path: '/page/category',
+    path: '/page/:pageId/category/:categoryId?',
     name: 'page.category',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
@@ -67,7 +68,7 @@ const routes = [
  
    
   {
-    path: '/page/category/post',
+    path: '/page/:pageId/category/:categoryId/post/postId?',
     name: 'page.category.post',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
