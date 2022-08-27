@@ -167,10 +167,11 @@ onMounted(() => {
         items-center
         mt-16
         pt-4
+        
         w-full
         justify-between
         sm:gap-4 sm:justify-end
-        border-t border-slate-300
+        
       "
     >
       <SecondaryButton class="w-fit px-[1px] sm:px-2 text-sm sm:text-base">

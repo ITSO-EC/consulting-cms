@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, defineProps } from "vue";
+import { ref,  defineProps } from "vue";
 import SecondaryButton from "@/components/SecondaryButton.vue"
 
 import { getCurrentInstance } from "vue";
@@ -30,10 +30,6 @@ const props = defineProps({
   },
 });
 
-// a computed ref
-const getStyle = computed(() => {
-  return props.disabled ? "" : "hidden";
-});
 
 let selectedFile = ref(props.disabled ? props.user.image : null);
 let fileInput = ref(null);
