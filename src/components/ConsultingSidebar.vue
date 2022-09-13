@@ -8,7 +8,7 @@ const routeInfo = ref({
   categories:{},
   posts: {}
 })
-const showSidebar = ref(true);
+const showSidebar = ref(false);
 
 const route = useRoute()
 const getPage = ()=> {
@@ -42,16 +42,21 @@ onMounted(()=>{
   
 })
 </script>
+<script>
+export default {
+  inheritAttrs: false,
+}
+</script>
 <template>
 
+        <button class="md:hidden fixed left-0 my-auto py-6 px-1 bg-gray-200 opacity-100 border-blue-300 rounded-r" @click="showSidebar = true">►</button>
         
         <aside
+            v-bind="$attrs"
             class="w-full md:w-1/5 p-4 z-10"
-            :key="`${route.params.pageId}`"
             :class="`${showSidebar? 'md:block ':'hidden md:block '} absolute h-full md:static md:h-auto border-r-2 border-[${secondaryColor}] bg-white`"
         >
-            <button class="md:hidden fixed left-0 my-auto py-6 px-1 bg-gray-200 opacity-100 border-blue-300 rounded-r" @click="showSidebar = true">►</button>
-        
+            
             <ul class="text-left text-xl font-medium">
             <li class="-m-4 mb-0">
                 <div

@@ -22,6 +22,7 @@ const app = createApp(App);
     app.component('BaseLabel', BaseLabel)
     app.component('BaseSelect', BaseSelect)
     app.config.globalProperties.primaryColor='#0085FF'
+    app.config.globalProperties.$window=window;
     app.config.globalProperties.secondaryColor='#48C4FA'
     app.config.globalProperties.thirdColor='#2FC0AF'
     app.config.globalProperties.blankColor='#FBF6F6'

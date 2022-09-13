@@ -49,18 +49,10 @@ export default {
 <template>
   <div
     class="
-      w-auto
-      mx-4
-      sm:mx-0 sm:w-96
-      h-80
-      md:w-80 md:h-72
-      lg:w-full lg:h-72
-      2xl:h-96
-      hover:scale-105
-      duration-300
-      rounded-sm
-      overflow-hidden
-      shadow-2xl
+     max-h-[100%] max-w-[100%] h-full w-[85vw] mx-0 sm:w-96 h-80 
+    md:w-80 md:h-72
+    lg:w-full lg:h-72
+    border border-gray-100 hover:scale-105 duration-300 rounded-sm overflow-hidden shadow-2xl
     "
     :class="`${
       (post != null) & !loading

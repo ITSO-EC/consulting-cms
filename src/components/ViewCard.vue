@@ -47,7 +47,12 @@ export default {
     </div>
     <div class="absolute bottom-0 grid grid-cols-1 h-1/3 p-4 w-full">
       <span class="w-full text-left text-2xl font-semibold truncate" :class="`text-[${blankColor}] ${!loading && pageInfo != null? '':'bg-slate-700'}` ">{{!loading && pageInfo != null? pageInfo.name: ''}}</span>
-      <router-link :class="`text-[${secondaryColor}] text-lg text-left ${!loading && pageInfo != null? 'w-full':'w-1/2 mt-1 bg-slate-700 pointer-events-none'}`" :to="`/page/${pageInfo?.id}`" replace>{{!loading && pageInfo != null?'Ver más ►':''}}</router-link>
+      <router-link :class="`text-[${secondaryColor}] text-lg text-left ${!loading && pageInfo != null? 'w-full':'w-1/2 mt-1 bg-slate-700 pointer-events-none'}`"
+       :to="`/page/${pageInfo?.id}`"
+        @click="$window.scrollTo(0,0)"
+      replace>
+       {{!loading && pageInfo != null?'Ver más ►':''}}
+       </router-link>
     </div>
   </div>
 </template>
