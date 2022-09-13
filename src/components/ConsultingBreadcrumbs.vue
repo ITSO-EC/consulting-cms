@@ -45,12 +45,11 @@ const getPostName = ()=> {
 onMounted(()=>{
   if(route.params.pageId == null) return;
     getPageName();
-  console.log(routeInfo.value);
   if(route.params.categoryId == null) return;
    getCategoryName();
   
   if(route.params.postId == null) return;
-  //getPostName();
+  getPostName();
   
 })
 </script>
@@ -106,8 +105,8 @@ onMounted(()=>{
                 
                  v-if="routeInfo.post_name"
               >
-                <router-link class="inline-block text-slate-500 hover:text-indigo-500" to="/page/category/post"
-                  >Post 624</router-link
+                <router-link class="inline-block text-slate-500 hover:text-indigo-500" :to="`/page/${route.params.pageId}/category/${route.params.categoryId}/post/${route.params.postId}`"
+                  >{{routeInfo.post_name}}</router-link
                 >
               </li>
             </ul>
