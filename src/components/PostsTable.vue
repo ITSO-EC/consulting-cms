@@ -13,6 +13,7 @@ export default defineComponent({
   data() {
     return {
       postData : {},
+      totalResults: 0,
       loading: true,
     }
   },
@@ -36,6 +37,7 @@ export default defineComponent({
       .then((res)=> {
         //console.log(res.data);
         this.postData = res.data.results
+        this.totalResults = res.data.totalResults
         this.loading = false
 
       })
@@ -59,7 +61,7 @@ export default defineComponent({
 <template>
   <div class="h-full w-full sm:w-5/6 px-2 sm:px-0 sm:mx-auto">
     <p  v-if="!loading && postData.length > 0" :class="summarized? 'hidden': ''" class="text-left my-4 mx-2 sm:mx-0">¡Excelente búsqueda! Se han encontrado 
-      <span class="font-bold">{{postData.length}}</span> resultados.</p>
+      <span class="font-bold">{{totalResults}}</span> resultados.</p>
       
     <table v-if="!loading && postData.length > 0" class="w-full bg-white mt-2 sm:my-4 shadow-lg sm:rounded-sm overflow-hidden">
       <thead :class="`bg-[${primaryColor}] shadow-md`">

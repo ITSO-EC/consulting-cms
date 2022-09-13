@@ -1,5 +1,28 @@
 <script setup>
   import DocumentHomeCard from "@/components/DocumentHomeCard.vue"
+  import axios from 'axios';
+  import {onMounted, ref} from 'vue';
+
+  const posts = ref([]);
+  const loading = ref(true);
+
+  const API = 'https://api-consulting-crm.herokuapp.com/v1/';
+  const getPosts= () => {
+      axios.get(API+'posts?limit=2')
+      .then((res)=> {
+        posts.value = res.data.results
+        loading.value = false
+
+      })
+      .catch((err)=>{
+        this.loading = false
+        console.log(err)
+      })
+    }
+
+    onMounted(() => {
+      getPosts();
+    })
 </script>
 <template>
       <div class="flex flex-col items-center py-8">
@@ -23,11 +46,11 @@
           "
         >
 
-          <DocumentHomeCard class="justify-self-end"></DocumentHomeCard>
+          <DocumentHomeCard class="justify-self-end" :post="posts[0]"></DocumentHomeCard>
           
 <!--         
           <DocumentHomeCard class="justify-self-center"></DocumentHomeCard> -->
-          <DocumentHomeCard class="justify-self-start"></DocumentHomeCard>
+          <DocumentHomeCard class="justify-self-start" :post="posts[1]"></DocumentHomeCard>
         </div>
       </div>
 </template>
