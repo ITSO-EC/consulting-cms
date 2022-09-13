@@ -12,6 +12,7 @@ const routeInfo = ref({
   categories:{},
   posts: {}
 })
+const showSidebar = ref(false);
 
 const route = useRoute()
 const getPage = ()=> {
@@ -38,17 +39,7 @@ const getCategories = ()=> {
     console.log(err)
   })
 }
-// const getPostName = ()=> {
-//   axios.get(API+'/posts/'+route.params.postId)
-//   .then((res)=> {
-//     console.log(res.data);
-//     routeInfo.value.post_name = res.data.title;
-//   })
-//   .catch((err)=>{
-//     console.log(err)
-//     return err;
-//   })
-// }
+
 onMounted(()=>{
   if(route.params.pageId == null) return;
     getPage();
@@ -73,18 +64,31 @@ onMounted(()=>{
     <GenericPageHeader class="shadow"></GenericPageHeader>
    
     <main v-bind="$attrs" class="relative flex min-h-screen  z-10">
-
+      <button class="md:hidden fixed left-0 my-auto py-6 px-1 bg-gray-200 opacity-100 border-blue-300 rounded-r" @click="showSidebar = true">►</button>
       <aside
-        class="w-1/5 p-4"
-        :class="`hidden md:block border-r-2 border-[${secondaryColor}]`"
+        class="w-full md:w-1/5 p-4 z-10"
+        :class="`${showSidebar? 'md:block ':'hidden md:block '} absolute h-full md:static md:h-auto border-r-2 border-[${secondaryColor}] bg-white`"
       >
         <ul class="text-left text-xl font-medium">
-          <li>
-            <router-link v-for="category in routeInfo.categories" :key="`CategoryLink-${category.id}`"
+          <li class="-m-4 mb-0">
+            <div
+              :class="`bg-[${primaryColor}]`"
+              class="inline-block py-2 border-b w-full p-4 h-16 flex items-center"
+              >
+              <span class="text-white">Categorias</span>
+              </div
+            >
+          </li>
+          
+        </ul>
+        <ul class="text-left text-xl font-medium">
+          <li v-for="category in routeInfo.categories" :key="`CategoryLink-${category.id}`">
+            <router-link 
               :class="`border-[${secondaryColor}]`"
-              class="inline-block py-2 border-b w-full"
+              class="animate__animated animate__fadeInLeft inline-block py-2 border-b w-full"
               :to="`${route.params.categoryId?`/page/${route.params.pageId}`:route.params.pageId}/category/${category.id}`" 
               :replace="route.params.categoryId?true: false"
+              @click="showSidebar = false"
               >{{category.name}}</router-link
             >
           </li>

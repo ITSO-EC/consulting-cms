@@ -1,21 +1,69 @@
 <script>
 import { defineComponent } from 'vue'
+import axios from 'axios';
+import {useRoute} from 'vue-router'
 
+const API = 'https://api-consulting-crm.herokuapp.com/v1/';
+const route = useRoute();
 export default defineComponent({
   props: {
     summarized: {
       type: Boolean,
       default: false,
     }
+  },
+  data() {
+    return {
+      postData : {},
+      loading: true,
+    }
+  },
+
+  methods: {
+    getPostsByCategory() {
+      axios.get(API+'posts?byCategory='+this.$route.params.categoryId)
+      .then((res)=> {
+        //console.log(res.data);
+        this.postData = res.data.results
+        this.loading = false
+
+      })
+      .catch((err)=>{
+        this.loading = false
+        console.log(err)
+      })
+    },
+    getPosts() {
+      axios.get(API+'postss')
+      .then((res)=> {
+        //console.log(res.data);
+        this.postData = res.data.results
+        this.loading = false
+
+      })
+      .catch((err)=>{
+        this.loading = false
+        console.log(err)
+      })
+    }
+  },
+
+  mounted() {
+    if(this.$props.summarized)
+      this.getPostsByCategory();
+    else 
+      this.getPosts();
   }
+
 })
 </script>
 
 <template>
-  <div class="w-full sm:w-5/6 px-2 sm:px-0 sm:mx-auto">
-    <p :class="summarized? 'hidden': ''" class="text-left my-4 mx-2 sm:mx-0">¡Excelente búsqueda! Se han encontrado <span class="font-bold">10</span> resultados.</p>
+  <div class="h-full w-full sm:w-5/6 px-2 sm:px-0 sm:mx-auto">
+    <p  v-if="!loading && postData.length > 0" :class="summarized? 'hidden': ''" class="text-left my-4 mx-2 sm:mx-0">¡Excelente búsqueda! Se han encontrado 
+      <span class="font-bold">{{postData.length}}</span> resultados.</p>
       
-    <table class="w-full bg-white mt-2 sm:my-4 shadow-lg sm:rounded-sm overflow-hidden">
+    <table v-if="!loading && postData.length > 0" class="w-full bg-white mt-2 sm:my-4 shadow-lg sm:rounded-sm overflow-hidden">
       <thead :class="`bg-[${primaryColor}] shadow-md`">
         <tr :class="`grid ${summarized? 'grid-cols-3 sm:grid-cols-8' : 'grid-cols-8 lg:grid-cols-12'} text-[${blankColor}]`" class="font-bold text-left h-12 py-1 px-4">
           <td class="col-span-1 lg:col-span-2">R.O.</td>
@@ -29,24 +77,27 @@ export default defineComponent({
       <tbody>
        
                 
-        <tr :class="`grid ${summarized? 'grid-cols-3 sm:grid-cols-8' : 'grid-cols-8 lg:grid-cols-12'} h-12 py-2 px-4`">
+        <tr v-for="(item, numid) in postData" :key="numid" :class="`grid ${summarized? 'grid-cols-3 sm:grid-cols-8' : 'grid-cols-8 lg:grid-cols-12'} ${numid % 2 ? `bg-opacity-20 bg-[${primaryColor}]` :  `` } h-12 py-2 px-4`">
           
           <td class="col-span-1 lg:col-span-2 text-left font-semibold">
-            <router-link to="/page/category/post" class="inline-block w-full">123</router-link>
+            <router-link :to="`/page/${this.$route.params.pageId}/category/${this.$route.params.categoryId}/post/${item.id}`" class="inline-block w-full">{{item.ro}}</router-link>
           </td>
 
-          <td class="hidden sm:table-cell col-span-2 lg:col-span-1 text-left font-semibold">20/12/22</td>
+          <td class="hidden sm:table-cell col-span-2 lg:col-span-1 text-left font-semibold">
+            <router-link :to="`/page/${this.$route.params.pageId}/category/${this.$route.params.categoryId}/post/${item.id}`" class="inline-block w-full">
+             20/12/22</router-link>
+           </td>
 
-          <td class="hidden lg:table-cell col-span-2 text-left font-semibold">Suplemento</td>
+          <td class="hidden lg:table-cell col-span-2 text-left font-semibold">
+            <router-link :to="`/page/${this.$route.params.pageId}/category/${this.$route.params.categoryId}/post/${item.id}`" class="inline-block w-full">
+            {{item.type_reform}}</router-link>
+            </td>
           <td :class="summarized? 'col-span-1 sm:col-span-4 flex lg:col-span-2':'hidden lg:flex col-span-2'" class="text-center justify-center items-center font-semibold">
             <img src="../assets/logos/sriLogo.png" class="h-8" alt="SRILogo">
           </td>
           <td :class="summarized? 'hidden':'col-span-6 sm:col-span-4'" class="mx-2 sm:px-0text-left font-semibold overflow-hidden">
             <span class="truncate"
-              >Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet
-              nam, fugit minus molestiae obcaecati quia repellat dolorem ab
-              laborum maiores perspiciatis ipsam corrupti commodi! Iusto nostrum
-              nisi illum harum tenetur.</span
+              >{{item.title}}</span
             >
           </td>
           <td class="col-span-1 flex justify-center items-center font-semibold">
@@ -57,86 +108,20 @@ export default defineComponent({
             ></BaseIcon>
           </td>
         </tr>
-                 
-        <tr :class="`grid ${summarized? 'grid-cols-3 sm:grid-cols-8' : 'grid-cols-8 lg:grid-cols-12'} h-12 py-2 px-4 bg-[${primaryColor}] bg-opacity-20`">
-          <td class="col-span-1 lg:col-span-2 text-left font-semibold">123</td>
-
-          <td class="hidden sm:table-cell col-span-2 lg:col-span-1 text-left font-semibold">20/12/22</td>
-
-          <td class="hidden lg:table-cell col-span-2 text-left font-semibold">Suplemento</td>
-          <td :class="summarized? 'col-span-1 sm:col-span-4 flex lg:col-span-2':'hidden lg:flex col-span-2'" class="text-center justify-center items-center font-semibold">
-            <img src="../assets/logos/sriLogo.png" class="h-8" alt="SRILogo">
-          </td>
-          <td :class="summarized? 'hidden':'col-span-6 sm:col-span-4'" class="mx-2 sm:px-0text-left font-semibold overflow-hidden">
-            <span class="truncate"
-              >Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet
-              nam, fugit minus molestiae obcaecati quia repellat dolorem ab
-              laborum maiores perspiciatis ipsam corrupti commodi! Iusto nostrum
-              nisi illum harum tenetur.</span
-            >
-          </td>
-          <td class="col-span-1 flex justify-center items-center font-semibold">
-            <BaseIcon
-              :size="'h-8'"
-              class="cursor-pointer"
-              :name="'file'"
-            ></BaseIcon>
-          </td>
-        </tr>
-                 
-        <tr :class="`grid ${summarized? 'grid-cols-3 sm:grid-cols-8' : 'grid-cols-8 lg:grid-cols-12'} h-12 py-2 px-4`">
-          <td class="col-span-1 lg:col-span-2 text-left font-semibold">123</td>
-
-          <td class="hidden sm:table-cell col-span-2 lg:col-span-1 text-left font-semibold">20/12/22</td>
-
-          <td class="hidden lg:table-cell col-span-2 text-left font-semibold">Suplemento</td>
-          <td :class="summarized? 'col-span-1 sm:col-span-4 flex lg:col-span-2':'hidden lg:flex col-span-2'" class="text-center justify-center items-center font-semibold">
-            <img src="../assets/logos/sriLogo.png" class="h-8" alt="SRILogo">
-          </td>
-          <td :class="summarized? 'hidden':'col-span-6 sm:col-span-4'" class="mx-2 sm:px-0text-left font-semibold overflow-hidden">
-            <span class="truncate"
-              >Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet
-              nam, fugit minus molestiae obcaecati quia repellat dolorem ab
-              laborum maiores perspiciatis ipsam corrupti commodi! Iusto nostrum
-              nisi illum harum tenetur.</span
-            >
-          </td>
-          <td class="col-span-1 flex justify-center items-center font-semibold">
-            <BaseIcon
-              :size="'h-8'"
-              class="cursor-pointer"
-              :name="'file'"
-            ></BaseIcon>
-          </td>
-        </tr>
-                 
-        <tr :class="`grid ${summarized? 'grid-cols-3 sm:grid-cols-8' : 'grid-cols-8 lg:grid-cols-12'} h-12 py-2 px-4 bg-[${primaryColor}] bg-opacity-20`">
-          <td class="col-span-1 lg:col-span-2 text-left font-semibold">123</td>
-
-          <td class="hidden sm:table-cell col-span-2 lg:col-span-1 text-left font-semibold">20/12/22</td>
-
-          <td class="hidden lg:table-cell col-span-2 text-left font-semibold">Suplemento</td>
-          <td :class="summarized? 'col-span-1 sm:col-span-4 flex lg:col-span-2':'hidden lg:flex col-span-2'" class="text-center justify-center items-center font-semibold">
-            <img src="../assets/logos/sriLogo.png" class="h-8" alt="SRILogo">
-          </td>
-          <td :class="summarized? 'hidden':'col-span-6 sm:col-span-4'" class="mx-2 sm:px-0text-left font-semibold overflow-hidden">
-            <span class="truncate"
-              >Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet
-              nam, fugit minus molestiae obcaecati quia repellat dolorem ab
-              laborum maiores perspiciatis ipsam corrupti commodi! Iusto nostrum
-              nisi illum harum tenetur.</span
-            >
-          </td>
-          <td class="col-span-1 flex justify-center items-center font-semibold">
-            <BaseIcon
-              :size="'h-8'"
-              class="cursor-pointer"
-              :name="'file'"
-            ></BaseIcon>
-          </td>
-        </tr>
-        
+    
       </tbody>
     </table>
+    <div v-else-if="loading" class="flex flex-col gap-4 py-12 justify-center items-center inset-0">
+          <svg class="animate-spin inline-block h-24 w-24 mt-10 text-blue-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+          </svg> 
+         <span class="text-xl font-bold w-72"> Obteniendo información </span>
+    </div>
+    <div v-else class="flex flex-col gap-4 py-12 justify-center items-center inset-0">
+          
+        <img class="w-44" src="../assets/images/empty.png" alt="Avion de papel">
+         <span class="text-xl font-bold w-72">Aún no existen registros para esta categoria en el servidor.</span>
+    </div>
   </div>
 </template>
