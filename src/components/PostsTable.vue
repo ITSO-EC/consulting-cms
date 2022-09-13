@@ -1,10 +1,8 @@
 <script>
 import { defineComponent } from 'vue'
 import axios from 'axios';
-import {useRoute} from 'vue-router'
 
 const API = 'https://api-consulting-crm.herokuapp.com/v1/';
-const route = useRoute();
 export default defineComponent({
   props: {
     summarized: {
@@ -34,7 +32,7 @@ export default defineComponent({
       })
     },
     getPosts() {
-      axios.get(API+'postss')
+      axios.get(API+'posts')
       .then((res)=> {
         //console.log(res.data);
         this.postData = res.data.results

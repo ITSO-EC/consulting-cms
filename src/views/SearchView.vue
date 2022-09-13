@@ -1,16 +1,17 @@
 <script setup>
 import SearchParams from "@/components/SearchParams.vue";
 import PostsTable from "@/components/PostsTable.vue";
+
+import FullScreenDiv from "@/components/FullScreenDiv.vue";
 </script>
 
 <template>
-  <div>
-    <div class="bg-blue-600 w-full h-20 -mt-20"></div>
-    <div class="min-h-[90vh] h-auto mb-10">
+  <FullScreenDiv first class="pt-12 pb-12">
+    <div class="">
       <SearchParams class="" />
       <PostsTable/>
       
     </div>
-  </div>
+  </FullScreenDiv>
 </template>
 
