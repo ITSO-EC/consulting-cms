@@ -14,7 +14,7 @@ const blankColor = app.appContext.config.globalProperties.blankColor;
 </script>
 
 <template>
-  <nav :class="(scrolled || /^profile*/.test($route.name)|| /^search*/.test($route.name)|| /^orders*/.test($route.name))? `bg-[${primaryColor}] shadow-lg` : `bg-none  border-gray-200 `" class="transition duration-300 px-4 lg:px-6 py-2.5">
+  <nav :class="(scrolled || /^profile*/.test($route.name)|| /^search*/.test($route.name)|| /^orders*/.test($route.name)|| /^list.page*/.test($route.name))? `bg-[${primaryColor}] shadow-lg` : `bg-none  border-gray-200 `" class="transition duration-300 px-4 lg:px-6 py-2.5">
             <div class="grid grid-cols-2 lg:grid-cols-4 items-center mx-auto max-w-screen-xl">
                 <AppLogo/>
                 <div class="flex items-center lg:order-2  justify-self-end">
@@ -29,11 +29,7 @@ const blankColor = app.appContext.config.globalProperties.blankColor;
                       >Suscribirse</SecondaryButton>
                       
                     </router-link>
-                    <!-- <button data-collapse-toggle="mobile-menu-2" type="button" class="inline-flex items-center p-2 ml-1 text-sm text-white rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200" aria-controls="mobile-menu-2" aria-expanded="false">
-                        <span class="sr-only">Abrir menú de navegación</span>
-                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>
-                        <svg class="hidden w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
-                    </button> -->
+                  
                     <NavDropdown class="lg:hidden"/>
 
                 </div>
@@ -42,24 +38,7 @@ const blankColor = app.appContext.config.globalProperties.blankColor;
                 </div>
             </div>
   </nav>
-  <!-- <div class="w-full h-12 flex z-40 items-center shadow-lg" :class="`bg-[${primaryColor}]`">
-    <div class="h-full w-1/5 flex items-center m-4">
-      <h1 :class="`text-2xl text-[${blankColor}] font-bold`">CONSULTING</h1>
-    </div>
-    <nav class="flex items-center w-1/5">
-      <slot name="links" />
-    </nav>
-    <SearchInput class="w-1/5 2xl:w-2/5"></SearchInput>
-    <div class="flex w-1/5 m-4 gap-8 h-full justify-center items-center">
-      
-      <button class="focus:outline-none focus:bg-white focus:bg-opacity-40 p-1 rounded-md">
-          <BaseIcon :name="'cart'" :class="`bg-[${secondaryColor}] hover:bg-opacity-60 active:bg-opacity-40 focus:bg-opacity-60 border border-[2px] border-[${blankColor}] text-[${blankColor}]`" class="rounded-full  p-1"></BaseIcon>
-      </button>
-      <button class="focus:outline-none focus:bg-white focus:bg-opacity-40 p-1 rounded-md">
-        <BaseIcon :name="'user'" class="bg-white rounded-full p-1"></BaseIcon>
-      </button>
-    </div>
-  </div> -->
+ 
 </template>
 <script>
 export default {

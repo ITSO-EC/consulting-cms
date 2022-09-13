@@ -65,7 +65,7 @@ onMounted(()=>{
                   after:text-slate-400 after:px-2
                 "
               >
-                <router-link class="text-slate-500 hover:text-indigo-500 inline-flex h-4" to="/">
+                <router-link class="text-slate-500 hover:text-indigo-500 inline-flex h-4" to="/listpage">
                     <BaseIcon class="p-0" :size="'h-5 w-5'" :name="'home'"/>
                  
                 </router-link>

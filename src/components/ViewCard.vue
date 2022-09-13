@@ -23,7 +23,7 @@ export default {
 </script>
 <template>
   <div
-    class="relative w-[85vw] mx-4 sm:mx-0 sm:w-96 h-80 
+    class="relative max-h-[100%] max-w-[100%] h-full w-[85vw] mx-0 sm:w-96 h-80 
     md:w-80 md:h-72
     lg:w-full lg:h-72
     border border-gray-100 hover:scale-105 duration-300 rounded-sm overflow-hidden shadow-2xl"
@@ -34,8 +34,8 @@ export default {
         
         src="https://source.unsplash.com/400x400/?businesses"
         class="
+          h-full 
           w-full
-          h-full
           object-cover
         "
         :class="`${loading ? 'hidden':''}`"

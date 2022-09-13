@@ -72,8 +72,8 @@ export default {
       },
       {
         id: 2,
-        period: 'Categorias',
-        href: '/page'
+        period: 'Vistas',
+        href: '/listpage'
       },
       {
         id: 3,

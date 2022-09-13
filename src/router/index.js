@@ -47,7 +47,14 @@ const routes = [
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/SearchView.vue')
   },
-
+  {
+    path: '/listpage',
+    name: 'list.page',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "about" */ '../views/PageList.vue')
+  },
   {
     path: '/page/:pageId?',
     name: 'page',
@@ -82,8 +89,10 @@ const routes = [
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/OrdersView.vue')
-  }
+    component: () => import(/* webpackChunkName: "about" */ '../views/OrdersView2.vue')
+  },
+ 
+  
 ]
 
 const router = createRouter({
