@@ -12,7 +12,7 @@ const routeInfo = ref({
   categories:{},
   posts: {}
 })
-const showSidebar = ref(false);
+const showSidebar = ref(true);
 
 const route = useRoute()
 const getPage = ()=> {

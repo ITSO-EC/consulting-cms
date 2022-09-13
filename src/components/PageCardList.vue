@@ -1,5 +1,26 @@
 <script setup>
   import ViewCard from "@/components/ViewCard.vue"
+import {onMounted, ref} from 'vue';
+import axios from 'axios';
+const API = 'https://api-consulting-crm.herokuapp.com/v1/';
+const pages = ref([])
+
+const getPage = ()=> {
+  axios.get(API+'pages?limit=4')
+  .then((res)=> {
+    //console.log(res.data);
+    pages.value = res.data.results
+    console.log(pages.value);
+
+  })
+  .catch((err)=>{
+    console.log(err)
+  })
+}
+onMounted(()=>{
+    getPage();
+})
+
 </script>
 <template>
       <div class="flex flex-col items-center py-8">
@@ -23,16 +44,16 @@
           "
         >
 
-          <ViewCard class="justify-self-end"></ViewCard>
+          <ViewCard class="justify-self-end" :pageInfo="pages[0]"></ViewCard>
           
 <!--         
           <ViewCard class="justify-self-center"></ViewCard> -->
-          <ViewCard class="justify-self-start"></ViewCard>
-          <ViewCard class="justify-self-end"></ViewCard>
+          <ViewCard class="justify-self-start" :pageInfo="pages[1]"></ViewCard>
+          <ViewCard class="justify-self-end" :pageInfo="pages[2]"></ViewCard>
           
 <!--         
           <ViewCard class="justify-self-center"></ViewCard> -->
-          <ViewCard class="justify-self-start"></ViewCard>
+          <ViewCard class="justify-self-start" :pageInfo="pages[3]"></ViewCard>
         </div>
       </div>
 </template>

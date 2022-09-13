@@ -5,6 +5,11 @@ const app = getCurrentInstance();
 const secondaryColor = app.appContext.config.globalProperties.secondaryColor;
 const blankColor = app.appContext.config.globalProperties.blankColor;
 </script>
+<script>
+export default {
+  props: ['pageInfo']
+}
+</script>
 <template>
   <div
     class="relative w-[85vw] mx-4 sm:mx-0 sm:w-96 h-80 
@@ -24,8 +29,8 @@ const blankColor = app.appContext.config.globalProperties.blankColor;
       />
     </div>
     <div class="absolute bottom-0 grid grid-cols-1 h-1/3 p-4">
-      <span class="w-full text-left text-2xl font-semibold truncate" :class="`text-[${blankColor}]`">Marco Legal Actualizado</span>
-      <router-link :class="`text-[${secondaryColor}] text-lg w-full text-left`" to="/page/62fc94219464b69168186720" replace>Ver más ►</router-link>
+      <span class="w-full text-left text-2xl font-semibold truncate" :class="`text-[${blankColor}]`">{{pageInfo?.name}}</span>
+      <router-link :class="`text-[${secondaryColor}] text-lg w-full text-left`" :to="`/page/${pageInfo?.id}`" replace>Ver más ►</router-link>
     </div>
   </div>
 </template>

@@ -39,7 +39,7 @@
           <li>La información más relevante de la industria</li>  
           <li>El mejor proveedor de información del mercado</li>
         </ul>
-        <PrimaryButton class="w-fit px-8 mx-auto md:mx-0">Suscribirse</PrimaryButton>
+        <PrimaryButton class="w-fit px-8 mx-auto md:mx-0"> <router-link to="/register">Suscribirse</router-link> </PrimaryButton>
       </div>
     </div>
     <FullScreenDiv class="h-auto pt-0 flex flex-col justify-center">
