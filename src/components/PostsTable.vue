@@ -13,6 +13,7 @@ export default defineComponent({
   data() {
     return {
       postData : {},
+      categories: {},
       totalResults: 0,
       loading: true,
     }
@@ -38,11 +39,28 @@ export default defineComponent({
         //console.log(res.data);
         this.postData = res.data.results
         this.totalResults = res.data.totalResults
+        for(let itemId in this.postData) {
+          
+          this.getCategoryById(this.postData[itemId].category);
+        }
+
         this.loading = false
 
       })
       .catch((err)=>{
         this.loading = false
+        console.log(err)
+      })
+    },
+    getCategoryById(id) {
+      axios.get(API+'categories/'+id)
+      .then((res)=> {
+        //console.log(res.data);
+        this.categories[id]= res.data.page
+        console.log('categories',Object.keys(this.categories))
+        
+      })
+      .catch((err)=>{
         console.log(err)
       })
     }
@@ -80,16 +98,24 @@ export default defineComponent({
         <tr v-for="(item, numid) in postData" :key="numid" :class="`grid ${summarized? 'grid-cols-3 sm:grid-cols-8' : 'grid-cols-8 lg:grid-cols-12'} ${numid % 2 ? `bg-opacity-20 bg-[${primaryColor}]` :  `` } h-12 py-2 px-4`">
           
           <td class="col-span-1 lg:col-span-2 text-left font-semibold">
-            <router-link :to="`/page/${this.$route.params.pageId}/category/${this.$route.params.categoryId}/post/${item.id}`" class="inline-block w-full">{{item.ro}}</router-link>
+            <router-link 
+            :to=" summarized ? `/page/${this.$route.params.pageId}/category/${this.$route.params.categoryId}/post/${item.id}` 
+              : `/page/${categories[item.category]}/category/${item.category}/post/${item.id}`"
+              class="inline-block w-full">{{item.ro}}</router-link>
           </td>
 
           <td class="hidden sm:table-cell col-span-2 lg:col-span-1 text-left font-semibold">
-            <router-link :to="`/page/${this.$route.params.pageId}/category/${this.$route.params.categoryId}/post/${item.id}`" class="inline-block w-full">
+            <router-link :to="
+               summarized ? `/page/${this.$route.params.pageId}/category/${this.$route.params.categoryId}/post/${item.id}` 
+              : `/page/${categories[item.category]}/category/${item.category}/post/${item.id}`" class="inline-block w-full">
              20/12/22</router-link>
            </td>
 
           <td class="hidden lg:table-cell col-span-2 text-left font-semibold">
-            <router-link :to="`/page/${this.$route.params.pageId}/category/${this.$route.params.categoryId}/post/${item.id}`" class="inline-block w-full">
+            <router-link 
+            :to="summarized ? `/page/${this.$route.params.pageId}/category/${this.$route.params.categoryId}/post/${item.id}` 
+              : `/page/${categories[item.category]}/category/${item.category}/post/${item.id}`"
+            class="inline-block w-full">
             {{item.type_reform}}</router-link>
             </td>
           <td :class="summarized? 'col-span-1 sm:col-span-4 flex lg:col-span-2':'hidden lg:flex col-span-2'" class="text-center justify-center items-center font-semibold">

@@ -49,8 +49,8 @@ export default {
 </script>
 <template>
 
-        <button class="md:hidden fixed left-0 my-auto py-6 px-1 bg-gray-200 opacity-100 border-blue-300 rounded-r" @click="showSidebar = true">►</button>
-        
+        <!-- <button class="md:hidden fixed left-0 my-auto py-6 px-1 bg-gray-200 opacity-100 border-blue-300 rounded-r" @click="showSidebar = true">►</button>
+         -->
         <aside
             v-bind="$attrs"
             class="w-full md:w-1/5 p-4 z-10"
@@ -69,7 +69,7 @@ export default {
             </li>
             
             </ul>
-            <ul class="text-left text-xl font-medium">
+            <ul v-if="routeInfo.categories?.length > 0" class="text-left text-xl font-medium">
             <li v-for="category in routeInfo.categories" :key="`CategoryLink-${category.id}`">
                 <router-link 
                 :class="`border-[${secondaryColor}]`"
@@ -81,6 +81,14 @@ export default {
                 >
             </li>
             
+            </ul>
+            <ul v-else class="text-left text-xl font-medium">
+              <li
+                  :class="`border-[${secondaryColor}]`"
+                  class="animate__animated animate__fadeInLeft inline-block py-2 border-b w-full"
+                  >No se han registrado categorias en esta vista</li
+                  >
+              
             </ul>
         </aside>
 </template>

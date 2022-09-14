@@ -64,14 +64,14 @@ export default {
       <img
         :src="'https://source.unsplash.com/400x400/?businesses'"
         class="w-full object-cover"
-        :class="`${loading && !error ? 'hidden' : ''}`"
+        :class="`${loading || post==null ||error ? 'hidden' : ''}`"
         @load="onLoad()"
         @error="onError()"
         alt="Card Image"
       />
       <div
         class="w-full h-full object-cover bg-slate-300"
-        :class="`${loading || error? '' : 'hidden'}`"
+        :class="`${loading || post==null ||error? '' : 'hidden'}`"
       ></div>
     </div>
     <div

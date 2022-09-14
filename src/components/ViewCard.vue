@@ -38,12 +38,12 @@ export default {
           w-full
           object-cover
         "
-        :class="`${loading ? 'hidden':''}`"
+        :class="`${loading || pageInfo == null ? 'hidden':''}`"
         @load="onLoad()"
         @error="onError()"
         alt="Card Image"
       />
-      <div :class="`${loading || error? '':'hidden'}`" class="block w-full h-full object-cover bg-slate-300"></div>
+      <div :class="`${loading || pageInfo==null || error? '':'hidden'}`" class="block w-full h-full object-cover bg-slate-300"></div>
     </div>
     <div class="absolute bottom-0 grid grid-cols-1 h-1/3 p-4 w-full">
       <span class="w-full text-left text-2xl font-semibold truncate" :class="`text-[${blankColor}] ${!loading && pageInfo != null? '':'bg-slate-700'}` ">{{!loading && pageInfo != null? pageInfo.name: ''}}</span>
