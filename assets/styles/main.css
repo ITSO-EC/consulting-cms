@@ -1,0 +1,9 @@
+@import 'animate.css';
+
+
+@import './toggle-switch.css';
+@import './utility-patterns.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
