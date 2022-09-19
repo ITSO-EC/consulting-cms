@@ -7,8 +7,8 @@ const useViews = () => {
     
     const {views, selectedView ,error, loading, results, page} = storeToRefs(viewsStore);
 
-    const loadViews = () => viewsStore.loadViews();
-    const getViewById = viewsStore.getViewById;
+    const initializeViews = async () => viewsStore.loadViews(await $fetch('/api/views'));
+    const getViewById = (id) => viewsStore.getViewById(id);
     return {
         // Properties
         views,
@@ -19,7 +19,7 @@ const useViews = () => {
         page,
 
         //methods
-        loadViews,
+        initializeViews,
         getViewById 
 
     }

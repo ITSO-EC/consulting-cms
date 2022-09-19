@@ -21,36 +21,41 @@ export const useViewsStore = defineStore({
         page:1,
     }),
     getters: {
-        getViewById(state) {
-            return (array,id) => {
-                state.selectedView = array?.find((view) => {
-                  
-                    return view.id == id
-                });
-                
-            }
-        }
+       
     },
     actions: {
-        async loadViews(): Promise<void> {
-            if(!this.views.length && !this.loading) {
+        getViewById(id) {
+            this.selectedView = this.views.find((view) =>  view.id === id);
+        },
+        loadViews(data) {
+            try {   
+                this.views = data.results;
+                this.results = data.totalResults;
+                this.page = data.page;
                 
-                this.error = [];
-                this.loading = true;
-                $fetch('/api/views')
-                    .then((res)=> {
-                        this.views = res.results;
-                        this.results = res.totalResults;
-                        this.page = res.page ;
-                        this.loading = false;
+            } catch (error) {
+                console.error(error)
+                this.error = error;
+            }
+            
+            // if(!this.views.length && !this.loading) {
+                
+            //     this.error = [];
+            //     this.loading = true;
+            //     $fetch('/api/views')
+            //         .then((res)=> {
+            //             this.views = res.results;
+            //             this.results = res.totalResults;
+            //             this.page = res.page ;
+            //             this.loading = false;
                        
-                    })
-                    .catch((err)=> {
-                        this.error = err;
-                        this.loading = false;
+            //         })
+            //         .catch((err)=> {
+            //             this.error = err;
+            //             this.loading = false;
                         
-                    })
-            }    
+            //         })
+            //}    
         },
         async addView(view: Object): Promise<void> {
             this.loading = true;

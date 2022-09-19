@@ -1,26 +1,9 @@
 <script setup>
-const {views, selectedView, loadViews, getViewById} = useViews();
-const {categories, selectedCategory,loadCategories, getCategoryById} = useCategories();
-
+const {selectedView} = useViews();
 const $route = useRoute();
-  watch(views, (newViews)=> {
-      
-      getViewById(newViews, $route.params.categoryid);
-    },
-    categories, (newCategory)=> {
-      
-      getCategoryById(newCategory, $route.params.categoryid);
-    },
-   
-  )
 
-  onMounted(()=>{
-    loadViews()
-    if(views) getViewById(views?.value, $route.params.pageid);
-    loadCategories()
-    if(categories) getCategoryById(categories?.value, $route.params.categoryid);
-    
-  })
+
+
 </script>
 <template>
      <div class="px-2 sm:px-0 py-6">

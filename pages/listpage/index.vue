@@ -1,16 +1,8 @@
 <script setup>
 import ViewCard from "@/components/ViewCard.vue";
 
-const {views, error, loading, results, page, loadViews} = useViews();
+const {views} = useViews();
 
-watch(views, ()=> {
-}
-)
-
-onMounted(()=>{
-    loadViews();
-    
-})
 
 </script>
 <template>

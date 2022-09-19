@@ -6,24 +6,19 @@ import GenericPageHeader from "@/components/GenericPageHeader.vue";
 import ConsultingBreadcrumbs from "@/components/ConsultingBreadcrumbs.vue";
 
 import ConsultingSidebar from "@/components/ConsultingSidebar.vue";
-const {views, selectedView, loadViews, getViewById} = useViews();
+const {views, selectedView, initializeViews, getViewById} = useViews();
 const {categories, selectedCategory,loadCategories, getCategoryById} = useCategories();
 
 const $route = useRoute();
-  watch(views, (newViews)=> {
-      
-      getViewById(newViews, $route.params.categoryid);
-    },
-    categories, (newCategory)=> {
-      
-      getCategoryById(newCategory, $route.params.categoryid);
+
+  watch(views, ()=> {
+      getViewById($route.params.pageid);
     },
    
   )
 
+  initializeViews();
   onMounted(()=>{
-    loadViews()
-    if(views) getViewById(views?.value, $route.params.pageid);
     loadCategories()
     if(categories) getCategoryById(categories?.value, $route.params.categoryid);
     
@@ -43,10 +38,10 @@ const $route = useRoute();
     <GenericPageHeader  class="shadow"></GenericPageHeader>
    
     <main v-bind="$attrs" class="relative flex min-h-screen  z-10" >
-      <ConsultingSidebar />
+      <!-- <ConsultingSidebar /> -->
       <div class="w-full lg:w-4/5" >
          
-        <ConsultingBreadcrumbs class="mx-auto w-full sm:w-5/6"/>      
+        <ConsultingBreadcrumbs class="mx-auto w-full sm:w-5/6"/>   
 
         <slot />
       </div>

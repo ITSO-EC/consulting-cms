@@ -24,7 +24,6 @@ export const useCategoriesStore = defineStore({
     getters: {
         getCategoryById(state) {
             return (array,id) => {  
-                console.log("val", id);
                 state.selectedCategory = array?.find((category) => {
                   
                     return category.id == id

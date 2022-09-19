@@ -1,17 +1,5 @@
 <script setup>
-const {views,selectedView, loadViews, getViewById} = useViews();
-const $route = useRoute();
-watch(views, (newViews)=> {
-      getViewById(newViews, $route.params.pageid);
-}
-)
-
-onMounted(()=>{
-  loadViews();
-  if(views) getViewById(views?.value, $route.params.pageid);
-        
-
-})
+const {selectedView} = useViews();
 
 
 </script>
@@ -20,8 +8,8 @@ onMounted(()=>{
     <div :class="`bg-secondaryColor bg-opacity-20`" 
     class="absolute bottom-0 mx-auto backdrop-blur-2xl rounded-t-lg w-fit flex flex-col md:gap-4 px-2 md:px-8 py-4 text-left z-10">
       <div>
-        <h1 v-if="selectedView" :class="`text-blankColor`" class="text-center brightness-150 text-2xl md:text-4xl md:mb-1">
-          {{selectedView?.name}}
+        <h1 v-if="selectedView?.name" :class="`text-blankColor`" class="text-center brightness-150 text-2xl md:text-4xl md:mb-1">
+          {{selectedView.name}}
         </h1>
         <h2
         :class="`text-blue-500 font-semibold`" 
