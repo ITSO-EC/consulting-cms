@@ -22,36 +22,39 @@ export const useCategoriesStore = defineStore({
         page:1,
     }),
     getters: {
-        getCategoryById(state) {
-            return (array,id) => {  
-                state.selectedCategory = array?.find((category) => {
-                  
-                    return category.id == id
-                });
-               
-                
-            }
-        }
+        
     },
     actions: {
-        async loadCategories(): Promise<void> {
-            if(!this.categories.length && !this.loading) {
-                this.error = [];
-                this.loading = true;
-                $fetch('/api/categories')
+        getCategoryById(id: string) {
+            this.selectedCategory = this.categories?.find((category) => category.id == id);
+            console.log("in store", this.selectedCategory)
+        },
+        loadCategories(data) {
+           try {
+                this.categories = data.results;
+                this.results = data.totalResults;
+                this.page = data.page;
+           } catch (error) {
+                this.error = error;
+                console.error(error);
+           }
+            // if(!this.categories.length && !this.loading) {
+            //     this.error = [];
+            //     this.loading = true;
+            //     $fetch('/api/categories')
                     
-                    .then((res)=> {
-                        this.categories = res.results;
-                        this.results = res.totalResults;
-                        this.page = res.page;
-                        this.loading = false;
-                    })
-                    .catch((err)=> {
-                        this.error = err;
-                        this.loading = false;
+            //         .then((res)=> {
+            //             this.categories = res.results;
+            //             this.results = res.totalResults;
+            //             this.page = res.page;
+            //             this.loading = false;
+            //         })
+            //         .catch((err)=> {
+            //             this.error = err;
+            //             this.loading = false;
                         
-                    })
-            }    
+            //         })
+            // }    
         },
         async addCategory(category: Object): Promise<void> {
             this.loading = true;

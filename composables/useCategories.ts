@@ -7,8 +7,8 @@ const useCategories = () => {
     
     const {categories, selectedCategory,error, loading, results, page} = storeToRefs(categoriesStore);
 
-    const loadCategories = () => categoriesStore.loadCategories();
-    const getCategoryById = categoriesStore.getCategoryById;
+    const initializeCategories = async (id: string) => categoriesStore.loadCategories(await $fetch('/api/categories?byPage='+id));
+    const getCategoryById = (id: string) => categoriesStore.getCategoryById(id);
     return {
         // Properties
         categories,
@@ -19,7 +19,7 @@ const useCategories = () => {
         page,
 
         //methods
-        loadCategories,
+        initializeCategories,
         getCategoryById 
 
     }

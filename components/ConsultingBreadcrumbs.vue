@@ -1,5 +1,6 @@
 <script setup>
 const {selectedView} = useViews();
+const {selectedCategory} = useCategories();
 const $route = useRoute();
 
 
@@ -40,7 +41,7 @@ const $route = useRoute();
                   after:text-slate-400 after:px-2
                 "
               >
-                 <nuxt-link  v-if="selectedCategory?.name"  class="inline-block text-slate-500 hover:text-indigo-500" :to="`/page/${selectedView?.id}/category/${selectedCategory?.id}`"
+                 <nuxt-link  v-if="selectedCategory?.name"  class="inline-block text-slate-500 hover:text-indigo-500" :to="`/view/${selectedView?.id}/category/${selectedCategory?.id}`"
                   >
                 {{selectedCategory?.name}}</nuxt-link>
                 

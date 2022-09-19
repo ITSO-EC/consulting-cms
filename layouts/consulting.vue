@@ -6,23 +6,22 @@ import GenericPageHeader from "@/components/GenericPageHeader.vue";
 import ConsultingBreadcrumbs from "@/components/ConsultingBreadcrumbs.vue";
 
 import ConsultingSidebar from "@/components/ConsultingSidebar.vue";
-const {views, selectedView, initializeViews, getViewById} = useViews();
-const {categories, selectedCategory,loadCategories, getCategoryById} = useCategories();
+const {views, initializeViews, getViewById} = useViews();
+const {initializeCategories, getCategoryById} = useCategories();
 
 const $route = useRoute();
 
-  watch(views, ()=> {
-      getViewById($route.params.pageid);
-    },
-   
-  )
+watch(views, async () => {
+    getViewById($route.params.pageid)
+    await initializeCategories($route.params.pageid)
+    if($route.params.categoryid) getCategoryById($route.params.categoryid)
+  }
+);
 
-  initializeViews();
-  onMounted(()=>{
-    loadCategories()
-    if(categories) getCategoryById(categories?.value, $route.params.categoryid);
-    
-  })
+initializeViews();
+onMounted(()=>{
+  if($route.params.categoryid) getCategoryById($route.params.categoryid)
+})
 </script>
 
 <template>
@@ -38,7 +37,7 @@ const $route = useRoute();
     <GenericPageHeader  class="shadow"></GenericPageHeader>
    
     <main v-bind="$attrs" class="relative flex min-h-screen  z-10" >
-      <!-- <ConsultingSidebar /> -->
+      <ConsultingSidebar /> 
       <div class="w-full lg:w-4/5" >
          
         <ConsultingBreadcrumbs class="mx-auto w-full sm:w-5/6"/>   
