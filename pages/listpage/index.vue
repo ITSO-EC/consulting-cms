@@ -1,14 +1,14 @@
 <script setup>
 import ViewCard from "@/components/ViewCard.vue";
 
-const {posts, error, loading, results, page,loadPosts} = usePosts();
+const {views, error, loading, results, page, loadViews} = useViews();
 
-watch(posts, ()=> {
+watch(views, ()=> {
 }
 )
 
 onMounted(()=>{
-    loadPosts();
+    loadViews();
     
 })
 
@@ -37,7 +37,7 @@ onMounted(()=>{
       </p>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 m-8">
-        <ViewCard v-for="page in posts" :key="page.id" :pageInfo="page"></ViewCard>
+        <ViewCard v-for="page in views" :key="page.id" :pageInfo="page"></ViewCard>
           
       </div>
 

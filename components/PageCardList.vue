@@ -1,13 +1,13 @@
 <script setup>
   import ViewCard from "@/components/ViewCard.vue"
-  const {posts, error, loading, results, page,loadPosts} = usePosts();
+  const {views, error, loading, results, page,loadViews} = useViews();
 
-  watch(posts, ()=> {
+  watch(views, ()=> {
     }
   )
 
   onMounted(()=>{
-    loadPosts();  
+    loadViews();  
     //getPage();
   })
 
@@ -34,16 +34,16 @@
           "
         >
 
-          <ViewCard class="justify-self-end" :pageInfo="posts[0]"></ViewCard>
+          <ViewCard class="justify-self-end" :pageInfo="views[1]"></ViewCard>
           
 <!--         
           <ViewCard class="justify-self-center"></ViewCard> -->
-          <ViewCard class="justify-self-center" :pageInfo="posts[1]"></ViewCard>
-          <ViewCard class="justify-self-start" :pageInfo="posts[2]"></ViewCard>
+          <ViewCard class="justify-self-center" :pageInfo="views[3]"></ViewCard>
+          <ViewCard class="justify-self-start" :pageInfo="views[4]"></ViewCard>
           
 <!--         
           <ViewCard class="justify-self-center"></ViewCard> -->
-          <!-- <ViewCard class="justify-self-start" :pageInfo="posts[3]"></ViewCard> -->
+          <!-- <ViewCard class="justify-self-start" :pageInfo="views[3]"></ViewCard> -->
         </div>
       </div>
 </template>

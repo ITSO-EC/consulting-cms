@@ -3,7 +3,7 @@
     import TheFooter from "@/components/TheFooter";
 </script>
 <template>
-    <div>
+    <div :key="$route.fullPath">
         <header class="sticky top-0 z-50">
             <TheNavBar/>
         </header>

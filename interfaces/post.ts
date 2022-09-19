@@ -1,8 +1,16 @@
 export interface Post {
-    id?: number;
+    id: string;
     title: string;
-    body: boolean;
-    userId: number;
-    tags: Array<string>;
-    reactions: number
+    content: string,
+    status: string,
+    type: string,
+    number: number,
+    legal_regulation: string,
+    image_url: string,
+    file_url: string,
+    type_reform: string,
+    category: string,
+    ro: string,
+    createdAt: string,
+    updatedAt: string,
 }

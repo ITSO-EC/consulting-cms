@@ -2,7 +2,7 @@
     import TheFooter from "@/components/TheFooter";
 </script>
 <template>
-    <div>
+    <div :key="$route.fullPath">
         <main class="relative min-h-screen -mb-10 pb-10  z-10 " >
             <slot />
         </main>

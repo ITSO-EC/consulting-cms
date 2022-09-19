@@ -1,36 +1,47 @@
 import { defineStore, acceptHMRUpdate } from 'pinia';
-import { Post } from '~~/interfaces/post';
-import { generateID, sleep } from '~~/utils'
+import { View} from '~~/interfaces/view';
 
-interface PostsState {
-    posts: Post[];
+interface ViewsState {
+    views: View[];
+    selectedView: Object;
     loading: boolean;
     error: String;
     results: number;
     page: number;
 }
 
-export const usePostsStore = defineStore({
-    id: 'posts',
-    state: (): PostsState => ({
-        posts: [] ,
+export const useViewsStore = defineStore({
+    id: 'views',
+    state: (): ViewsState => ({
+        views: [] ,
+        selectedView: {},
         error: '',
         loading: false,
         results: 0,
         page:1,
     }),
-    getters: {},
+    getters: {
+        getViewById(state) {
+            return (array,id) => {
+                state.selectedView = array?.find((view) => {
+                  
+                    return view.id == id
+                });
+                
+            }
+        }
+    },
     actions: {
-        async loadPosts(): Promise<void> {
-            if(!this.posts.length && !this.loading) {
+        async loadViews(): Promise<void> {
+            if(!this.views.length && !this.loading) {
+                
                 this.error = [];
                 this.loading = true;
-                $fetch('/api/posts')
-                    
+                $fetch('/api/views')
                     .then((res)=> {
-                        this.posts = res.results;
+                        this.views = res.results;
                         this.results = res.totalResults;
-                        this.page = res.page;
+                        this.page = res.page ;
                         this.loading = false;
                        
                     })
@@ -41,16 +52,14 @@ export const usePostsStore = defineStore({
                     })
             }    
         },
-        async addPost(post: Object): Promise<void> {
+        async addView(view: Object): Promise<void> {
             this.loading = true;
-            this.posts.push({id: generateID(), ...post});
-            await sleep(1000);
+            this.views.push(view);
             this.loading = false;
         },
-        async deletePost(id: number): Promise<void> {
+        async deleteView(id: number): Promise<void> {
             this.loading = true;
             this.posts = this.posts.filter((post) => post.id !== id);
-            await sleep(1000);
             this.loading = false;
         },
         async updatePost(id: number): Promise<void> {
@@ -68,5 +77,5 @@ export const usePostsStore = defineStore({
 });
 
 if (import.meta.hot) {
-    import.meta.hot.accept(acceptHMRUpdate(usePostsStore, import.meta.hot));
+    import.meta.hot.accept(acceptHMRUpdate(useViewsStore, import.meta.hot));
   }

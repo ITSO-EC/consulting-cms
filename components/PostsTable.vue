@@ -44,7 +44,7 @@ onMounted(()=>{
         <tr v-for="(item, numid) in posts" :key="numid" :class="`grid ${summarized? 'grid-cols-3 sm:grid-cols-8' : 'grid-cols-8 lg:grid-cols-12'} ${numid % 2 ? `bg-opacity-20 bg-primaryColor` :  `` } h-12 px-4`">
           
           <td class="col-span-1 lg:col-span-2 text-left font-semibold">
-            {{item.title}}
+            {{item.ro}}
             <!-- <nuxt-link 
             :to=" summarized ? `/page/${this.$route.params.pageId}/category/${this.$route.params.categoryId}/post/${item.id}` 
               : `/page/${categories[item.category]}/category/${item.category}/post/${item.id}`"
@@ -52,7 +52,7 @@ onMounted(()=>{
           </td>
 
           <td class="hidden sm:table-cell col-span-2 lg:col-span-1 text-left font-semibold">
-            20/12/22
+            {{item.updatedAt}}
             <!-- <nuxt-link :to="
                summarized ? `/page/${this.$route.params.pageId}/category/${this.$route.params.categoryId}/post/${item.id}` 
               : `/page/${categories[item.category]}/category/${item.category}/post/${item.id}`" class="inline-block w-full">
@@ -60,7 +60,7 @@ onMounted(()=>{
            </td>
 
           <td class="hidden lg:table-cell col-span-2 text-left font-semibold">
-            {{item.tags[0]}}
+            {{item.type_reform}}
             <!-- <nuxt-link 
             :to="summarized ? `/page/${this.$route.params.pageId}/category/${this.$route.params.categoryId}/post/${item.id}` 
               : `/page/${categories[item.category]}/category/${item.category}/post/${item.id}`"

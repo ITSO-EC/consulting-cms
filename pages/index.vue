@@ -2,7 +2,7 @@
 import MainHero from '~~/components/MainHero.vue'
 import usePosts from '~~/composables/usePosts'
 import ActionButton from "~~/components/ActionButton.vue"
-import PageCardList from '@/components/PageCardList.vue';
+import PageCardList from '~~/components/PageCardList.vue';
 
 const {posts, error, loading, results, page,loadPosts} = usePosts();
 

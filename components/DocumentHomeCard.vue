@@ -64,7 +64,7 @@ export default {
       <span
         class="text-sm text-gray-600 h-full truncate text-left"
         :class="`${!loading && post != null ? '' : 'bg-slate-700 w-3/5 mt-1'}`"
-        >{{ post != null && !loading ? post.body : "" }}</span
+        >{{ post != null && !loading ? post.content : "" }}</span
       >
 
       <nuxt-link
