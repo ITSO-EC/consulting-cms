@@ -43,12 +43,12 @@ const $route = useRoute();
     <GenericPageHeader  class="shadow"></GenericPageHeader>
    
     <main v-bind="$attrs" class="relative flex min-h-screen  z-10" >
-       <!-- <ConsultingSidebar></ConsultingSidebar> -->
-      <div class="w-full md:w-4/5" >
+      <ConsultingSidebar />
+      <div class="w-full lg:w-4/5" >
          
         <ConsultingBreadcrumbs class="mx-auto w-full sm:w-5/6"/>      
 
-        <slot name="body" />
+        <slot />
       </div>
     </main>
 
