@@ -1,12 +1,4 @@
 <script setup>
-import {
-  computed,
-  onMounted,
-  onUnmounted,
-  watch,
-  defineProps,
-  defineEmits,
-} from "vue";
 
 const props = defineProps({
   show: {

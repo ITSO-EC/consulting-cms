@@ -1,10 +1,15 @@
 <script setup>
-import MainHero from '~~/components/MainHero.vue';
+import SearchParams from "@/components/SearchParams.vue";
+import PostsTable from "@/components/PostsTable.vue";
 
+import FullScreenDiv from "@/components/FullScreenDiv.vue";
 </script>
 <template>
-    <div>
+    <FullScreenDiv first class="pt-12 pb-12">
+        <div class="">
+        <SearchParams class="" />
+        <PostsTable/>
         
-        <h1>Esta es la pagina de busqueda</h1>
-    </div>
+        </div>
+    </FullScreenDiv>
 </template>

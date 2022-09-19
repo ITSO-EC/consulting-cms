@@ -29,7 +29,7 @@ onUnmounted(()=>{
 </script>
 
 <template>
-  <nav :class="(scrolled || /^profile*/.test($route.name)|| /^search*/.test($route.name)|| /^orders*/.test($route.name)|| /^list.page*/.test($route.name))? `bg-primaryColor shadow-lg` : `bg-none  border-gray-200 `" class="transition duration-300 px-4 lg:px-6 py-2">
+  <nav :class="(scrolled || !/^index*/.test($route.name))? `bg-primaryColor shadow-lg` : `bg-none  border-gray-200 `" class="transition duration-300 px-4 lg:px-6 py-2">
             <div class="grid grid-cols-2 lg:grid-cols-4 items-center mx-auto max-w-screen-xl">
                 <AppLogo/>
                 <div class="flex items-center lg:order-2  justify-self-end">
