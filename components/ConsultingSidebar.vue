@@ -1,9 +1,15 @@
 <script setup>
   const showSidebar = ref(true);
-  
+  const $route = useRoute();
   const {selectedView} = useViews();
   const {categories} = useCategories();
   
+  onMounted(()=>{
+    if($route.params.categoryid)
+      showSidebar.value = false;
+    else 
+      showSidebar.value = true;
+  })
   </script>
   <script>
   export default {

@@ -1,9 +1,11 @@
 <script setup>
 const {selectedView} = useViews();
-const {selectedCategory} = useCategories();
+const {selectedCategory, getCategoryById} = useCategories();
 const $route = useRoute();
 
-
+onMounted(()=>{
+  if($route.params.categoryid) getCategoryById($route.params.categoryid)
+})
 
 </script>
 <template>

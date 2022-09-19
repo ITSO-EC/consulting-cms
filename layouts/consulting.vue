@@ -1,11 +1,11 @@
 <script setup>
-import TheFooter from "@/components/TheFooter";
-import TheNavBar from "@/components/TheNavBar";
+import TheFooter from "~~/components/TheFooter";
+import TheNavBar from "~~/components/TheNavBar";
 
-import GenericPageHeader from "@/components/GenericPageHeader.vue";
-import ConsultingBreadcrumbs from "@/components/ConsultingBreadcrumbs.vue";
+import GenericPageHeader from "~~/components/GenericPageHeader.vue";
+import ConsultingBreadcrumbs from "~~/components/ConsultingBreadcrumbs.vue";
+import ConsultingSidebar from "~~/components/ConsultingSidebar.vue";
 
-import ConsultingSidebar from "@/components/ConsultingSidebar.vue";
 const {views, initializeViews, getViewById} = useViews();
 const {initializeCategories, getCategoryById} = useCategories();
 
@@ -22,10 +22,11 @@ initializeViews();
 onMounted(()=>{
   if($route.params.categoryid) getCategoryById($route.params.categoryid)
 })
+
 </script>
 
 <template>
-  <div :key="$route.fullPath + views?.length + categories?.length">
+  <div>
     <header class="sticky top-0 z-50">
       <TheNavBar>
         <template #links>
@@ -37,8 +38,8 @@ onMounted(()=>{
     <GenericPageHeader  class="shadow"></GenericPageHeader>
    
     <main v-bind="$attrs" class="relative flex min-h-screen  z-10" >
-      <ConsultingSidebar /> 
-      <div class="w-full lg:w-4/5" >
+      <ConsultingSidebar v-if="$route.params.pageid" :key="$route.params.pageid"/> 
+      <div class="w-full lg:w-4/5"  :key="$route.fullPath">
          
         <ConsultingBreadcrumbs class="mx-auto w-full sm:w-5/6"/>   
 
