@@ -38,23 +38,7 @@ export const useCategoriesStore = defineStore({
                 this.error = error;
                 console.error(error);
            }
-            // if(!this.categories.length && !this.loading) {
-            //     this.error = [];
-            //     this.loading = true;
-            //     $fetch('/api/categories')
-                    
-            //         .then((res)=> {
-            //             this.categories = res.results;
-            //             this.results = res.totalResults;
-            //             this.page = res.page;
-            //             this.loading = false;
-            //         })
-            //         .catch((err)=> {
-            //             this.error = err;
-            //             this.loading = false;
-                        
-            //         })
-            // }    
+            
         },
         async addCategory(category: Object): Promise<void> {
             this.loading = true;

@@ -1,7 +1,5 @@
 <script setup>
-import { defineProps } from 'vue'
-
-import usePosts from '~~/composables/usePosts'
+import useQueryPosts from '~~/composables/useQueryPosts'
 const props = defineProps ({
     summarized: {
       type: Boolean,
@@ -9,16 +7,26 @@ const props = defineProps ({
     }
   }
 );
+const $route = useRoute();
 
+const {posts, selectedPost,error, loading, results, page, initializeAllPosts,
+  initializeQueriedPosts, selectPostById} = useQueryPosts();
 
-const {posts, error, loading, results, page,loadPosts} = usePosts();
-
-watch(posts, ()=> {
+watch(posts, (np,op)=> {
+  console.log("iniciados posts",np,op)
 }
 )
-
+if(!props.summarized)
+  {  
+    initializeAllPosts()
+  }
+  else
+  {
+    initializeQueriedPosts($route.params.categoryid)
+  }  
+  
 onMounted(()=>{
-    loadPosts();
+  
 })
 </script>
 
