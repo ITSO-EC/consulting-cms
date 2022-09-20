@@ -1,6 +1,13 @@
 <script setup>
     import TheNavBar from "@/components/TheNavBar";
     import TheFooter from "@/components/TheFooter";
+    const {views, initializeViews} = useViews();
+    
+    onMounted(()=>{
+
+        initializeViews();
+    })
+    
 </script>
 <template>
     <div :key="$route.fullPath">

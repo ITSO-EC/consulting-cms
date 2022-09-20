@@ -9,11 +9,12 @@ const props = defineProps ({
 );
 const $route = useRoute();
 
+const {selectedCategory} = useCategories();
 const {posts, selectedPost,error, loading, results, page, initializeAllPosts,
   initializeQueriedPosts, selectPostById} = useQueryPosts();
 
 watch(posts, (np,op)=> {
-  console.log("iniciados posts",np,op)
+    if(props.summarized && $route.params.postid) selectPostById($route.params.postid);
 }
 )
 if(!props.summarized)
@@ -52,28 +53,31 @@ onMounted(()=>{
         <tr v-for="(item, numid) in posts" :key="numid" :class="`grid ${summarized? 'grid-cols-3 sm:grid-cols-8' : 'grid-cols-8 lg:grid-cols-12'} ${numid % 2 ? `bg-opacity-20 bg-primaryColor` :  `` } h-12 px-4`">
           
           <td class="col-span-1 lg:col-span-2 text-left font-semibold">
-            {{item.ro}}
-            <!-- <nuxt-link 
-            :to=" summarized ? `/page/${this.$route.params.pageId}/category/${this.$route.params.categoryId}/post/${item.id}` 
-              : `/page/${categories[item.category]}/category/${item.category}/post/${item.id}`"
-              class="inline-block w-full">{{item.ro}}</nuxt-link> -->
+           
+            <nuxt-link 
+            v-if="selectedCategory && posts"
+            :to="`/view/${selectedCategory.page}/category/${selectedCategory.id}/post/${item._id}`" 
+            
+              class="inline-block w-full">{{item.ro}} </nuxt-link>
           </td>
 
           <td class="hidden sm:table-cell col-span-2 lg:col-span-1 text-left font-semibold">
-            {{item.updatedAt}}
-            <!-- <nuxt-link :to="
-               summarized ? `/page/${this.$route.params.pageId}/category/${this.$route.params.categoryId}/post/${item.id}` 
-              : `/page/${categories[item.category]}/category/${item.category}/post/${item.id}`" class="inline-block w-full">
-             20/12/22</nuxt-link> -->
+            
+             <nuxt-link 
+             v-if="selectedCategory && posts"
+             :to="`/view/${selectedCategory.page}/category/${selectedCategory.id}/post/${item._id}`" 
+             class="inline-block w-full">
+            
+             {{item.updatedAt}}</nuxt-link>
            </td>
 
           <td class="hidden lg:table-cell col-span-2 text-left font-semibold">
-            {{item.type_reform}}
-            <!-- <nuxt-link 
-            :to="summarized ? `/page/${this.$route.params.pageId}/category/${this.$route.params.categoryId}/post/${item.id}` 
-              : `/page/${categories[item.category]}/category/${item.category}/post/${item.id}`"
+          
+            <nuxt-link 
+            v-if="selectedCategory && posts"
+            :to="`/view/${selectedCategory.page}/category/${selectedCategory.id}/post/${item._id}`" 
             class="inline-block w-full">
-            {{item.type_reform}}</nuxt-link> -->
+            {{item.type_reform}}</nuxt-link>
           </td>
           <td :class="summarized? 'col-span-1 sm:col-span-4 flex lg:col-span-2':'hidden lg:flex lg:justify-center lg:items-center col-span-2'" class="text-center font-semibold">
             <img src="../assets/logos/sriLogo.png" class="h-8" alt="SRILogo">

@@ -1,8 +1,30 @@
 <script setup>
 import AppLogo from "~~/components/AppLogo.vue"
 import ActionButton from "~~/components/ActionButton.vue"
-
+import registerWithEmail from "~~/composables/useAuth";
 import UserInfoCard from "~~/components/UserInfoCard.vue";
+
+const name = ref("");
+const selectedFile = ref(null);
+const email = ref("");
+const password = ref("");
+const cellphone = ref("");
+const confpassword = ref("");
+const city_id = ref("");
+const agreeterms= ref(false);
+const suscription = ref(false);
+const errors = ref({});
+
+
+const postRegisterForm = async function () {
+  await registerWithEmail(name.value, email.value, password.value, cellphone.value, selectedFile.value)
+}
+
+const setFile = (payload) => {
+  selectedFile.value = payload;
+  
+}
+
 definePageMeta({
   layout: "guest",
 });
@@ -27,54 +49,51 @@ definePageMeta({
             <h1 class="text-3xl w-full text-left text-slate-800 font-bold mb-6">¡Manténgase al tanto de las novedades! 📞</h1>
             <!-- Form -->
             
-      <UserInfoCard class="-mx-8 sm:-mx-0 md:-mx-12 lg:-mx-0" ></UserInfoCard>
+      <UserInfoCard @selectedfile="setFile" class="-mx-8 sm:-mx-0 md:-mx-12 lg:-mx-0"></UserInfoCard>
             <form>
               <div class="space-y-4">
                 
-                <div>
-                  <BaseLabel class="text-left w-full" for="username">Usuario <span class="text-rose-500">*</span></BaseLabel>
-                  <BaseInput id="username"  type="email" />
-                </div>
+               
                 <div>
                   <BaseLabel class="text-left w-full" for="email">Correo <span class="text-rose-500">*</span></BaseLabel>
-                  <BaseInput id="email"  type="email" />
+                  <BaseInput id="email"  type="email" v-model="email"/>
                 </div>
                 <div>
                   <BaseLabel class="text-left w-full" for="name">Nombre</BaseLabel>
-                  <BaseInput id="name"  type="text" />
+                  <BaseInput id="name"  type="text" v-model="name"/>
                 </div>
                 <div>
                   <BaseLabel class="text-left w-full" for="cellphone">No. Celular <span class="text-rose-500">*</span></BaseLabel>
-                  <BaseInput id="cellphone"  type="text" />
+                  <BaseInput id="cellphone"  type="text" v-model="cellphone"/>
                 </div>
                 <div>
-                  <BaseLabel class="text-left w-full" for="name">Cédula</BaseLabel>
-                  <BaseInput id="name"  type="text" />
+                  <BaseLabel class="text-left w-full" for="city_id">Cédula</BaseLabel>
+                  <BaseInput id="city_id"  type="text" v-model="city_id"/>
                 </div>
               
                 <div>
                   <BaseLabel class="text-left w-full" for="password">Clave<span class="text-rose-500">*</span></BaseLabel>
-                  <BaseInput id="password"  type="password" autoComplete="on" />
+                  <BaseInput id="password"  type="password" autoComplete="on"  v-model="password"/>
                 </div>
                 <div>
                   <BaseLabel class="text-left w-full" for="conf-password">Confirmar Clave<span class="text-rose-500">*</span></BaseLabel>
-                  <BaseInput id="conf-password"  type="password" autoComplete="on" />
+                  <BaseInput id="conf-password"  type="password" autoComplete="on"  v-model="confpassword"/>
                 </div>
               </div>
               <label class="flex items-center justify-start mt-6">
-                <BaseInput type="checkbox" class="w-4 p-0 mr-4" />
+                <input type="checkbox" class="w-4 p-0 mr-4" v-model="agreeterms"/>
                 <span class="text-sm w-full text-left">Acepto los términos y condiciones.</span>
               </label>
               
               <div class="flex items-center justify-between mt-6">
                 <div class="mr-1">
                   <label class="flex items-center justify-start">
-                    <BaseInput type="checkbox" class="w-4 p-0 mr-4" />
+                    <input type="checkbox" class="w-4 p-0 mr-4" v-model="suscription"/>
                     <span class="text-sm w-full text-left">Manténgame al día por Whatsapp.</span>
                   </label>
                 </div>
                 <nuxt-link class="ml-3 whitespace-nowrap" to="/">
-                <ActionButton>
+                <ActionButton @click.prevent="postRegisterForm">
                   Suscribirse
                 </ActionButton>
                 
@@ -111,10 +130,3 @@ definePageMeta({
 
   </main>
 </template>
-
-<script>
-
-export default {
-  name: 'SignUp',
-}
-</script>

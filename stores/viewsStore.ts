@@ -1,6 +1,7 @@
 import { defineStore, acceptHMRUpdate } from 'pinia';
 import { View} from '~~/interfaces/view';
 
+
 interface ViewsState {
     views: View[];
     selectedView: Object;
@@ -25,7 +26,7 @@ export const useViewsStore = defineStore({
     },
     actions: {
         getViewById(id) {
-            this.selectedView = this.views.find((view) =>  view.id === id);
+            this.selectedView = this.views.find((view) =>  view._id === id);
         },
         loadViews(data) {
             try {   
@@ -38,24 +39,7 @@ export const useViewsStore = defineStore({
                 this.error = error;
             }
             
-            // if(!this.views.length && !this.loading) {
-                
-            //     this.error = [];
-            //     this.loading = true;
-            //     $fetch('/api/views')
-            //         .then((res)=> {
-            //             this.views = res.results;
-            //             this.results = res.totalResults;
-            //             this.page = res.page ;
-            //             this.loading = false;
-                       
-            //         })
-            //         .catch((err)=> {
-            //             this.error = err;
-            //             this.loading = false;
-                        
-            //         })
-            //}    
+               
         },
         async addView(view: Object): Promise<void> {
             this.loading = true;

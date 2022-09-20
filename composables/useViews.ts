@@ -4,10 +4,11 @@ import { useViewsStore } from '~~/stores/viewsStore'
 const useViews = () => {
     const viewsStore = useViewsStore();
     
+    const BASE_API='https://itso.ga/v1/'
     
     const {views, selectedView ,error, loading, results, page} = storeToRefs(viewsStore);
-
-    const initializeViews = async () => viewsStore.loadViews(await $fetch('/api/views'));
+    //'/api/views'
+    const initializeViews = async () => viewsStore.loadViews(await $fetch(BASE_API+'pages'));
     const getViewById = (id) => viewsStore.getViewById(id);
     return {
         // Properties

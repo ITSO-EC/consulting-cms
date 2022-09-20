@@ -1,9 +1,15 @@
 <script setup>
     import TheNavBar from "@/components/TheNavBar";
     import TheFooter from "@/components/TheFooter";
+    const {views, initializeViews} = useViews();
+    
+    
+    onMounted(()=> {
+        initializeViews();
+    })
 </script>
 <template>
-    <div :key="$route.fullPath">
+    <div>
         <header class="sticky top-0 z-50">
             <TheNavBar/>
         </header>

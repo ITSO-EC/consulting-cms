@@ -35,11 +35,11 @@ onMounted(()=>{
       </TheNavBar>
     </header>
 
-    <GenericPageHeader  class="shadow"></GenericPageHeader>
+    <GenericPageHeader  class="shadow animate__animated animate__fadeIn animate__delay-1s "></GenericPageHeader>
    
-    <main v-bind="$attrs" class="relative flex min-h-screen  z-10" >
+    <main v-bind="$attrs" class="relative flex min-h-screen  z-10 overflow-x-hidden animate__animated animate__fadeIn animate__delay-1s" >
       <ConsultingSidebar v-if="$route.params.pageid" :key="$route.params.pageid"/> 
-      <div class="w-full lg:w-4/5"  :key="$route.fullPath">
+      <div class="w-full lg:w-4/5 animate__animated animate__fadeIn animate__delay-4s"  :key="$route.fullPath">
          
         <ConsultingBreadcrumbs class="mx-auto w-full sm:w-5/6"/>   
 

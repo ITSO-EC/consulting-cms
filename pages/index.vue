@@ -19,7 +19,7 @@ definePageMeta({
 });
 </script>
 <template>
-    <div :key="posts">
+    <div>
         <MainHero></MainHero>
          
         <div class="mt-6 h-auto  mx-auto pt-0 flex flex-col justify-center">

@@ -20,11 +20,13 @@ export default defineNuxtConfig({
     runtimeConfig: {
         proxyURL:  '',
         baseApiURL:  '',
+        
+        authApiURL:  '',
        
         primaryColor:  '',
         secondaryColor: '',
         thirdColor:  '', 
         blankColor:  '',  
- 
-    }
+     
+    },
 })

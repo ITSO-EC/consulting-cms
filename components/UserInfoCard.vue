@@ -1,6 +1,7 @@
 <script setup>
 import { defineProps } from "vue";
 import SecondaryButton from "@/components/SecondaryButton.vue"
+const $emit = defineEmits(['selectedfile']);
 const props = defineProps({
   disabled: {
     type: Boolean,
@@ -32,6 +33,7 @@ function onSelectedFile() {
     let reader = new FileReader();
     reader.onload = (e) => {
       selectedFile.value = e.target.result;
+      $emit('selectedfile',selectedFile.value);
     };
     reader.readAsDataURL(file[0]);
   }

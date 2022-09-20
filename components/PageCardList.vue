@@ -26,12 +26,12 @@
           "
         >
 
-          <ViewCard v-if="views" class="justify-self-end" :pageInfo="views[1]"></ViewCard>
+          <ViewCard v-if="views" class="justify-self-end" :pageInfo="views[0]"></ViewCard>
           
 <!--         
           <ViewCard class="justify-self-center"></ViewCard> -->
-          <ViewCard v-if="views" class="justify-self-center" :pageInfo="views[3]"></ViewCard>
-          <ViewCard v-if="views" class="justify-self-start" :pageInfo="views[4]"></ViewCard>
+          <ViewCard v-if="views" class="justify-self-center" :pageInfo="views[1]"></ViewCard>
+          <ViewCard v-if="views" class="justify-self-start" :pageInfo="views[2]"></ViewCard>
           
 <!--         
           <ViewCard class="justify-self-center"></ViewCard> -->

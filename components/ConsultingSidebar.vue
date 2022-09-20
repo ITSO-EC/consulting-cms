@@ -18,16 +18,16 @@
   </script>
   <template>
   
-        <div class="absolute lg:relative w-full md:w-1/5 p-4 z-10 h-full  md:h-auto">
+        <div class="absolute lg:relative w-auto md:w-1/5 z-10 h-full  md:h-auto">
           <button :class="`${showSidebar? 'hidden':'fixed lg:hidden'}`" class="left-0 my-auto py-6 px-1 bg-gray-200 opacity-100 border-blue-300 rounded-r" @click="showSidebar = true">►</button>
           <aside
               v-bind="$attrs"
              
-              :class="`${showSidebar? 'w-[100vw] lg:block h-screen lg:h-full ':'hidden lg:block h-screen lg:h-full '} animate__animated animate__fadeInLeft  absolute border-r-2 border-secondaryColor bg-white -mt-4 -ml-4 text-center`"
+              :class="`${showSidebar? 'w-screen lg:block h-screen lg:h-full ':'hidden lg:block h-screen lg:h-full '} animate__animated animate__fadeInLeft animate__delay-2s absolute border-x-2 border-secondaryColor bg-white text-center`"
           >
   
            
-              <ul v-if="categories?.length > 0" class="w-full h-full text-left text-xl font-medium">
+              <ul v-if="categories?.length > 0" class="w-full min-w-[20vw] h-full text-left text-xl font-medium">
                 <li class="mb-0">
                   <div
                   :class="`${showSidebar? 'text-center':'text-left'}`"

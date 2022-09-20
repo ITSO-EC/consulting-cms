@@ -28,7 +28,6 @@ export const useQueryPostsStore = defineStore({
             
         },
         loadPosts(data) {
-            console.log(data.results)
             try {
                 this.posts = data.results;
                 this.results = data.totalResults;

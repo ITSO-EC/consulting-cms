@@ -1,5 +1,6 @@
 <script setup>
     import TheFooter from "@/components/TheFooter";
+    
 </script>
 <template>
     <div :key="$route.fullPath">

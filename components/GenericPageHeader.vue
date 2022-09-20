@@ -14,20 +14,21 @@ const {selectedView} = useViews();
         <h2
         :class="`text-blue-500 font-semibold`" 
         class=" text-center text-md md:text-xl md:mb-2">
+      
           ¡Actualizado a diario!
         </h2>
       </div>
 
       <div class="justify-self-end text-center">
-        <p class="text-black">
+        <p class="text-black" v-if="selectedView?.name">
         <span class="font-bold">Últ. act.:</span>
-        20/20/22</p>
+        {{selectedView.updatedAt}}</p>
       </div>
       
     </div>
     <div class="absolute w-full overflow-hidden z-0">
       <img
-        src="https://source.unsplash.com/1600x900/?business"
+        :src="selectedView.image_url"
         class="object-cover w-full h-[50vh] brightness-75"
         alt=""
       />
