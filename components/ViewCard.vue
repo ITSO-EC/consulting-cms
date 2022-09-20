@@ -11,10 +11,7 @@ const onError = () => {
   error.value = true;
 };
 
-const scroll = (x, y) => {
 
-  window.scrollTo(x,y);
-}
 </script>
 <script>
 export default {
@@ -36,7 +33,7 @@ export default {
   >
   <nuxt-link :class="`absolute block w-full h-full text-secondaryColor text-lg text-left ${!loadingImg && pageInfo != null? 'w-full':'w-full mt-1 bg-slate-700 pointer-events-none'}`"
        :to="{ name: 'view-pageid', params: { pageid: pageInfo?._id } }"
-        @click="scroll(0,0)"
+       
      >
     <div class="absolute w-full h-full rounded-t-sm brightness-50">
       <img

@@ -29,7 +29,7 @@ const {views} = useViews();
       </p>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 m-8">
-        <ViewCard v-for="page in views" :key="page.id" :pageInfo="page"></ViewCard>
+        <ViewCard v-for="page in views" :key="page._id" :pageInfo="page"></ViewCard>
           
       </div>
 

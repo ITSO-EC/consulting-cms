@@ -5,6 +5,7 @@ const $route = useRoute();
 
 onMounted(()=>{
   if($route.params.categoryid) getCategoryById($route.params.categoryid)
+  else selectedCategory.value = "";
 })
 
 </script>
@@ -31,7 +32,7 @@ onMounted(()=>{
                   after:text-slate-400 after:px-2
                 "
               >
-                <nuxt-link v-if="selectedView?.name" class="inline-block text-slate-500 hover:text-indigo-500" :to="`/view/${selectedView?.id}`">
+                <nuxt-link v-if="selectedView?.name" class="inline-block text-slate-500 hover:text-indigo-500" :to="`/view/${selectedView?._id}`">
                   {{selectedView?.name}}</nuxt-link> 
                 
               </li>
@@ -43,7 +44,7 @@ onMounted(()=>{
                   after:text-slate-400 after:px-2
                 "
               >
-                 <nuxt-link  v-if="selectedCategory?.name"  class="inline-block text-slate-500 hover:text-indigo-500" :to="`/view/${selectedView?.id}/category/${selectedCategory?.id}`"
+                 <nuxt-link  v-if="selectedCategory?.name"  class="inline-block text-slate-500 hover:text-indigo-500" :to="`/view/${selectedView?._id}/category/${selectedCategory?._id}`"
                   >
                 {{selectedCategory?.name}}</nuxt-link>
                 

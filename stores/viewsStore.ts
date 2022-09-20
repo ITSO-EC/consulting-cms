@@ -48,12 +48,12 @@ export const useViewsStore = defineStore({
         },
         async deleteView(id: number): Promise<void> {
             this.loading = true;
-            this.posts = this.posts.filter((post) => post.id !== id);
+            this.posts = this.posts.filter((post) => post._id !== id);
             this.loading = false;
         },
         async updatePost(id: number): Promise<void> {
             // this.loading = true;
-            // const post = this.posts.find((post) => post.id === id);
+            // const post = this.posts.find((post) => post._id === id);
 
             // if (post) {
             //     post.done = !post.done;

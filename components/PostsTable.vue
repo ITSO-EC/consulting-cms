@@ -56,7 +56,7 @@ onMounted(()=>{
            
             <nuxt-link 
             v-if="selectedCategory && posts"
-            :to="`/view/${selectedCategory.page}/category/${selectedCategory.id}/post/${item._id}`" 
+            :to="`/view/${selectedCategory.page}/category/${selectedCategory._id}/post/${item._id}`" 
             
               class="inline-block w-full">{{item.ro}} </nuxt-link>
           </td>
@@ -65,7 +65,7 @@ onMounted(()=>{
             
              <nuxt-link 
              v-if="selectedCategory && posts"
-             :to="`/view/${selectedCategory.page}/category/${selectedCategory.id}/post/${item._id}`" 
+             :to="`/view/${selectedCategory.page}/category/${selectedCategory._id}/post/${item._id}`" 
              class="inline-block w-full">
             
              {{item.updatedAt}}</nuxt-link>
@@ -75,7 +75,7 @@ onMounted(()=>{
           
             <nuxt-link 
             v-if="selectedCategory && posts"
-            :to="`/view/${selectedCategory.page}/category/${selectedCategory.id}/post/${item._id}`" 
+            :to="`/view/${selectedCategory.page}/category/${selectedCategory._id}/post/${item._id}`" 
             class="inline-block w-full">
             {{item.type_reform}}</nuxt-link>
           </td>

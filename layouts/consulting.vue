@@ -6,6 +6,7 @@ import GenericPageHeader from "~~/components/GenericPageHeader.vue";
 import ConsultingBreadcrumbs from "~~/components/ConsultingBreadcrumbs.vue";
 import ConsultingSidebar from "~~/components/ConsultingSidebar.vue";
 
+const firstVisit = ref(true);
 const {views, initializeViews, getViewById} = useViews();
 const {initializeCategories, getCategoryById} = useCategories();
 
@@ -14,12 +15,17 @@ const $route = useRoute();
 watch(views, async () => {
     getViewById($route.params.pageid)
     await initializeCategories($route.params.pageid)
+    firstVisit.value = false;
     if($route.params.categoryid) getCategoryById($route.params.categoryid)
-  }
+  },
+ 
 );
 
 initializeViews();
 onMounted(()=>{
+ 
+  window.scrollTo(0,0);
+
   if($route.params.categoryid) getCategoryById($route.params.categoryid)
 })
 
@@ -37,9 +43,9 @@ onMounted(()=>{
 
     <GenericPageHeader  class="shadow animate__animated animate__fadeIn animate__delay-1s "></GenericPageHeader>
    
-    <main v-bind="$attrs" class="relative flex min-h-screen  z-10 overflow-x-hidden animate__animated animate__fadeIn animate__delay-1s" >
-      <ConsultingSidebar v-if="$route.params.pageid" :key="$route.params.pageid"/> 
-      <div class="w-full lg:w-4/5 animate__animated animate__fadeIn animate__delay-4s"  :key="$route.fullPath">
+    <main v-bind="$attrs" class="relative flex min-h-screen  z-10 overflow-x-hidden" >
+      <ConsultingSidebar :class="`animate__animated animate__fadeInLeft ${firstVisit? 'animate__delay-2s' : '' }`" v-if="$route.params.pageid" :key="$route.params.pageid"/> 
+      <div class="w-full lg:w-4/5 animate__animated animate__fadeIn" :class="`${firstVisit ? 'animate__delay-4s': ''}`"  :key="$route.fullPath">
          
         <ConsultingBreadcrumbs class="mx-auto w-full sm:w-5/6"/>   
 

@@ -23,7 +23,7 @@
           <aside
               v-bind="$attrs"
              
-              :class="`${showSidebar? 'w-screen lg:block h-screen lg:h-full ':'hidden lg:block h-screen lg:h-full '} animate__animated animate__fadeInLeft animate__delay-2s absolute border-x-2 border-secondaryColor bg-white text-center`"
+              :class="`${showSidebar? 'w-screen lg:block h-screen lg:h-full ':'hidden lg:block h-screen lg:h-full '} absolute border-x-2 border-secondaryColor bg-white text-center`"
           >
   
            
@@ -38,16 +38,16 @@
                   >
                 </li>
               
-                <li v-for="category in categories" :key="`CategoryLink-${category.id}`">
+                <li v-for="category in categories" :key="`CategoryLink-${category._id}`">
                     <nuxt-link 
-                    v-if="selectedView?.id"
+                    v-if="selectedView?._id"
                     :class="`${showSidebar? 'text-center':'text-left'}`"
                     class="border-secondaryColor px-8 inline-block py-2 border-b w-full"
-                    :to="{ name: 'view-pageid-category-categoryid', params: {pageid: `${selectedView?.id}`, categoryid: `${category?.id}`}}"
+                    :to="{ name: 'view-pageid-category-categoryid', params: {pageid: `${selectedView?._id}`, categoryid: `${category?._id}`}}"
                     @click="showSidebar = false"
                     
                     >{{category?.name}}</nuxt-link>
-                    <!-- :to="`${route.params.categoryId?`/page/${route.params.pageId}`:route.params.pageId}/category/${category.id}`" 
+                    <!-- :to="`${route.params.categoryId?`/page/${route.params.pageId}`:route.params.pageId}/category/${category._id}`" 
                     :replace="route.params.categoryId?true: false" -->
                 </li>
                 

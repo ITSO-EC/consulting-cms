@@ -24,7 +24,7 @@ export const useQueryPostsStore = defineStore({
     getters: {},
     actions: {
         getPostById(id: string) {
-            this.selectedCategory = this.categories?.find((category) => category.id == id);
+            this.selectedPost = this.posts?.find((post) => post._id == id);
             
         },
         loadPosts(data) {
@@ -45,13 +45,13 @@ export const useQueryPostsStore = defineStore({
         },
         async deletePost(id: number): Promise<void> {
             this.loading = true;
-            this.posts = this.posts.filter((post) => post.id !== id);
+            this.posts = this.posts.filter((post) => post._id !== id);
             await sleep(1000);
             this.loading = false;
         },
         async updatePost(id: number): Promise<void> {
             // this.loading = true;
-            // const post = this.posts.find((post) => post.id === id);
+            // const post = this.posts.find((post) => post._id === id);
 
             // if (post) {
             //     post.done = !post.done;

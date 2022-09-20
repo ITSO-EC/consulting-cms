@@ -26,7 +26,7 @@ export const useCategoriesStore = defineStore({
     },
     actions: {
         getCategoryById(id: string) {
-            this.selectedCategory = this.categories?.find((category) => category.id == id);
+            this.selectedCategory = this.categories?.find((category) => category._id == id);
             
         },
         loadCategories(data) {
@@ -48,13 +48,13 @@ export const useCategoriesStore = defineStore({
         },
         async deleteCategory(id: number): Promise<void> {
             this.loading = true;
-            this.categories = this.categories.filter((category) => category.id !== id);
+            this.categories = this.categories.filter((category) => category._id !== id);
             await sleep(1000);
             this.loading = false;
         },
         async updateCategory(id: number): Promise<void> {
             // this.loading = true;
-            // const category = this.categories.find((category) => category.id === id);
+            // const category = this.categories.find((category) => category._id === id);
 
             // if (category) {
             //     category.done = !category.done;
