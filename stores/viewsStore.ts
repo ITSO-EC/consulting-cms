@@ -41,6 +41,9 @@ export const useViewsStore = defineStore({
             
                
         },
+        toggleLoading( status: boolean ) {
+            this.loading = status;
+        },
         async addView(view: Object): Promise<void> {
             this.loading = true;
             this.views.push(view);

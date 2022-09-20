@@ -7,13 +7,14 @@ import ConsultingBreadcrumbs from "~~/components/ConsultingBreadcrumbs.vue";
 import ConsultingSidebar from "~~/components/ConsultingSidebar.vue";
 
 const firstVisit = ref(true);
-const {views, initializeViews, getViewById} = useViews();
+const {views, selectedView,loading,initializeViews, getViewById} = useViews();
 const {initializeCategories, getCategoryById} = useCategories();
 
 const $route = useRoute();
-
+const $router = useRouter();
 watch(views, async () => {
     getViewById($route.params.pageid)
+    if(selectedView.value.status !='visible') $router.push('/');
     await initializeCategories($route.params.pageid)
     firstVisit.value = false;
     if($route.params.categoryid) getCategoryById($route.params.categoryid)
@@ -23,7 +24,6 @@ watch(views, async () => {
 
 initializeViews();
 onMounted(()=>{
- 
   window.scrollTo(0,0);
 
   if($route.params.categoryid) getCategoryById($route.params.categoryid)

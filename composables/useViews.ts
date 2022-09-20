@@ -8,7 +8,11 @@ const useViews = () => {
     
     const {views, selectedView ,error, loading, results, page} = storeToRefs(viewsStore);
     //'/api/views'
-    const initializeViews = async () => viewsStore.loadViews(await $fetch(BASE_API+'pages'));
+    const initializeViews = async () => {
+        viewsStore.toggleLoading(true);
+        viewsStore.loadViews(await $fetch(BASE_API+'pages'))
+        viewsStore.toggleLoading(false);
+    };
     const getViewById = (id) => viewsStore.getViewById(id);
     return {
         // Properties

@@ -1,8 +1,14 @@
 <script setup>
+const props= defineProps({
+  pageInfo: {
+    type:Object,
+    default: null
+  }
+})
 const loadingImg = ref(true);
 const error = ref(false);
 const router = useRouter();
-
+const { loading } = useViews();
 const onLoad = () => {
   loadingImg.value = false;
 }
@@ -10,18 +16,10 @@ const onError = () => {
   loadingImg.value = false;
   error.value = true;
 };
-
-
-</script>
-<script>
-export default {
-  props: {
-    pageInfo: {
-      type: Object,
-      default: null
-    },
-  }
+const isCardLoaded = () => {
+  return !loadingImg.value && props.pageInfo != null && !loading.value 
 }
+
 </script>
 <template>
   <div 
@@ -29,16 +27,16 @@ export default {
     md:w-80 md:h-72
     lg:w-full lg:h-72
     border border-gray-100 hover:scale-105 duration-300 rounded-sm overflow-hidden shadow-2xl"
-    :class="`${!loadingImg && pageInfo != null? '':'animate-pulse'}`"
+    :class="`${isCardLoaded() ? '':'animate-pulse'}`"
   >
-  <nuxt-link :class="`absolute block w-full h-full text-secondaryColor text-lg text-left ${!loadingImg && pageInfo != null? 'w-full':'w-full mt-1 bg-slate-700 pointer-events-none'}`"
+    <nuxt-link :class="`absolute block w-full h-full text-secondaryColor text-lg text-left ${isCardLoaded()? 'w-full':'w-full mt-1 bg-slate-700 pointer-events-none'}`"
        :to="{ name: 'view-pageid', params: { pageid: pageInfo?._id } }"
        
      >
     <div class="absolute w-full h-full rounded-t-sm brightness-50">
       <img
-        
-        :src="pageInfo?.image_url"
+        v-if="pageInfo"
+        :src="pageInfo.image_url"
         class="
           h-full 
           w-full
@@ -49,15 +47,17 @@ export default {
         @error="onError()"
         alt="Card Image"
       />
-      <div :class="`${loadingImg || pageInfo==null || error? '':'hidden'}`" class="block w-full h-full object-cover bg-slate-300">
+      <div 
+      v-else
+      :class="`${loadingImg || pageInfo==null || error? '':'hidden'}`" class="block w-full h-full object-cover bg-slate-300">
       </div>
     </div>
     <div class="absolute bottom-0 grid grid-cols-1 h-1/3 p-4 w-full">
-      <span class="w-full text-left text-2xl font-semibold truncate" :class="`text-blankColor ${!loadingImg && pageInfo != null? '':'bg-slate-700'}` ">
-        {{!loadingImg && pageInfo != null? pageInfo?.name: ''}}
+      <span class="w-full text-left text-2xl font-semibold truncate" :class="`text-blankColor ${isCardLoaded()? '':'bg-slate-700'}` ">
+        {{isCardLoaded()? pageInfo?.name: ''}}
       </span>
       
-       {{!loadingImg && pageInfo != null?'Ver más ►':''}}
+       {{isCardLoaded() ? 'Ver más ►':''}}
       
     </div>
     </nuxt-link>
