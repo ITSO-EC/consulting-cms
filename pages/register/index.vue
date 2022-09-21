@@ -1,7 +1,7 @@
 <script setup>
 import AppLogo from "~~/components/AppLogo.vue"
 import ActionButton from "~~/components/ActionButton.vue"
-import registerWithEmail from "~~/composables/useAuth";
+import registerWithEmail from "~~/composables/useRegister";
 import UserInfoCard from "~~/components/UserInfoCard.vue";
 
 const name = ref("");

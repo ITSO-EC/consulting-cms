@@ -1,6 +1,15 @@
 <script setup>
-import ActionButton from "@/components/ActionButton.vue"
-import AppLogo from "@/components/AppLogo.vue"
+import ActionButton from "~~/components/ActionButton.vue"
+import AppLogo from "~~/components/AppLogo.vue"
+import login from "~~/composables/useLogin"
+const email = ref("");
+const password = ref("");
+
+
+const postLoginForm = async function () {
+  await login( email.value, password.value)
+}
+
 definePageMeta({
   layout: "guest",
 });
@@ -24,25 +33,23 @@ definePageMeta({
           <div class="max-w-md mx-auto px-4 py-8">
             <h1 class="text-3xl text-slate-800 font-bold mb-6 w-full text-left">¡Bienvenido de vuelta!🌎</h1>
             <!-- Form -->
-            <form>
+            <form @submit.prevent="postLoginForm">
               <div class="space-y-4">
                 <div>
                   <BaseLabel class="text-left w-full" for="email">Email Address</BaseLabel>
-                  <BaseInput id="email" type="email" />
+                  <BaseInput id="email" type="email" v-model="email"/>
                 </div>
                 <div>
                   <BaseLabel class="text-left w-full" for="password">Password</BaseLabel>
-                  <BaseInput id="password" type="password" autoComplete="on" />
+                  <BaseInput id="password" type="password" v-model="password" autoComplete="on" />
                 </div>
               </div>
               <div class="flex items-center justify-between mt-6">
                 <div class="mr-1">
                   <nuxt-link class="text-sm underline hover:no-underline" to="/reset-password">¿Olvidó su contraseña?</nuxt-link>
                 </div>
-                <nuxt-link class="ml-3" to="/">
-                  <ActionButton>Ingresar</ActionButton>
+                <ActionButton type="submit">Ingresar</ActionButton>
              
-                </nuxt-link>
               </div>
             </form>
             <!-- Footer -->

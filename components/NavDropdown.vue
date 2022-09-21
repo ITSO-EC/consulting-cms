@@ -53,7 +53,7 @@ import { ref, onMounted, onUnmounted } from 'vue'
 export default {
   name: 'DropdownFull',
   setup() {
-
+    const { user } = useAuth();
     const dropdownOpen = ref(false)
     const trigger = ref(null)
     const dropdown = ref(null)    
@@ -84,16 +84,6 @@ export default {
         id: 4,
         period: 'Ordenes',
         href: '/orders'
-      },
-      {
-        id: 5,
-        period: 'Login',
-        href: '/login'
-      },
-      {
-        id: 6,
-        period: 'Registro',
-        href: '/register'
       }
     ])
 
@@ -112,6 +102,29 @@ export default {
     onMounted(() => {
       document.addEventListener('click', clickHandler)
       document.addEventListener('keydown', keyHandler)
+      if(!user.value) {
+        options.value.push(
+        {
+          id: 5,
+          period: 'Login',
+          href: '/login'
+        })
+
+        options.value.push({
+          id:6,
+          period: 'Register',
+          href: '/register'
+        })
+      
+      }
+      else {
+        //user.value = null;
+        options.value.push({
+          id: 5,
+          period: 'Logout',
+          href: '/login'
+        })
+      }
     })
 
     onUnmounted(() => {

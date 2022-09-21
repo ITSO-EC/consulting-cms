@@ -23,8 +23,10 @@ export const useAuthStore = defineStore({
             this.updateUser(user)
         },
 
-        async login (payload) {
-            // some login logic
+        login (payload) {
+            this.user = payload;
+            
+
         },
 
         async register (payload) {

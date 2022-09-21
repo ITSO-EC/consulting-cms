@@ -29,7 +29,7 @@ definePageMeta({
         </div> -->
 
        
-        <div>
+        <!-- <div>
             <PageCardList>
                 <template #list-title>
                     <div>
@@ -40,7 +40,7 @@ definePageMeta({
                     </div>
                 </template>
             </PageCardList>  
-        </div>
+        </div> -->
 
         <div class="relative bg-white overflow-hidden min-h-[60vh] md:min-h-[50vh] h-auto pt-0 -py-8 flex flex-col justify-center">
             <img
