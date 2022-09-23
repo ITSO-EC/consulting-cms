@@ -41,8 +41,8 @@
                 <li v-for="category in categories" :key="`CategoryLink-${category._id}`">
                     <nuxt-link 
                     v-if="selectedView?._id"
-                    :class="`${showSidebar? 'text-center':'text-left'}`"
-                    class="border-secondaryColor px-8 inline-block py-2 border-b w-full"
+                    :class="`${showSidebar? 'text-center':'text-left'} ${category?._id == $route.params?.categoryid? 'text-primaryColor font-bold':''}`"
+                    class="border-secondaryColor px-8 inline-block py-2 border-b w-full hover:text-slate-500"
                     :to="{ name: 'view-pageid-category-categoryid', params: {pageid: `${selectedView?._id}`, categoryid: `${category?._id}`}}"
                     @click="showSidebar = false"
                     

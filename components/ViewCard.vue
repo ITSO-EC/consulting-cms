@@ -1,10 +1,12 @@
 <script setup>
+import getImage from '~~/composables/useResources';
 const props= defineProps({
   pageInfo: {
     type:Object,
     default: null
   }
 })
+
 const loadingImg = ref(true);
 const error = ref(false);
 const router = useRouter();
@@ -35,8 +37,8 @@ const isCardLoaded = () => {
      >
     <div class="absolute w-full h-full rounded-t-sm brightness-50">
       <img
-        v-if="pageInfo"
-        :src="pageInfo.image_url"
+        v-if="getImage(pageInfo?.image_url)"
+        :src="getImage(pageInfo?.image_url)"
         class="
           h-full 
           w-full

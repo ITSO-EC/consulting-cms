@@ -22,26 +22,13 @@ definePageMeta({
     <div>
         <MainHero></MainHero>
          
-        <!-- <div class="mt-6 h-auto  mx-auto pt-0 flex flex-col justify-center">
+        <div class="mt-6 h-auto  mx-auto pt-0 flex flex-col justify-center">
             <CardList class="py-12">
                 <template #list-title>Últimas Publicaciones</template>
             </CardList>  
-        </div> -->
+        </div> 
 
        
-        <!-- <div>
-            <PageCardList>
-                <template #list-title>
-                    <div>
-                    <h1>
-                        Últimas Vistas
-                    </h1>
-                    <h2 class="text-gray-500 text-sm">Estas son las últimas vistas actualizadas por nuestro equipo</h2>
-                    </div>
-                </template>
-            </PageCardList>  
-        </div> -->
-
         <div class="relative bg-white overflow-hidden min-h-[60vh] md:min-h-[50vh] h-auto pt-0 -py-8 flex flex-col justify-center">
             <img
                 alt="Banner de Consulting"
@@ -64,5 +51,18 @@ definePageMeta({
             </div>
         </div>
         
+        <div>
+            <PageCardList>
+                <template #list-title>
+                    <div>
+                    <h1>
+                        Últimas Vistas
+                    </h1>
+                    <h2 class="text-gray-500 text-sm">Estas son las últimas vistas actualizadas por nuestro equipo</h2>
+                    </div>
+                </template>
+            </PageCardList>  
+        </div> 
+
     </div>
 </template>

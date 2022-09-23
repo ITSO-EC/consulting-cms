@@ -9,10 +9,14 @@ const useQueryPosts = () => {
     const {posts, selectedPost, error, loading, results, page} = storeToRefs(queryPostsStore);
 
     const initializeAllPosts = async()=>{
+        loading.value = true;
         queryPostsStore.loadPosts(await $fetch(BASE_API+'posts'))
+        loading.value = false;
     };
     const initializeQueriedPosts = async(id: string)=>{
+        loading.value = true;
         queryPostsStore.loadPosts(await $fetch(BASE_API+'posts?byCategory='+id))
+        loading.value = false;
     };
     const selectPostById = (id: string) => queryPostsStore.getPostById(id);
 

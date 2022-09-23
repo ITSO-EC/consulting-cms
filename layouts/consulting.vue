@@ -9,21 +9,35 @@ import ConsultingSidebar from "~~/components/ConsultingSidebar.vue";
 const firstVisit = ref(true);
 const {views, selectedView,loading,initializeViews, getViewById} = useViews();
 const {initializeCategories, getCategoryById} = useCategories();
+const {posts, initializeQueriedPosts, selectPostById} = useQueryPosts();
 
 const $route = useRoute();
 const $router = useRouter();
 watch(views, async () => {
+    //Selecciona vista si la tiene
     getViewById($route.params.pageid)
-    if(selectedView.value.status !='visible') $router.push('/');
+    if(selectedView.value.status) $router.push('/');
+
+    //Inicializa categorias si se puede luego de obtener vistas
     await initializeCategories($route.params.pageid)
     firstVisit.value = false;
     if($route.params.categoryid) getCategoryById($route.params.categoryid)
+
+    //Inicializando posts si se puede
+    if($route.params.postid && $route.params.categoryid)
+    {
+      initializeQueriedPosts($route.params.categoryid)
+      .then(()=> selectPostById($route.params.postid))
+      .then(()=>console.log(posts))
+    }
   },
  
 );
 
+//Fuerza la carga de vistas siempre que se actualiza la pagina
 initializeViews();
 onMounted(()=>{
+  //Se mueve al inicio y carga las categorias si se puede
   window.scrollTo(0,0);
 
   if($route.params.categoryid) getCategoryById($route.params.categoryid)

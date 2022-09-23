@@ -1,6 +1,8 @@
 <script setup>
 const {selectedView} = useViews();
 const {selectedCategory, getCategoryById} = useCategories();
+const {posts, selectedPost, loading, error, initializeQueriedPosts, selectPostById} = useQueryPosts();
+
 const $route = useRoute();
 
 onMounted(()=>{
@@ -56,11 +58,10 @@ onMounted(()=>{
                   after:text-slate-400 after:px-2
                 "
                 
-                 v-if="$route.params.postid"
+                 v-if="selectedPost?.title"
               >
-                <!-- <nuxt-link class="inline-block text-slate-500 hover:text-indigo-500" :to="`/page/${route.params.pageId}/category/${route.params.categoryId}/post/${route.params.postId}`"
-                  >{{routeInfo.post_name}}</nuxt-link
-                > -->Post
+                <nuxt-link class="inline-block text-slate-500 hover:text-indigo-500" :to="`/view/${selectedView?._id}/category/${selectedCategory?._id}/post/${selectedPost?._id}`"
+                  > {{selectedPost?.title}} </nuxt-link>
               </li>
             </ul>
           <!-- End -->

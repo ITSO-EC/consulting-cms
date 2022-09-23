@@ -1,4 +1,6 @@
 <script setup>
+import getImage from '~~/composables/useResources';
+
 const {selectedView} = useViews();
 
 
@@ -28,7 +30,7 @@ const {selectedView} = useViews();
     </div>
     <div class="absolute w-full overflow-hidden z-0">
       <img
-        :src="selectedView.image_url"
+        :src="getImage(selectedView.image_url)"
         class="object-cover w-full h-[50vh] brightness-75"
         alt=""
       />

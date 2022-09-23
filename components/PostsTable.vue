@@ -14,7 +14,7 @@ const {posts, selectedPost,error, loading, results, page, initializeAllPosts,
   initializeQueriedPosts, selectPostById} = useQueryPosts();
 
 watch(posts, (np,op)=> {
-    if(props.summarized && $route.params.postid) selectPostById($route.params.postid);
+    if(props.summarized && $route.params.postid ) selectPostById($route.params.postid);
 }
 )
 if(!props.summarized)
