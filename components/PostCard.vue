@@ -1,6 +1,16 @@
 <script setup>
+import getImage from "~~/composables/useResources"
 const {selectedPost, loading, error} = useQueryPosts();
+const download = (url) => {
+  const a = document.createElement('a')
+  a.href = url
+  
+  document.body.appendChild(a)
 
+  a.download = url.split('/').pop()
+  a.click()
+  document.body.removeChild(a)
+}
 </script>
 <template>
   <!-- Mover esta tabla a un componente -->
@@ -26,10 +36,14 @@ const {selectedPost, loading, error} = useQueryPosts();
           <span class="text-justify">{{selectedPost?.number}}</span>
         </div>
       </div>
-      <div class="col-span-12 sm:col-span-3 lg:col-span-2  flex flex-col items-center justify-center gap-2 m-4">
-        <span class="font-bold h-1/3">Descargar PDF</span>
-        <BaseIcon :size="'h-24'" class="cursor-pointer" :name="'file'" />
+      <div v-if="selectedPost?.file_url" class="col-span-12 sm:col-span-3 lg:col-span-2  flex flex-col items-center justify-center gap-2 m-4">
+        <h1 class="font-bold h-1/3">Descargar PDF</h1>
+        <BaseIcon :size="'h-24'" class="cursor-pointer" @click="download(getImage(selectedPost?.file_url))" :name="'file'" />
       </div>
+      <div v-else class="col-span-12 sm:col-span-3 lg:col-span-2  flex flex-col items-center justify-center gap-2 m-4">
+        <h1 class="font-bold h-1/3">No PDF</h1>
+        </div>
+      
     </div>
     <div class="col-span-12 min-h-40 h-auto px-2 text-left mx-4 py-4 border-t border-gray-200">
       <span :class="`text-primaryColor font-bold text-left`">Descripción:</span>

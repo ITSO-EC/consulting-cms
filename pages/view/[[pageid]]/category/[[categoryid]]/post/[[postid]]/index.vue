@@ -1,25 +1,15 @@
 <script setup>
 import PostCard from '~~/components/PostCard.vue';
 import getImage from '~~/composables/useResources';
+import PdfViewer from '~~/components/PdfViewer.vue'
 const {posts, selectedPost, loading, error, initializeQueriedPosts, selectPostById} = useQueryPosts();
 //import PostsTable from "@/components/PostsTable.vue"
 const $route = useRoute();
 definePageMeta({
     layout: "consulting",
 })
-const config = useRuntimeConfig()
-
-onMounted(()=> {
-    document.addEventListener("adobe_dc_view_sdk.ready", function()
-{
-    var adobeDCView = new AdobeDC.View({clientId: config?.pdfApiKey, divId: "adobe-dc-view"});
-    adobeDCView.previewFile(
-    {
-          content:   {location: {url: "https://documentcloud.adobe.com/view-sdk-demo/PDFs/Bodea Brochure.pdf"}},
-          metaData: {fileName: "Bodea Brochure.pdf"}
-    });
-}); 
-})
+const catcher = {}
+   
 selectPostById($route.params.postid)
 
 </script>
@@ -28,13 +18,15 @@ selectPostById($route.params.postid)
        
         
         <div  v-if="!loading">
-            <p class="text-center">{{selectedPost}} </p>
             <PostCard></PostCard>
-            <div v-if="selectedPost?.file_url" class="pt-12">
-                {{getImage(selectedPost?.file_url)}}
- 
-                <div id="adobe-dc-view" class="h-12 bg-blue-300"></div>
-                <p class="text-center">Hay Archivo!</p>
+            <div v-if="selectedPost?.file_url" class="pt-12 w-auto sm:w-5/6 mx-2 sm:px-0 sm:mx-auto">
+                
+                <h1 class="text-center text-2xl font-bold my-4 text-primaryColor">Previsualización:</h1>
+                <PdfViewer :pdfsrc="getImage(selectedPost.file_url)"/>
+                <div class="min-h-screen bg-slate-200 flex w-full">
+                    <div id="adobe-dc-view" class="grow" style=""></div>
+                
+                </div>
             </div>
             <div v-else="selectedPost.file_url">
                 <p class="text-center">No hay archivo</p>
@@ -52,5 +44,10 @@ selectPostById($route.params.postid)
     </div>
 
 </template>
+<style scoped>
+    iframe{
+        height: 100vh;
+    }
+</style>
 
     

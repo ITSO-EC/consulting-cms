@@ -12,7 +12,7 @@ const { user } = useAuth();
 const scrolled = ref(false);
 
 watch(user, ()=> {
-  console.log(user)
+  //console.log(user)
 })
 
 const handleScroll = () => {
@@ -28,7 +28,7 @@ const handleScroll = () => {
 }
 
 onMounted(()=>{
-  console.log("user",user.value)
+  //console.log("user",user.value)
   window.addEventListener('scroll', handleScroll)
 })
 onUnmounted(()=>{

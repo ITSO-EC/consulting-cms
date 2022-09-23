@@ -7,7 +7,8 @@ export default defineNuxtConfig({
       "link": [],
       "style": [],
       "script": [{
-        src: "https://documentcloud.adobe.com/view-sdk/viewer.js"
+        src: "https://documentcloud.adobe.com/view-sdk/viewer.js",
+        body: true
       }],
       "noscript": [],
       "charset": "utf-8",
@@ -30,11 +31,16 @@ export default defineNuxtConfig({
       ],
     
     runtimeConfig: {
+        
+        public: { 
+          PDF_API_KEY: process.env.PDF_API_KEY,
+        },
         proxyURL:  '',
         baseApiURL:  '',
         
         authApiURL:  '',
-        pdfApiKey: ''
+        
+
         
      
     },
