@@ -1,4 +1,14 @@
 <script setup>
+const props = defineProps({
+  post:{
+    type: Object,
+    default:{}
+  },
+  category:{
+    type:Object,
+    default: {}
+  }
+})
 const loading = ref(true);
 const error = ref(false);
 
@@ -11,17 +21,7 @@ const onError = () => {
 };
 
 </script>
-<script>
-export default {
-  props: {
-    post:{
-      type: Object,
-      default: {}
-    }
-  },
 
-};
-</script>
 <template>
   <div
     class="
@@ -73,7 +73,7 @@ export default {
             ? 'w-full'
             : 'w-1/3 bg-slate-700 justify-self-end mt-1 pointer-events-none'
         }`"
-        :to="`/`">
+        :to="`/view/${category?.page}/category/${category?._id}/post/${post?._id}`">
          <!-- :to="`/page/${category?.page}/category/${category?.id}/post/${post?.id}`" -->
         {{ post != null && !loading ? "Ver más ►" : "" }}</nuxt-link
       >

@@ -2,11 +2,19 @@
     import TheNavBar from "@/components/TheNavBar";
     import TheFooter from "@/components/TheFooter";
     const {views, initializeViews} = useViews();
-    
-    
-    onMounted(()=> {
-        initializeViews();
-    })
+    const { initializeAllPosts} = useQueryPosts();
+
+    watch(views, async () => {
+      initializeAllPosts()
+  },
+ 
+);
+
+initializeViews();
+
+onMounted(()=> {
+    window.scrollTo(0,0);
+})
 </script>
 <template>
     <div>
