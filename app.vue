@@ -1,10 +1,16 @@
 <script setup>
   import '@/assets/styles/main.css'
-  </script>
+ 
+  
+</script>
 <template>
   <div>
+    
     <NuxtLayout >
+      
+    
       <NuxtPage/>
+     
     </NuxtLayout>
   </div>
 </template>

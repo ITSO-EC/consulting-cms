@@ -1,7 +1,7 @@
 <script setup>
 const {selectedView} = useViews();
 const {selectedCategory, getCategoryById} = useCategories();
-const {posts, selectedPost, loading, error, initializeQueriedPosts, selectPostById} = useQueryPosts();
+const {selectedPost, loading, error} = useQueryPosts();
 
 const $route = useRoute();
 

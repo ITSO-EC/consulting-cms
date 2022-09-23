@@ -6,3 +6,4 @@ export default function getImage(string: string) {
   
     return fileURL+imageresult;
 }  
+
