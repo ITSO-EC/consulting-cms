@@ -31,6 +31,8 @@ export const useQueryPostsStore = defineStore({
             try {
                 this.posts = data.results;
                 this.results = data.totalResults;
+
+                this.posts = this.posts.filter(result => result.status=='aprobado II');
                 this.page = data.page;
            } catch (error) {
                 this.error = error;

@@ -30,6 +30,9 @@ export const usePostsStore = defineStore({
                     .then((res)=> {
                         this.posts = res.results;
                         this.results = res.totalResults;
+                        
+                        const filtered = this.posts.filter(result => result.status=='aprobado II');
+                        
                         this.page = res.page;
                         this.loading = false;
                        

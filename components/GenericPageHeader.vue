@@ -3,7 +3,18 @@ import getImage from '~~/composables/useResources';
 
 const {selectedView} = useViews();
 
+const convertDate = (date) => {
+  const monthNames = ["Ene", "Feb", "Mar", "Abr", "May", "Jun",
+  "Jul", "Ago", "Sep", "Oct", "Nov", "Dic", "Error"
+];
 
+  date = new Date(date)
+  let dd = date.getDate(); 
+  let mm = date.getMonth();
+  let yyyy = date.getFullYear(); 
+  if(dd<10){dd='0'+dd} 
+  return date = dd+'-'+monthNames[mm]+'-'+yyyy
+}
 </script>
 <template>
   <div class="h-[50vh] relative flex justify-center -mt-16" >
@@ -15,16 +26,16 @@ const {selectedView} = useViews();
         </h1>
         <h2
         :class="`text-blue-500 font-semibold`" 
-        class=" text-center text-md md:text-xl md:mb-2">
+        class=" text-center text-md md:text-xl pt-3">
       
           ¡Actualizado a diario!
         </h2>
       </div>
 
-      <div class="justify-self-end text-center">
+      <div class="justify-self-start text-center">
         <p class="text-black" v-if="selectedView?.name">
         <span class="font-bold">Últ. act.:</span>
-        {{selectedView.updatedAt}}</p>
+        {{convertDate(selectedView.updatedAt)}}</p>
       </div>
       
     </div>

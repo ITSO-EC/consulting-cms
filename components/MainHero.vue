@@ -11,8 +11,10 @@
       />
       
       <div :class="$style.content">
-        <h1 :class="$style.title">AÑOS DE EXPERIENCIA</h1>
-        <h1 :class="$style.subtitle">Al alcance de todos, siempre</h1>
+        
+        <h1 :class="$style.bigtitle">28 AÑOS</h1>
+        <h1 :class="$style.title">DE EXPERIENCIA</h1>
+        <h1 :class="$style.subtitle">Al alcance de todos ¡Siempre!</h1>
         <SecondaryButton>
           <nuxt-link to="/search" :class="$style.inlineButton">Buscar</nuxt-link>
         </SecondaryButton>
@@ -38,6 +40,13 @@
         font-weight: 700;
         font-size: 2.25rem; /* 36px */
         line-height: 2.5rem; /* 40px */
+        margin-bottom: 1rem;
+        color: antiquewhite;
+    }
+    .bigtitle {
+        font-weight: 700;
+        font-size: 3rem; /* 36px */
+        line-height: 3.25rem; /* 40px */
         margin-bottom: 1rem;
         color: antiquewhite;
     }

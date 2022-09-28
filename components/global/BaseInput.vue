@@ -36,7 +36,8 @@
       :class="`${top ? 'rounded-t':'rounded'} border-b border-b-primaryColor ${disabled? 'bg-white':`bg-secondaryColor focus:bg-blankColor bg-opacity-10`}  `"
       class="
         w-full
-        p-2
+        py-2
+        px-4
         text-black text-sm
         leading-tight
         focus:outline-none 

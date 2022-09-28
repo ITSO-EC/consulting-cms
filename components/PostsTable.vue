@@ -1,5 +1,8 @@
 <script setup>
+  
+import getImage from "~~/composables/useResources"
 import useQueryPosts from '~~/composables/useQueryPosts'
+
 const props = defineProps ({
     summarized: {
       type: Boolean,
@@ -26,6 +29,30 @@ if(!props.summarized)
     initializeQueriedPosts($route.params.categoryid)
   }  
   
+
+const download = (url) => {
+  const a = document.createElement('a')
+  a.href = url
+  
+  document.body.appendChild(a)
+
+  a.download = url.split('/').pop()
+  a.click()
+  document.body.removeChild(a)
+}
+
+const convertDate = (date) => {
+  const monthNames = ["Ene", "Feb", "Mar", "Abr", "May", "Jun",
+  "Jul", "Ago", "Sep", "Oct", "Nov", "Dic", "Error"
+  ];
+
+  date = new Date(date)
+  let dd = date.getDate(); 
+  let mm = date.getMonth();
+  let yyyy = date.getFullYear(); 
+  if(dd<10){dd='0'+dd} 
+  return date = dd+'-'+monthNames[mm]+'-'+yyyy
+}
 onMounted(()=>{
   
 })
@@ -39,11 +66,12 @@ onMounted(()=>{
     <table v-if="!loading && posts.length > 0" class="w-full bg-white mt-2 sm:my-4 shadow-lg sm:rounded-sm overflow-hidden">
       <thead :class="`bg-primaryColor shadow-md`">
         <tr :class="`grid ${summarized? 'grid-cols-3 sm:grid-cols-8' : 'grid-cols-8 lg:grid-cols-12'} text-blankColor`" class="font-bold text-left h-12 py-1 px-4">
-          <td class="col-span-1 lg:col-span-2">R.O.</td>
-          <td class="hidden sm:table-cell col-span-2 lg:col-span-1">FECHA</td>
-          <td class="hidden lg:table-cell col-span-2">TIPO DE NORMA</td>
+          <td class="col-span-1 ">R.O.</td>
+          <td class="hidden sm:table-cell col-span-2 text-center">FECHA</td>
+          <td class="hidden lg:table-cell col-span-2 text-center">TIPO DE NORMA</td>
+          <td :class="summarized ? 'hidden':'col-span-6 sm:col-span-4'" class="mx-2 sm:mx-0 text-center">NOMBRE NORMA</td>
+          
           <td :class="summarized? 'col-span-1 sm:col-span-4 lg:col-span-2':'hidden lg:table-cell col-span-2'" class="text-center">ÓRGANO EMISOR</td>
-          <td :class="summarized ? 'hidden':'col-span-6 sm:col-span-4'" class="mx-2 sm:mx-0 text-center">TÍTULO</td>
           <td class="col-span-1 text-center">PDF</td>
         </tr>
       </thead>
@@ -52,47 +80,64 @@ onMounted(()=>{
                 
         <tr v-for="(item, numid) in posts" :key="numid" :class="`grid ${summarized? 'grid-cols-3 sm:grid-cols-8' : 'grid-cols-8 lg:grid-cols-12'} ${numid % 2 ? `bg-opacity-20 bg-primaryColor` :  `` } h-12 px-4`">
           
-          <td class="col-span-1 lg:col-span-2 text-left font-semibold">
+          <td class="col-span-1  text-left font-semibold">
            
             <nuxt-link 
             v-if="selectedCategory && posts"
             :to="`/view/${selectedCategory.page}/category/${selectedCategory._id}/post/${item._id}`" 
             
-              class="inline-block w-full">{{item.ro}} </nuxt-link>
+              class="inline-block w-full pt-3">{{item.ro}} </nuxt-link>
           </td>
 
-          <td class="hidden sm:table-cell col-span-2 lg:col-span-1 text-left font-semibold">
+          <td  class="hidden sm:table-cell col-span-2 text-center font-semibold">
             
              <nuxt-link 
              v-if="selectedCategory && posts"
              :to="`/view/${selectedCategory.page}/category/${selectedCategory._id}/post/${item._id}`" 
-             class="inline-block w-full">
+             class="inline-block w-full pt-3">
             
-             {{item.updatedAt}}</nuxt-link>
+             {{convertDate(item.createdAt)}}</nuxt-link>
            </td>
 
-          <td class="hidden lg:table-cell col-span-2 text-left font-semibold">
+          <td  class="hidden lg:table-cell col-span-2 text-center font-semibold ">
           
             <nuxt-link 
             v-if="selectedCategory && posts"
             :to="`/view/${selectedCategory.page}/category/${selectedCategory._id}/post/${item._id}`" 
-            class="inline-block w-full">
+            class="inline-block w-full pt-3">
             {{item.type_reform}}</nuxt-link>
           </td>
-          <td :class="summarized? 'col-span-1 sm:col-span-4 flex lg:col-span-2':'hidden lg:flex lg:justify-center lg:items-center col-span-2'" class="text-center font-semibold">
-            <img src="../assets/logos/sriLogo.png" class="h-8" alt="SRILogo">
-          </td>
-          <td :class="summarized? 'hidden':'col-span-6 sm:col-span-4'" class="mx-2 sm:px-0text-left font-semibold overflow-hidden">
-            <span class="truncate"
-              >{{item.title}}</span
+         
+          <td  :class="summarized? 'hidden':'col-span-6 sm:col-span-4'" class="mx-2 sm:px-0 text-center font-semibold overflow-hidden">
+            <nuxt-link 
+            v-if="selectedCategory && posts"
+            :to="`/view/${selectedCategory.page}/category/${selectedCategory._id}/post/${item._id}`"
+            class="inline-block w-full pt-3"
+              >{{item.title}}</nuxt-link
             >
           </td>
-          <td class="col-span-1 flex justify-center items-center font-semibold">
-            <BaseIcon
+          
+          <td  :class="summarized? 'col-span-1 sm:col-span-4 flex justify-center items-center lg:col-span-2':'hidden lg:flex lg:justify-center lg:items-center col-span-2'" class="text-center font-semibold">
+            <a href="https://www.sri.gob.ec" target="_blank" rel="noopener noreferrer">
+              
+              <img src="../assets/logos/sriLogo.png" class="h-8" alt="SRILogo">
+            </a>
+            <!-- Corregir para que venga de referencia -->
+          </td>
+
+          <td  class="col-span-1 flex justify-center items-center font-semibold">
+       
+              <BaseIcon v-if="item.file_url"
+              @click="download(getImage(item.file_url))"
               :size="'h-8'"
               class="cursor-pointer"
               :name="'file'"
-            ></BaseIcon>
+            >
+            </BaseIcon>
+          
+
+            <BaseIcon v-else :name="'close'"></BaseIcon>
+            
           </td>
         </tr>
     

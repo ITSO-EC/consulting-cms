@@ -1,9 +1,18 @@
 <script setup>
 import SearchDropdown from '~~/components/SearchDropdown';
+const props = defineProps({
+  summarized: {
+    type: Boolean,
+    default: false,
+  }
+})
+
 const {posts, error, loading, results, page , loadPosts} = usePosts();
 const openDropdown = ref(false);
 const searchQuery = ref('');
 const searchinput = ref(null);
+
+
 
  watch(searchQuery,()=>{
    
@@ -48,7 +57,7 @@ const searchinput = ref(null);
               </button>
               <BaseInput ref="searchinput" :top="false" :class="`pl-10`" :placeholder="'Buscar'" v-model="searchQuery"/>
             </div>
-            <SearchDropdown :open="openDropdown" :queryText="searchQuery"></SearchDropdown>
+            <SearchDropdown v-if="!summarized" :open="openDropdown" :queryText="searchQuery"></SearchDropdown>
           </div>
   
 </template>
