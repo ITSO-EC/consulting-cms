@@ -53,6 +53,20 @@ const convertDate = (date) => {
   if(dd<10){dd='0'+dd} 
   return date = dd+'-'+monthNames[mm]+'-'+yyyy
 }
+
+const getLogo = (url) =>  {
+  switch(url) {
+    case 'www.sri.gob.ec':
+      return '../assets/logos/sriLogo.png'
+    case 'www.supercias.gob.ec':
+      return '../assets/logos/supercias.png'
+    case 'www.trabajo.gob.ec':
+      return '../assets/logos/ministeriotrab.png'
+    case 'www.iess.gob.ec':
+      return '../assets/logos/iess.png'
+     
+  }
+}
 onMounted(()=>{
   
 })
@@ -118,9 +132,9 @@ onMounted(()=>{
           </td>
           
           <td  :class="summarized? 'col-span-1 sm:col-span-4 flex justify-center items-center lg:col-span-2':'hidden lg:flex lg:justify-center lg:items-center col-span-2'" class="text-center font-semibold">
-            <a href="https://www.sri.gob.ec" target="_blank" rel="noopener noreferrer">
+            <a :href="`https://${item.reference}`" target="_blank" rel="noopener noreferrer">
               
-              <img src="../assets/logos/sriLogo.png" class="h-8" alt="SRILogo">
+              <img :src="getLogo(item.reference)" class="h-8" alt="Logo">
             </a>
             <!-- Corregir para que venga de referencia -->
           </td>
