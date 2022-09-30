@@ -1,4 +1,4 @@
-const fileURL = "https://itso.ga/v1/posts/file/"
+const fileURL = "https://itso.ga/v1/uploads/"
 export default function getImage(string: string) {
     if(!string) return
     let imgsource = string?.split("/")

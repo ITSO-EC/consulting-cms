@@ -61,7 +61,7 @@ onMounted(()=>{
       <ConsultingSidebar :class="`animate__animated animate__fadeInLeft ${firstVisit? 'animate__delay-2s animate__slower' : '' }`" v-if="$route.params.pageid" :key="$route.params.pageid"/> 
       <div class="w-full lg:w-4/5 animate__animated animate__fadeIn" :class="`${firstVisit ? 'animate__delay-4s': ''}`"  :key="$route.fullPath">
          
-        <ConsultingBreadcrumbs :key="$route.fullPath" class="mx-auto w-full sm:w-5/6"/>   
+        <ConsultingBreadcrumbs class="mx-auto w-full sm:w-5/6"/>   
 
         <slot />
       </div>

@@ -41,14 +41,14 @@ onMounted(() => {
     </h1>
 
     <form action="w-full">
-      <BaseLabel for="user" class="text-left mt-2">Usuario:</BaseLabel>
+      <!-- <BaseLabel for="user" class="text-left mt-2">Usuario:</BaseLabel>
       <BaseInput
         id="user"
         name="user"
         :aria-disabled="disabled"
         :disabled="disabled"
         :modelValue="disabled ? props.user.username : ''"
-      ></BaseInput>
+      ></BaseInput> -->
 
       <BaseLabel for="name" class="text-left mt-2">Nombre:</BaseLabel>
       <BaseInput

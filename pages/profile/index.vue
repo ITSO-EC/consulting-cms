@@ -1,9 +1,10 @@
 <script setup>
+import useAuth from "~~/composables/useAuth";
 import FullScreenDiv from "~~/components/FullScreenDiv.vue";
 import UserInfoCard from "~~/components/UserInfoCard.vue";
 import UserInfoForm from "~~/components/UserInfoForm.vue";
 const editting = ref(true);
-
+const { user } = useAuth()
 
 </script>
 <template>
@@ -16,7 +17,7 @@ const editting = ref(true);
 
     <div class=" col-start-2 col-span-10 lg:col-start-5 lg:col-span-7 bg-white md:border-l md:border-slate-300">
       
-      <UserInfoForm :class="`p-4`" :disabled="editting" @editting-prof="editting=!editting"></UserInfoForm>
+      <UserInfoForm :class="`p-4`" :disabled="editting" :user="user" @editting-prof="editting=!editting"></UserInfoForm>
     </div>
   </div>
 </template>

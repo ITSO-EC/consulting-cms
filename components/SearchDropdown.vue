@@ -22,6 +22,7 @@
     >
       <div v-show="dropdownOpen" class="absolute w-full z-50 top-full bg-white border border-slate-200 py-1.5 rounded shadow-lg overflow-hidden mt-4">
         <div
+          v-if="options?.length > 0"
           ref="dropdown"
           class="font-medium text-sm text-slate-600 divide-y divide-slate-200"
           @focusin="dropdownOpen = true"
@@ -41,6 +42,23 @@
               <path d="M10.28.28L3.989 6.575 1.695 4.28A1 1 0 00.28 5.695l3 3a1 1 0 001.414 0l7-7A1 1 0 0010.28.28z" />
             </svg> -->
           </nuxt-link>          
+        </div>
+
+        <div
+          v-else
+          ref="dropdown"
+          class="font-medium text-sm text-slate-600 divide-y divide-slate-200"
+          @focusin="dropdownOpen = true"
+          @focusout="dropdownOpen = false"
+        >
+
+          <span
+    
+            class="flex items-center text-indigo-500 justify-between w-full py-2 font-medium px-3"
+            @click="selected = option.id; dropdownOpen = false"
+          >
+            <span>No se ha encontrado un resultado</span>
+          </span>          
         </div>
       </div>
     </transition>

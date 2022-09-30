@@ -11,7 +11,7 @@ export default async function registerWithEmail( name:string, email:string ,pass
         const res = await $fetch(AUTH_API+'register', {
             method: 'POST',
             headers:{'Content-type': 'application/json'},
-            mode: 'no-cors',
+            
             body: {name, email, password}
         }
         );

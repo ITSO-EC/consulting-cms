@@ -41,7 +41,7 @@ definePageMeta({
           <div class="flex-1">
             <div class="flex items-center justify-between h-16 px-4 sm:px-6 lg:px-8">
               <!-- Logo -->
-              <AppLogo />
+              <AppLogo class="brightness-50"/>
             </div>
           </div>          
 
@@ -49,7 +49,7 @@ definePageMeta({
             <h1 class="text-3xl w-full text-left text-slate-800 font-bold mb-6">¡Manténgase al tanto de las novedades! 📞</h1>
             <!-- Form -->
             
-      <UserInfoCard @selectedfile="setFile" class="-mx-8 sm:-mx-0 md:-mx-12 lg:-mx-0"></UserInfoCard>
+      <!-- <UserInfoCard @selectedfile="setFile" class="-mx-8 sm:-mx-0 md:-mx-12 lg:-mx-0"></UserInfoCard> -->
             <form>
               <div class="space-y-4">
                 
@@ -66,10 +66,11 @@ definePageMeta({
                   <BaseLabel class="text-left w-full" for="cellphone">No. Celular <span class="text-rose-500">*</span></BaseLabel>
                   <BaseInput id="cellphone"  type="text" v-model="cellphone"/>
                 </div>
-                <div>
+
+                <!-- <div>
                   <BaseLabel class="text-left w-full" for="city_id">Cédula</BaseLabel>
                   <BaseInput id="city_id"  type="text" v-model="city_id"/>
-                </div>
+                </div> -->
               
                 <div>
                   <BaseLabel class="text-left w-full" for="password">Clave<span class="text-rose-500">*</span></BaseLabel>
@@ -85,7 +86,7 @@ definePageMeta({
                 <span class="text-sm w-full text-left">Acepto los términos y condiciones.</span>
               </label>
               
-              <div class="flex items-center justify-between mt-6">
+              <div class="flex items-center justify-between mt-2">
                 <div class="mr-1">
                   <label class="flex items-center justify-start">
                     <input type="checkbox" class="w-4 p-0 mr-4" v-model="suscription"/>

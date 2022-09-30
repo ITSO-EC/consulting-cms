@@ -60,7 +60,7 @@ onUnmounted(()=>{
                     <NavDropdown class="lg:hidden"/>
 
                 </div>
-                <div v-else class="flex items-center lg:order-2  justify-self-end" >
+                <div v-else class="flex items-center lg:order-2  justify-self-end py-2" >
                     <span class="text-blankColor">{{user.name}}</span>
                     <NavDropdown />
 

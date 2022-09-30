@@ -34,7 +34,7 @@ onMounted(()=>{
                   after:text-slate-400 after:px-2
                 "
               >
-                <nuxt-link v-if="selectedView?.name" class="inline-block text-slate-500 hover:text-indigo-500" :to="`/view/${selectedView?._id}`">
+                <nuxt-link v-if="selectedView?.name && $route.params.pageid" class="inline-block text-slate-500 hover:text-indigo-500" :to="`/view/${selectedView?._id}`">
                   {{selectedView?.name}}</nuxt-link> 
                 
               </li>
@@ -46,7 +46,7 @@ onMounted(()=>{
                   after:text-slate-400 after:px-2
                 "
               >
-                 <nuxt-link  v-if="selectedCategory?.name"  class="inline-block text-slate-500 hover:text-indigo-500" :to="`/view/${selectedView?._id}/category/${selectedCategory?._id}`"
+                 <nuxt-link  v-if="selectedCategory?.name && $route.params.categoryid"  class="inline-block text-slate-500 hover:text-indigo-500" :to="`/view/${selectedView?._id}/category/${selectedCategory?._id}`"
                   >
                 {{selectedCategory?.name}}</nuxt-link>
                 
@@ -58,7 +58,7 @@ onMounted(()=>{
                   after:text-slate-400 after:px-2
                 "
                 
-                 v-if="selectedPost?.title"
+                 v-if="selectedPost?.title && $route.params.postid"
               >
                 <nuxt-link class="inline-block text-slate-500 hover:text-indigo-500" :to="`/view/${selectedView?._id}/category/${selectedCategory?._id}/post/${selectedPost?._id}`"
                   > {{selectedPost?.title}} </nuxt-link>
