@@ -33,7 +33,10 @@ watch(views, async () => {
   },
  
 );
-
+const loaded = ref(false);
+const toggleLoader = () => {
+  loaded.value =true;
+}
 //Fuerza la carga de vistas siempre que se actualiza la pagina
 initializeViews();
 onMounted(()=>{
@@ -47,6 +50,9 @@ onMounted(()=>{
 
 <template>
   <div>
+    <div :class="`fixed z-50 bg-slate-100 h-screen w-screen flex justify-center items-center ${loaded ?'hidden' :''}`">
+      <div class="rounded-full h-8 w-8 mx-auto my-auto bg-blue-500 animate-ping"></div>
+    </div>
     <header class="sticky top-0 z-50">
       <TheNavBar>
         <template #links>
@@ -55,7 +61,7 @@ onMounted(()=>{
       </TheNavBar>
     </header>
 
-    <GenericPageHeader  :class="`shadow animate__animated animate__fadeIn ${firstVisit? 'animate__delay-1s' : '' }`"></GenericPageHeader>
+    <GenericPageHeader @readyheader="toggleLoader" :class="`shadow animate__animated animate__fadeIn ${firstVisit? 'animate__delay-1s' : '' }`" ></GenericPageHeader>
    
     <main v-bind="$attrs" class="relative flex min-h-screen  z-10 overflow-x-hidden" >
       <ConsultingSidebar :class="`animate__animated animate__fadeInLeft ${firstVisit? 'animate__delay-2s animate__slower' : '' }`" v-if="$route.params.pageid" :key="$route.params.pageid"/> 
@@ -76,6 +82,3 @@ export default {
   inheritAttrs: false,
 };
 </script>
-
-<style>
-</style>

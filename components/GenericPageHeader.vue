@@ -44,6 +44,7 @@ const convertDate = (date) => {
         :src="getImage(selectedView.image_url)"
         class="object-cover w-full h-[50vh] brightness-75"
         alt=""
+        @load="$emit('readyheader')"
       />
     </div>
   </div>

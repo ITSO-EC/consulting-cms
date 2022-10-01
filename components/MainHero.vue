@@ -1,5 +1,6 @@
 <script setup>
     import SecondaryButton from '~~/components/SecondaryButton.vue';
+   
 </script>
 
 <template>
@@ -8,6 +9,7 @@
         alt="Imagen del hero"
         :class="$style.heroImage"
         src="../assets/images/BusinessPicFinal.png"
+       
       />
       
       <div :class="$style.content">

@@ -6,9 +6,6 @@ import PageCardList from '~~/components/PageCardList.vue';
 
 const {posts, error, loading, results, page,loadPosts} = usePosts();
 
-watch(posts, ()=> {
-}
-)
 
 onMounted(()=>{
     loadPosts();
@@ -20,7 +17,8 @@ definePageMeta({
 </script>
 <template>
     <div>
-        <MainHero></MainHero>
+        
+        <MainHero @readyhero="toggleLoader()"></MainHero>
          
         <div class="mt-6 h-auto  mx-auto pt-0 flex flex-col justify-center">
             <CardList class="py-12">
