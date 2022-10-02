@@ -66,8 +66,8 @@ onUnmounted(()=>{
 
                 </div>
                 <div class="hidden items-center w-full lg:flex lg:w-auto lg:order-1  col-span-2" id="mobile-menu-2">
-                  <SearchInput  :class="`bg-blankColor bg-opacity-100 focus:bg-white rounded 
-                  ${(/^search*/.test($route.name)) || (/^view*/.test($route.name))? 'hidden':''}`"></SearchInput>
+                  <SearchInput v-if="!(/^search*/.test($route.name)) && !(/^view*/.test($route.name))" :class="`bg-blankColor bg-opacity-100 focus:bg-white rounded 
+                  `"></SearchInput>
                 </div>
             </div>
   </nav>

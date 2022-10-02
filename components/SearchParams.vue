@@ -1,10 +1,17 @@
 <script setup>
 import SearchInput from "@/components/SearchInput.vue";
+const emit = defineEmits(['query']);
+
+const binquery = (query) => {
+  
+  emit('query', query)
+}
+
 </script>
 <template>
   <div :class="`border-b border-b-primaryColor`" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 w-full sm:w-5/6 mx-auto px-4 sm:px-0 gap-x-8 gap-y-2 pt-6 pb-12">
     
-    <SearchInput summarized class="col-span-1 sm:col-span-2 lg:col-span-3 my-2" :class="`border-b border-b-primaryColor`"/>
+    <SearchInput @queryparam="binquery" summarized class="col-span-1 sm:col-span-2 lg:col-span-3 my-2" :class="`border-b border-b-primaryColor`"/>
     
 
     <div class="flex items-center gap-4">

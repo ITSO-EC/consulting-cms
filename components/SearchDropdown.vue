@@ -47,13 +47,17 @@
           @focusout="dropdownOpen = false"
         >
 
-          <span
+          <nuxt-link
     
-            class="flex items-center justify-between w-full py-2 font-medium px-3"
-            @click="selected = option.id; dropdownOpen = false"
+            class="flex items-center text-indigo-500 justify-between w-full py-2 font-medium px-3"
+            @click="dropdownOpen = false"
+            to="/search"
           >
-            <span>Busca otros temas de interés</span>
-          </span>          
+            Busca otros temas de interés
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+              </svg>
+          </nuxt-link>          
         </div>
       </div>
     </transition>
@@ -80,7 +84,7 @@ export default {
   },
   setup(props) {
     const { views } = useViews();
-    const {posts, error, loading, results, page , loadPosts, initializeAllPosts, initializeByQuery} = useQueryPosts();
+    const {posts} = useQueryPosts();
     const {retriveCategoryById} = useCategories();
 
     const dropdownOpen = ref(false)

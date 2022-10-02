@@ -1,6 +1,7 @@
 <script setup>
 import getImage from "~~/composables/useResources"
 const {selectedPost, loading, error} = useQueryPosts();
+const config = useRuntimeConfig();
 const download = (url) => {
   const a = document.createElement('a')
   a.href = url
@@ -25,6 +26,22 @@ const convertDate = (date) => {
   return date = dd+'-'+ monthNames[mm]+ '-'+ yyyy;
 }
 
+
+const getLogo = (url) =>  {
+  switch(url) {
+    case 'www.sri.gob.ec':
+      return 'assets/logos/sriLogo.png'
+    case 'www.supercias.gob.ec':
+      return 'assets/logos/supercias.png'
+    case 'www.trabajo.gob.ec':
+      return 'assets/logos/ministeriotrab.png'
+    case 'www.iess.gob.ec':
+      return 'assets/logos/iess.png'
+     
+  }
+}
+
+
 </script>
 <template>
   <!-- Mover esta tabla a un componente -->
@@ -32,8 +49,8 @@ const convertDate = (date) => {
     <div class="grid grid-cols-12 w-full">
       <div class="col-span-12 sm:col-span-3 lg:col-span-2 flex flex-col items-center justify-center gap-2 m-4">
         <span class="font-bold h-1/3">Órgano Emisor</span>
-        <a href="https://www.sri.gob.ec" target="_blank" rel="noopener noreferrer">
-          <img src="~~/assets/logos/sriLogo.png" class="h-24 w-24" alt="SRILogo" />
+        <a :href="`https://${selectedPost?.reference}`" target="_blank" rel="noopener noreferrer">
+          <img :src="`http://${config.public.DOMAIN_URL}/${getLogo(selectedPost?.reference)}`" class="h-24 w-24" alt="SRILogo" />
   
         </a>
       </div>  

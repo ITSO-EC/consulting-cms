@@ -11,6 +11,7 @@ const {posts, error, loading, results, page , initializeAllPosts, initializeByQu
 const openDropdown = ref(false);
 const searchQuery = ref('');
 const searchinput = ref(null);
+const route = useRoute();
 
 
 //Abre el dropdown si hay texto
@@ -44,15 +45,14 @@ const searchinput = ref(null);
         }
      }
      
-     if(searchQuery.value.length < 4) {
+     if(searchQuery.value.length < 4 && !(/^search*/.test(route.name)) && !(/^view*/.test(route.name))) {
         initializeAllPosts();
      }
      
   } 
 
-  //Inicia todos los posts
-  initializeAllPosts()
-  onMounted(async () => {
+ 
+  onMounted(() => {
       document.addEventListener('click', clickHandler)
       document.addEventListener('keydown', keyHandler)  
     })
@@ -75,7 +75,7 @@ const searchinput = ref(null);
                 
                 <BaseIcon :size="'h-[20px] w-[20px]'" :class="`text-blue-500`" name="search"/>
               </button>
-              <BaseInput ref="searchinput" :top="false" :class="`pl-10`" :placeholder="'Buscar'" v-model="searchQuery"/>
+              <BaseInput @input="summarized?$emit('queryparam',searchQuery):null" ref="searchinput" :top="false" :class="`pl-10`" :placeholder="'Buscar'" v-model="searchQuery"/>
             </div>
             <SearchDropdown v-if="!summarized && !loading" :open="openDropdown" :queryText="searchQuery"></SearchDropdown>
           </div>
