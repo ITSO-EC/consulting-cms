@@ -11,7 +11,7 @@ const props = defineProps ({
   }
 );
 const $route = useRoute();
-
+const config = useRuntimeConfig();
 const {selectedCategory} = useCategories();
 const {posts, selectedPost,error, loading, results, page, initializeAllPosts,
   initializeQueriedPosts, selectPostById} = useQueryPosts();
@@ -57,13 +57,13 @@ const convertDate = (date) => {
 const getLogo = (url) =>  {
   switch(url) {
     case 'www.sri.gob.ec':
-      return '../assets/logos/sriLogo.png'
+      return 'assets/logos/sriLogo.png'
     case 'www.supercias.gob.ec':
-      return '../assets/logos/supercias.png'
+      return 'assets/logos/supercias.png'
     case 'www.trabajo.gob.ec':
-      return '../assets/logos/ministeriotrab.png'
+      return 'assets/logos/ministeriotrab.png'
     case 'www.iess.gob.ec':
-      return '../assets/logos/iess.png'
+      return 'assets/logos/iess.png'
      
   }
 }
@@ -134,7 +134,7 @@ onMounted(()=>{
           <td  :class="summarized? 'col-span-1 sm:col-span-4 flex justify-center items-center lg:col-span-2':'hidden lg:flex lg:justify-center lg:items-center col-span-2'" class="text-center font-semibold">
             <a :href="`https://${item.reference}`" target="_blank" rel="noopener noreferrer">
               
-              <img :src="getLogo(item.reference)" class="h-8" alt="Logo">
+              <img :src="`http://${config.public.DOMAIN_URL}/${getLogo(item.reference)}`" class="h-8" alt="Logo">
             </a>
             <!-- Corregir para que venga de referencia -->
           </td>

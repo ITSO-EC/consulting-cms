@@ -24,24 +24,19 @@
         <div
           v-if="options?.length > 0"
           ref="dropdown"
-          class="font-medium text-sm text-slate-600 divide-y divide-slate-200"
+          class="font-medium text-sm text-indigo-500 divide-y divide-slate-200"
           @focusin="dropdownOpen = true"
           @focusout="dropdownOpen = false"
         >
 
-          <nuxt-link
+          <SearchDropdownItem
             v-for="option in options"
-            :key="option.id"
-            class="flex items-center justify-between w-full hover:bg-slate-50 py-2 font-medium px-3 cursor-pointer"
-            :class="option.id === selected && 'text-indigo-500'"
-            @click="selected = option.id; dropdownOpen = false"
-            :to="'/'"
-          >
-            <span>{{option.title}}</span>
-            <!-- <svg class="shrink-0 ml-2 fill-current text-indigo-400" :class="option.id !== selected && 'invisible'" width="12" height="9" viewBox="0 0 12 9">
-              <path d="M10.28.28L3.989 6.575 1.695 4.28A1 1 0 00.28 5.695l3 3a1 1 0 001.414 0l7-7A1 1 0 0010.28.28z" />
-            </svg> -->
-          </nuxt-link>          
+            :key="option._id"
+            :post="option"
+            @click="dropdownOpen = false"
+         
+          />
+                   
         </div>
 
         <div
@@ -54,10 +49,10 @@
 
           <span
     
-            class="flex items-center text-indigo-500 justify-between w-full py-2 font-medium px-3"
+            class="flex items-center justify-between w-full py-2 font-medium px-3"
             @click="selected = option.id; dropdownOpen = false"
           >
-            <span>No se ha encontrado un resultado</span>
+            <span>Busca otros temas de interés</span>
           </span>          
         </div>
       </div>
@@ -67,9 +62,12 @@
 
 <script>
 import { ref, onMounted, onUnmounted } from 'vue'
-
+import SearchDropdownItem from '~~/components/SearchDropdownItem.vue';
 export default {
   name: 'DropdownFull',
+  components: {
+    SearchDropdownItem
+  },  
   props: {  
     open: {
       type: Boolean,
@@ -81,46 +79,93 @@ export default {
     }
   },
   setup(props) {
-    const {posts, error, loading, results, page , loadPosts} = usePosts();
+    const { views } = useViews();
+    const {posts, error, loading, results, page , loadPosts, initializeAllPosts, initializeByQuery} = useQueryPosts();
+    const {retriveCategoryById} = useCategories();
+
     const dropdownOpen = ref(false)
     const trigger = ref(null)
     const dropdown = ref(null)    
     const selected = ref(0)
-    const base = posts;
 
-    const options = ref([...base.value]);
+    const options = ref([...posts.value]);
     const queryText = ref('');
+
     watch(
       props, (val)=> {
         dropdownOpen.value = val.open;
         queryText.value = val.queryText;
-
-        options.value = filterByValue(options.value, queryText.value);
+        if(!queryText.value) {
+          options.value = [...posts.value];
+        }
+        else{
+          options.value = filterByValue(queryText.value);
+        
+        }
+        
         //if(trigger && val) trigger.click();
       }
     )
 
-
-    const filterByValue = (array,text) => {
+    const filterByValue = (text) => {
+      let array = [...posts.value];  
+      let sorted =  array.filter(o => similarity(o["title"]?.toString(), text?.toString()) > 0.05)
+        
+        
+        // o["title"]?.toString().toLowerCase().includes(text?.toString().toLowerCase()));
+        return sorted;
       
-      array = [...base.value];
-      let sorted =  array?.filter(o =>
-       o["title"]?.toString().toLowerCase().includes(text?.toString().toLowerCase()));
-      return sorted;
     }
 
 
-    // //   // close on click outside
-    //  const clickHandler = ({ target }) => {
-    //    if (!dropdownOpen.value || dropdown.value.contains(target) || trigger?.value.contains(target)) return
-    //    dropdownOpen.value = false
-    //  }
+    const similarity = (s1, s2) => {
+      let longer = s1;
+      let shorter = s2;
+      if (s1.length < s2.length) {
+        longer = s2;
+        shorter = s1;
+      }
+      let longerLength = longer.length;
+      if (longerLength == 0) {
+        return 1.0;
+      }
+      return (longerLength - editDistance(longer, shorter)) / parseFloat(longerLength);
+    }
+
+    const editDistance = (s1, s2) => {
+      s1 = s1.toLowerCase();
+      s2 = s2.toLowerCase();
+
+      let costs = new Array();
+      for (let i = 0; i <= s1.length; i++) {
+        let lastValue = i;
+        for (let j = 0; j <= s2.length; j++) {
+          if (i == 0)
+            costs[j] = j;
+          else {
+            if (j > 0) {
+              let newValue = costs[j - 1];
+              if (s1.charAt(i - 1) != s2.charAt(j - 1))
+                newValue = Math.min(Math.min(newValue, lastValue),
+                  costs[j]) + 1;
+              costs[j - 1] = lastValue;
+              lastValue = newValue;
+            }
+          }
+        }
+        if (i > 0)
+          costs[s2.length] = lastValue;
+      }
+      return costs[s2.length];
+    }
 
     // close if the esc key is pressed
     const keyHandler = ({ keyCode }) => {
+     
       if (!dropdownOpen.value || keyCode !== 27) return
+      
       dropdownOpen.value = false
-    }
+    } 
 
     onMounted(() => {
       //document.addEventListener('click', clickHandler)
@@ -138,6 +183,7 @@ export default {
       dropdown,
       selected,
       options,
+      retriveCategoryById
     }
   },
 

@@ -7,40 +7,60 @@ const props = defineProps({
   }
 })
 
-const {posts, error, loading, results, page , loadPosts} = usePosts();
+const {posts, error, loading, results, page , initializeAllPosts, initializeByQuery} = useQueryPosts();
 const openDropdown = ref(false);
 const searchQuery = ref('');
 const searchinput = ref(null);
 
 
-
+//Abre el dropdown si hay texto
  watch(searchQuery,()=>{
-   
    if(!searchinput.value)
    { 
      openDropdown.value = false;
    }  
    else { 
-    
      openDropdown.value = true;
    }
  })
 
+ //Cierra si no se hace click en el input
   const clickHandler = ({ target }) => {
     
-    if (searchinput === searchinput.value.$refs.input) openDropdown.value = true;
+    if (searchinput === searchinput.value.$refs.input) {
+      openDropdown.value = true;
+    }
     else {
       openDropdown.value = false
     }
+
   }
-  onMounted(() => {
-      loadPosts();
+  
+  const keyHandler = ({ keyCode }) => {
+     if(keyCode === 32 ){
+        if(searchQuery.value.length > 0 )
+        {
+          initializeByQuery(searchQuery.value)
+        }
+     }
+     
+     if(searchQuery.value.length < 4) {
+        initializeAllPosts();
+     }
+     
+  } 
+
+  //Inicia todos los posts
+  initializeAllPosts()
+  onMounted(async () => {
       document.addEventListener('click', clickHandler)
-      })
+      document.addEventListener('keydown', keyHandler)  
+    })
 
     onUnmounted(() => {
       document.removeEventListener('click', clickHandler)
-      })    
+      document.removeEventListener('keydown', keyHandler)
+    })    
    
 
 
@@ -57,7 +77,7 @@ const searchinput = ref(null);
               </button>
               <BaseInput ref="searchinput" :top="false" :class="`pl-10`" :placeholder="'Buscar'" v-model="searchQuery"/>
             </div>
-            <SearchDropdown v-if="!summarized" :open="openDropdown" :queryText="searchQuery"></SearchDropdown>
+            <SearchDropdown v-if="!summarized && !loading" :open="openDropdown" :queryText="searchQuery"></SearchDropdown>
           </div>
   
 </template>

@@ -64,7 +64,8 @@ onMounted(()=>{
     <GenericPageHeader @readyheader="toggleLoader" :class="`shadow animate__animated animate__fadeIn ${firstVisit? 'animate__delay-1s' : '' }`" ></GenericPageHeader>
    
     <main v-bind="$attrs" class="relative flex min-h-screen  z-10 overflow-x-hidden" >
-      <ConsultingSidebar :class="`animate__animated animate__fadeInLeft ${firstVisit? 'animate__delay-2s animate__slower' : '' }`" v-if="$route.params.pageid" :key="$route.params.pageid"/> 
+      <ConsultingSidebar :class="`animate__animated animate__fadeInLeft ${firstVisit? 'animate__delay-2s animate__slower' : '' }`" 
+      v-if="$route.params.pageid" :key="$route.fullPath"/> 
       <div class="w-full lg:w-4/5 animate__animated animate__fadeIn" :class="`${firstVisit ? 'animate__delay-4s': ''}`"  :key="$route.fullPath">
          
         <ConsultingBreadcrumbs class="mx-auto w-full sm:w-5/6"/>   

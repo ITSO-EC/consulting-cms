@@ -34,6 +34,7 @@ export default defineNuxtConfig({
         
         public: { 
           PDF_API_KEY: process.env.PDF_API_KEY,
+          DOMAIN_URL: process.env.DOMAIN_URL,
         },
         proxyURL:  '',
         baseApiURL:  '',

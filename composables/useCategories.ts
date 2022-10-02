@@ -11,10 +11,14 @@ const useCategories = () => {
     const initializeAllCategories = async () => categoriesStore.loadCategories(await $fetch(BASE_API+'categories'));
     
     const initializeCategories = async (id: string) => categoriesStore.loadCategories(await $fetch(BASE_API+'categories?byPage='+id));
+    
     const getCategoryById = (id: string) => categoriesStore.getCategoryById(id);
-    const retriveCategoryById = (id:string) => {
-        categoriesStore.getCategoryById(id)
-        return selectedCategory.value;
+    
+    const retriveCategoryById = async (id:string) => {
+        loading.value = true;
+        let cat = await $fetch(BASE_API+'categories/'+id)
+        loading.value = false;
+        return cat;
     }
     return {
         // Properties

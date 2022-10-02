@@ -13,7 +13,12 @@ const useViews = () => {
         viewsStore.loadViews(await $fetch(BASE_API+'pages'))
         viewsStore.toggleLoading(false);
     };
-    const getViewById = (id) => viewsStore.getViewById(id);
+    const getViewById = (id:string) => viewsStore.getViewById(id);
+
+    const retrieveViewById = (id:string) => {
+        viewsStore.getViewById(id)
+        return selectedView.value;
+    }
     return {
         // Properties
         views,
@@ -25,6 +30,7 @@ const useViews = () => {
 
         //methods
         initializeViews,
+        retrieveViewById,
         getViewById 
 
     }

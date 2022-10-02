@@ -1,5 +1,6 @@
 <script setup>
   import DocumentHomeCard from "@/components/DocumentHomeCard.vue"
+  import useQueryPosts from "~~/composables/useQueryPosts";
   const {posts, initializeAllPosts} = useQueryPosts();
   const {categories, loading,initializeAllCategories,retriveCategoryById} = useCategories();
   const category1 = ref(null);

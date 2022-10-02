@@ -18,6 +18,14 @@ const useQueryPosts = () => {
         queryPostsStore.loadPosts(await $fetch(BASE_API+'posts?byCategory='+id))
         loading.value = false;
     };
+
+    const initializeByQuery = async (query: string) => {
+        loading.value = true;
+        queryPostsStore.loadPosts(await $fetch(BASE_API+'posts/search/'+query))
+        loading.value = false;
+    
+    };
+
     const selectPostById = (id: string) => queryPostsStore.getPostById(id);
 
     return {
@@ -31,6 +39,7 @@ const useQueryPosts = () => {
 
         //methods
         initializeAllPosts,
+        initializeByQuery,
         initializeQueriedPosts,
         selectPostById
 
