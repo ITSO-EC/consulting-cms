@@ -62,7 +62,7 @@ const getLogo = (url) =>  {
           <span :class="`text-primaryColor font-bold text-left`">Fecha:</span>
           <span class="text-justify">{{convertDate(selectedPost?.createdAt)}}</span>
           <span :class="`text-primaryColor font-bold text-left`">Tipo R.O.:</span>
-          <span class="text-justify">{{selectedPost?.type}}</span>
+          <span class="text-justify">{{selectedPost?.legal_regulation}}</span>
           <span :class="`text-primaryColor font-bold text-left`">Tipo de Norma:</span>
           <span class="text-justify">{{selectedPost?.type_reform}}</span>
           <span :class="`text-primaryColor font-bold text-left`">No.Norma:</span>
