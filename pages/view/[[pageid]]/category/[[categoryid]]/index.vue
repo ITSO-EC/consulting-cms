@@ -6,7 +6,7 @@ definePageMeta({
 </script>
 <template>
     <div class="h-auto pb-16">
-        <PostsTable summarized />
+        <PostsTable summarized/>
     </div>
 </template>
     

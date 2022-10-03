@@ -1,5 +1,9 @@
 <script setup>
 import getImage from "~~/composables/useResources"
+import sriLogo from "~~/assets/logos/sriLogo.png"
+import supercias from "~~/assets/logos/supercias.png"
+import iess from "~~/assets/logos/iess.png"
+import ministeriotrab from "~~/assets/logos/ministeriotrab.png"
 
 const {retriveCategoryById} = useCategories();
 
@@ -53,13 +57,13 @@ const convertDate = (date) => {
 const getLogo = (url) =>  {
   switch(url) {
     case 'www.sri.gob.ec':
-      return 'assets/logos/sriLogo.png'
+      return sriLogo;
     case 'www.supercias.gob.ec':
-      return 'assets/logos/supercias.png'
+      return supercias;
     case 'www.trabajo.gob.ec':
-      return 'assets/logos/ministeriotrab.png'
+      return ministeriotrab;
     case 'www.iess.gob.ec':
-      return 'assets/logos/iess.png'
+      return iess;
      
   }
 }
@@ -104,16 +108,17 @@ const getLogo = (url) =>  {
           
            :to="`/view/${category?.page}/category/${category?.id}/post/${post.id}`"
            class="inline-block w-full pt-3"
-             >{{post.title}}</nuxt-link
-           >
+             >{{post.title}}</nuxt-link>
          </td>
          
          <td  :class="summarized? 'col-span-1 sm:col-span-4 flex justify-center posts-center lg:col-span-2':'hidden lg:flex lg:justify-center lg:posts-center col-span-2'" class="text-center font-semibold">
            <a :href="`https://${post.reference}`" target="_blank" rel="noopener noreferrer">
              
-             <img :src="`http://${config.public.DOMAIN_URL}/${getLogo(post.reference)}`" class="h-8" alt="Logo">
+             <img v-if="post.reference == 'www.sri.gob.ec'" :src="sriLogo" class="h-8" alt="Logo">
+             <img v-if="post.reference == 'www.supercias.gob.ec'" :src="supercias" class="h-8" alt="Logo">
+             <img v-if="post.reference == 'www.trabajo.gob.ec'" :src="ministeriotrab" class="h-8" alt="Logo">
+             <img v-if="post.reference == 'www.iess.gob.ec'" :src="iess" class="h-8" alt="Logo">
            </a>
-           <!-- Corregir para que venga de referencia -->
          </td>
 
          <td  class="col-span-1 flex justify-center posts-center font-semibold">
@@ -172,9 +177,12 @@ const getLogo = (url) =>  {
          
          <td  :class="summarized? 'col-span-1 sm:col-span-4 flex justify-center posts-center lg:col-span-2':'hidden lg:flex lg:justify-center lg:posts-center col-span-2'" class="text-center font-semibold">
            <a :href="`https://${post.reference}`" target="_blank" rel="noopener noreferrer">
-             
-             <img :src="`http://${config.public.DOMAIN_URL}/${getLogo(post.reference)}`" class="h-8" alt="Logo">
-           </a>
+            <img v-if="post.reference == 'www.sri.gob.ec'" :src="sriLogo" class="h-8" alt="Logo">
+             <img v-if="post.reference == 'www.supercias.gob.ec'" :src="supercias" class="h-8" alt="Logo">
+             <img v-if="post.reference == 'www.trabajo.gob.ec'" :src="ministeriotrab" class="h-8" alt="Logo">
+             <img v-if="post.reference == 'www.iess.gob.ec'" :src="iess" class="h-8" alt="Logo">
+           
+            </a>
            <!-- Corregir para que venga de referencia -->
          </td>
 

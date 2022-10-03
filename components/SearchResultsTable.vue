@@ -1,4 +1,8 @@
 <script setup>
+import sriLogo from "~~/assets/logos/sriLogo.png"
+import supercias from "~~/assets/logos/supercias.png"
+import iess from "~~/assets/logos/iess.png"
+import ministeriotrab from "~~/assets/logos/ministeriotrab.png"
 import PostsTableItem from "~~/components/PostsTableItem.vue"
 import useQueryPosts from '~~/composables/useQueryPosts'
 
