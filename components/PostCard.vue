@@ -50,8 +50,11 @@ const getLogo = (url) =>  {
       <div class="col-span-12 sm:col-span-3 lg:col-span-2 flex flex-col items-center justify-center gap-2 m-4">
         <span class="font-bold h-1/3">Órgano Emisor</span>
         <a :href="`https://${selectedPost?.reference}`" target="_blank" rel="noopener noreferrer">
-          <img :src="`http://${config.public.DOMAIN_URL}/${getLogo(selectedPost?.reference)}`" class="h-24 w-24" alt="SRILogo" />
-  
+          <img v-if="post.reference == 'www.sri.gob.ec'" :src="sriLogo" class="h-8" alt="Logo">
+             <img v-if="post.reference == 'www.supercias.gob.ec'" :src="supercias" class="h-8" alt="Logo">
+             <img v-if="post.reference == 'www.trabajo.gob.ec'" :src="ministeriotrab" class="h-8" alt="Logo">
+             <img v-if="post.reference == 'www.iess.gob.ec'" :src="iess" class="h-8" alt="Logo">
+          
         </a>
       </div>  
       <div class="col-span-12 sm:col-span-6 lg:col-span-8">
