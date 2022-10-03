@@ -1,5 +1,11 @@
 <script setup>
 import getImage from "~~/composables/useResources"
+import sriLogo from "~~/assets/logos/sriLogo.png"
+import supercias from "~~/assets/logos/supercias.png"
+import iess from "~~/assets/logos/iess.png"
+import ministeriotrab from "~~/assets/logos/ministeriotrab.png"
+
+
 const {selectedPost, loading, error} = useQueryPosts();
 const config = useRuntimeConfig();
 const download = (url) => {
@@ -50,10 +56,10 @@ const getLogo = (url) =>  {
       <div class="col-span-12 sm:col-span-3 lg:col-span-2 flex flex-col items-center justify-center gap-2 m-4">
         <span class="font-bold h-1/3">Órgano Emisor</span>
         <a :href="`https://${selectedPost?.reference}`" target="_blank" rel="noopener noreferrer">
-          <img v-if="post.reference == 'www.sri.gob.ec'" :src="sriLogo" class="h-8" alt="Logo">
-             <img v-if="post.reference == 'www.supercias.gob.ec'" :src="supercias" class="h-8" alt="Logo">
-             <img v-if="post.reference == 'www.trabajo.gob.ec'" :src="ministeriotrab" class="h-8" alt="Logo">
-             <img v-if="post.reference == 'www.iess.gob.ec'" :src="iess" class="h-8" alt="Logo">
+          <img v-if="selectedPost?.reference == 'www.sri.gob.ec'" :src="sriLogo" class="h-full" alt="Logo">
+             <img v-if="selectedPost?.reference == 'www.supercias.gob.ec'" :src="supercias" class="h-full" alt="Logo">
+             <img v-if="selectedPost?.reference == 'www.trabajo.gob.ec'" :src="ministeriotrab" class="h-full" alt="Logo">
+             <img v-if="selectedPost?.reference == 'www.iess.gob.ec'" :src="iess" class="h-full" alt="Logo">
           
         </a>
       </div>  
