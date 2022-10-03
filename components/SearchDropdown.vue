@@ -31,7 +31,7 @@
 
           <SearchDropdownItem
             v-for="option in options"
-            :key="option._id"
+            :key="option.id"
             :post="option"
             @click="dropdownOpen = false"
          

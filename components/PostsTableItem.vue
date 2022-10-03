@@ -75,7 +75,7 @@ const getLogo = (url) =>  {
            
            <nuxt-link 
           
-           :to="`/view/${category?.page}/category/${category?._id}/post/${post._id}`" 
+           :to="`/view/${category?.page}/category/${category?.id}/post/${post.id}`" 
            
              class="inline-block w-full pt-3">{{post.ro}} </nuxt-link>
          </td>
@@ -84,7 +84,7 @@ const getLogo = (url) =>  {
            
             <nuxt-link 
            
-            :to="`/view/${category?.page}/category/${category?._id}/post/${post._id}`" 
+            :to="`/view/${category?.page}/category/${category?.id}/post/${post.id}`" 
             class="inline-block w-full pt-3">
            
             {{convertDate(post.createdAt)}}</nuxt-link>
@@ -94,7 +94,7 @@ const getLogo = (url) =>  {
          
            <nuxt-link 
           
-           :to="`/view/${category?.page}/category/${category?._id}/post/${post._id}`" 
+           :to="`/view/${category?.page}/category/${category?.id}/post/${post.id}`" 
            class="inline-block w-full pt-3">
            {{post.type_reform}}</nuxt-link>
          </td>
@@ -102,7 +102,7 @@ const getLogo = (url) =>  {
          <td  :class="summarized? 'hidden':'col-span-6 sm:col-span-4'" class="mx-2 sm:px-0 text-center font-semibold overflow-hidden">
            <nuxt-link 
           
-           :to="`/view/${category?.page}/category/${category?._id}/post/${post._id}`"
+           :to="`/view/${category?.page}/category/${category?.id}/post/${post.id}`"
            class="inline-block w-full pt-3"
              >{{post.title}}</nuxt-link
            >
@@ -137,7 +137,7 @@ const getLogo = (url) =>  {
            
            <nuxt-link 
           
-           :to="`/view/${$route.params.pageid}/category/${$route.params.categoryid}/post/${post._id}`" 
+           :to="`/view/${$route.params.pageid}/category/${$route.params.categoryid}/post/${post.id}`" 
            
              class="inline-block w-full pt-3">{{post.ro}} </nuxt-link>
          </td>
@@ -146,7 +146,7 @@ const getLogo = (url) =>  {
            
             <nuxt-link 
            
-            :to="`/view/${$route.params.pageid}/category/${$route.params.categoryid}/post/${post._id}`" 
+            :to="`/view/${$route.params.pageid}/category/${$route.params.categoryid}/post/${post.id}`" 
             class="inline-block w-full pt-3">
            
             {{convertDate(post.createdAt)}}</nuxt-link>
@@ -156,7 +156,7 @@ const getLogo = (url) =>  {
          
            <nuxt-link 
           
-           :to="`/view/${$route.params.pageid}/category/${$route.params.categoryid}/post/${post._id}`" 
+           :to="`/view/${$route.params.pageid}/category/${$route.params.categoryid}/post/${post.id}`" 
            class="inline-block w-full pt-3">
            {{post.type_reform}}</nuxt-link>
          </td>
@@ -164,7 +164,7 @@ const getLogo = (url) =>  {
          <td  :class="summarized? 'hidden':'col-span-6 sm:col-span-4'" class="mx-2 sm:px-0 text-center font-semibold overflow-hidden">
            <nuxt-link 
           
-           :to="`/view/${$route.params.pageid}/category/${$route.params.categoryid}/post/${post._id}`"
+           :to="`/view/${$route.params.pageid}/category/${$route.params.categoryid}/post/${post.id}`"
            class="inline-block w-full pt-3"
              >{{post.title}}</nuxt-link
            >

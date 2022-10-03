@@ -32,7 +32,7 @@ const isCardLoaded = () => {
     :class="`${isCardLoaded() ? '':'animate-pulse'}`"
   >
     <nuxt-link :class="`absolute block w-full h-full text-secondaryColor text-lg text-left ${isCardLoaded()? 'w-full':'w-full mt-1 bg-slate-700 pointer-events-none'}`"
-       :to="{ name: 'view-pageid', params: { pageid: pageInfo?._id } }"
+       :to="{ name: 'view-pageid', params: { pageid: pageInfo?.id } }"
        
      >
     <div class="absolute w-full h-full rounded-t-sm brightness-50">

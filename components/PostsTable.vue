@@ -39,7 +39,7 @@ const {posts, error, loading, results, selectPostById} = useQueryPosts();
       <tbody>
        
                 
-        <PostsTableItem v-for="(item, numid) in posts" :key="item._id" 
+        <PostsTableItem v-for="(item, numid) in posts" :key="item.id" 
     
         :summarized="summarized"
         :numid="numid"

@@ -42,15 +42,15 @@
               
                 <li v-for="category in categories" 
                 :class="showSidebar?'justify-self-center lg:w-1/2':''"
-                :key="`CategoryLink-${category._id}`"
+                :key="`CategoryLink-${category.id}`"
                 >
                     <nuxt-link 
-                    v-if="selectedView?._id"
+                    v-if="selectedView?.id"
                     :class="`${showSidebar? 'text-center w-full lg:rounded border-b lg:shadow-md lg:border border-secondaryColor '
                     :'w-full text-left border-b border-secondaryColor'}
-                     ${category?._id == $route.params?.categoryid? 'text-primaryColor font-bold':''}`"
+                     ${category?.id == $route.params?.categoryid? 'text-primaryColor font-bold':''}`"
                     class=" px-8 inline-block py-2 hover:text-slate-500"
-                    :to="{ name: 'view-pageid-category-categoryid', params: {pageid: `${selectedView?._id}`, categoryid: `${category?._id}`}}"
+                    :to="{ name: 'view-pageid-category-categoryid', params: {pageid: `${selectedView?.id}`, categoryid: `${category?.id}`}}"
                     @click="showSidebar = false"
                     
                     >

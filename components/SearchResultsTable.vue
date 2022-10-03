@@ -31,7 +31,7 @@ const props = defineProps(['posts'])
       <tbody>
        
                 
-        <PostsTableItem v-for="(item, numid) in posts" :key="item._id" 
+        <PostsTableItem v-for="(item, numid) in posts" :key="item.id" 
     
         :summarized="false"
         :numid="numid"

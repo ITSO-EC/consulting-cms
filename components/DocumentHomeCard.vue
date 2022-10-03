@@ -73,7 +73,7 @@ const onError = () => {
             ? 'w-full'
             : 'w-1/3 bg-slate-700 justify-self-end mt-1 pointer-events-none'
         }`"
-        :to="`/view/${category?.page}/category/${category?._id}/post/${post?._id}`">
+        :to="`/view/${category?.page}/category/${category?.id}/post/${post?.id}`">
          <!-- :to="`/page/${category?.page}/category/${category?.id}/post/${post?.id}`" -->
         {{ post != null && !loading ? "Ver más ►" : "" }}</nuxt-link
       >

@@ -2,7 +2,7 @@
     <nuxt-link
             class="flex items-center  w-full hover:bg-slate-50 py-2 font-medium px-3 cursor-pointer"
             :class="category=='...'? 'hidden':''"
-            :to="`/view/${category.page}/category/${category._id}/post/${post._id}`"
+            :to="`/view/${category.page}/category/${category.id}/post/${post.id}`"
           >
             <span class="text-slate-600 mr-2">{{`${category.name?category.name : '...'}`}}</span> /
             <span class="ml-2">{{post.title}}</span>

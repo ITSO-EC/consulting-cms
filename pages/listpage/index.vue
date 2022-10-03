@@ -29,7 +29,7 @@ const {views, loading, error, results, page} = useViews();
       </p>
 
       <div v-if="!loading && !error" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 m-8">
-        <ViewCard v-for="page in views" :key="page._id" :class="page.isVisible? '':'hidden'" :pageInfo="page"></ViewCard>
+        <ViewCard v-for="page in views" :key="page.id" :class="page.isVisible? '':'hidden'" :pageInfo="page"></ViewCard>
           
       </div>
       
