@@ -70,7 +70,6 @@ const useOrders = () => {
         retrieveOrdersByUser,
         initializeAllOrders,
         getOrderById 
-
     }
 }
 export default useOrders;
