@@ -122,7 +122,7 @@ export default {
         options.value.push({
           id: 5,
           period: 'Logout',
-          href: '/login'
+          href: '/logout'
         })
       }
     })

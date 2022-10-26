@@ -29,10 +29,6 @@ export const useAuthStore = defineStore({
 
         },
 
-        async register (payload) {
-            // some register logic
-        },
-
         async logOut() {
             this.updateUser(null)
         },

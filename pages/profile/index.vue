@@ -6,6 +6,11 @@ import UserInfoForm from "~~/components/UserInfoForm.vue";
 const editting = ref(true);
 const { user } = useAuth()
 
+
+definePageMeta({
+    title: 'Perfil',
+    middleware: 'auth'
+  })
 </script>
 <template>
   <div class="grid grid-cols-12  bg-gray-200 h-auto min-h-screen -mb-10 pb-10 -mt-[44px] sm:-mt-[56px] lg:-mt-[60-px] pt-[44px] sm:pt-[56px] lg:pt-[60-px]">

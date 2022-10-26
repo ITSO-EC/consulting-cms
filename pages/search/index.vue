@@ -4,6 +4,11 @@ import PostsTable from "@/components/SearchResultsTable.vue";
 import FullScreenDiv from "@/components/FullScreenDiv.vue";
 import useQueryPosts from '~~/composables/useQueryPosts'
 
+definePageMeta({
+    title: 'Búsqueda Avanzada',
+    middleware: 'auth'
+  })
+
 const postsquery = ref('');
 const setquery = (query) => {
     postsquery.value = query;

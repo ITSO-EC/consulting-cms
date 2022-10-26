@@ -15,6 +15,11 @@ function toggleToast() {
 }
 
 
+definePageMeta({
+    title: 'Órdenes',
+    middleware: 'auth'
+  })
+
 </script>
 <template>
 

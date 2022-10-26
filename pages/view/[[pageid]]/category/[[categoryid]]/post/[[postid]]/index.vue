@@ -7,6 +7,7 @@ const {posts, selectedPost, loading, error, initializeQueriedPosts, selectPostBy
 const $route = useRoute();
 definePageMeta({
     layout: "consulting",
+    middleware: 'auth'
 })
 const catcher = {}
    

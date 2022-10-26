@@ -4,6 +4,11 @@ import ViewCard from "@/components/ViewCard.vue";
 const {views, loading, error, results, page} = useViews();
 
 
+definePageMeta({
+    title: 'Vistas',
+    middleware: 'auth'
+  })
+
 </script>
 <template>
   <div

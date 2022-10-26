@@ -12,6 +12,7 @@ const postLoginForm = async function () {
 
 definePageMeta({
   layout: "guest",
+  
 });
 </script>
 <template>

@@ -2,6 +2,7 @@
 
   definePageMeta({
     layout: "consulting",
+    middleware: 'auth'
   })
 </script>
 <template>
