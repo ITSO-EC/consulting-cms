@@ -28,7 +28,12 @@ const handleScroll = () => {
 }
 
 onMounted(()=>{
-  //console.log("user",user.value)
+  const usercook = useCookie('user')
+      if(!user.value && usercook.value) {
+        user.value = usercook.value
+      } 
+
+
   window.addEventListener('scroll', handleScroll)
 })
 onUnmounted(()=>{
@@ -73,8 +78,3 @@ onUnmounted(()=>{
   </nav>
  
 </template>
-<script>
-
-</script>
-<style>
-</style>

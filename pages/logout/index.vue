@@ -18,7 +18,7 @@ onMounted(async ()=> {
   const rt = useCookie('refresh_token')
   rt.value = null
 
-  const uid = useCookie('user_id')
+  const uid = useCookie('user')
   uid.value = null
 
   user.value = null

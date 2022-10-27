@@ -13,26 +13,27 @@ export default async function login (email:string, password:string) {
             body: { email, password }
         });
        
+        
         if(res) {
             authStore.login(res.user);
 
             const acc_date = new Date(res.tokens.access.expires)
             const refr_date = new Date(res.tokens.refresh.expires)
 
-            const user_id = useCookie('user_id', {
+            const usercookie = useCookie('user', {
                 expires: acc_date,
             })
             const access_token = useCookie('access_token', {
                 expires: acc_date,
-                httpOnly: false
+                httpOnly: true
             })
             const refresh_token = useCookie('refresh_token', {
                 expires: refr_date,
-                httpOnly: false
+                httpOnly: true
             })
             access_token.value = res.tokens.access.token
             refresh_token.value = res.tokens.refresh.token
-            user_id.value = res.user.id
+            usercookie.value = res.user
             
             auth.value = true;
             await useRouter().push('/')

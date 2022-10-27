@@ -10,8 +10,6 @@ const acc = useCookie('access_token')
 const refr = useCookie('refresh_token')
 onMounted(()=>{
     loadPosts();
-    console.log(acc)
-    console.log(refr)
 })
 
 definePageMeta({

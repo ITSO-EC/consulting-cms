@@ -100,6 +100,7 @@ export default {
     }
 
     onMounted(() => {
+      
       document.addEventListener('click', clickHandler)
       document.addEventListener('keydown', keyHandler)
       if(!user.value) {
@@ -118,7 +119,6 @@ export default {
       
       }
       else {
-        //user.value = null;
         options.value.push({
           id: 5,
           period: 'Logout',

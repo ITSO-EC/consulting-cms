@@ -4,7 +4,7 @@
 </script>
 
 <template>
-    <section :class="$style.heroContainer">
+    <section :class="$style.heroContainer" class="select-none">
       <img
         alt="Imagen del hero"
         :class="$style.heroImage"
@@ -33,6 +33,8 @@
         height: 100%;
         object-fit: cover;
         position: absolute; 
+        user-select: none;
+        pointer-events: none;
     }
     .content{
         position: relative;
