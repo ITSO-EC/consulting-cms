@@ -22,7 +22,7 @@ onMounted(()=> {
         <header class="sticky top-0 z-50">
             <TheNavBar/>
         </header>
-        <main class="relative min-h-screen -mb-10 pb-10  z-10 -mt-[44px] sm:-mt-[56px] lg:-mt-[60-px] -pt-[44px] sm:-pt-[56px] lg:-pt-[60-px]" >
+        <main class="relative min-h-screen -mb-10 pb-10  z-10 -mt-[56px] sm:-mt-[56px] lg:-mt-[60-px] -pt-[44px] sm:-pt-[56px] lg:-pt-[60-px]" >
             <slot />
         </main>
         <TheFooter class="relative bottom-0 z-50"></TheFooter>
